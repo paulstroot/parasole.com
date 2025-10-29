@@ -1,0 +1,43 @@
+@import "./base/comments-for-live-css-file.css";
+/**
+ * This injects Tailwind's base styles and any base styles registered by
+ * plugins, then adds custom base styles.
+ */
+
+
+@import "tailwindcss";
+/* Example to target specific folders */
+/* @import "tailwindcss" source("../site*.{html,js,php}"); */
+
+
+@import "./base/theme.css";
+
+
+@import "./base/base.css";
+@import-glob "./base/**";
+
+@import-glob "./layout/**";
+/**
+ * This injects Tailwind's component classes and any component classes
+ * registered by plugins, then adds custom component classes.
+ *
+ * The `@import-glob` line imports all CSS files from the `components`
+ * directory (except for `components.css`, which is imported on the following
+ * line). This is meant to simplify the process of integrating styles from
+ * JavaScript components or WordPress plugins.
+ */
+/* @import "tailwindcss/components"; */
+@import-glob "./components/**";
+
+
+/**
+ * This injects Tailwind's utility classes and any utility classes registered
+ * by plugins, then adds custom utility classes.
+ */
+/* @import "tailwindcss/utilities"; */
+
+@import "./vendor/slick.css";
+@import "./vendor/slick-theme.css";
+
+@import-glob "./utilities/**";
+

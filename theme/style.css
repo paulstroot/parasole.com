@@ -1,0 +1,25 @@
+/*!
+Theme Name: Parasole
+Theme URI: https://github.com/paulstroot/parasole.com
+Author: Paul Stroot
+Description:  Starter that utilizes tailwind and esbuild to compile javascript. This Theme has Wordpress block editing turned OFF.
+Author: Paul Stroot
+Version: 1.0.0
+Tested up to: 6.4
+Requires PHP: 8.1
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: pstroot
+Tags:
+*/
+
+/*
+
+DO NOT EDIT "theme/library/css/style.css" directly
+
+All custom CSS ctyles are generated using tailwind.
+Edit your custom styles in the "./tailwind/**" directory
+These styles are all compiled and the file "theme/library/css/style.css" is generated,
+which is then enqueued into the page.
+
+*/

@@ -1,0 +1,56 @@
+# Must have the following secrets in your GitHub repository:
+# DREAMHOST_PASSWORD
+# DREAMHOST_SSH_HOST
+# DREAMHOST_SSH_USERNAME
+# KNOWN_HOSTS_ENTRY
+
+
+# Do this by going to your GitHub repository and clicking on the "Settings" tab,
+# then click on "Secrets and variables > Actions >  New repository secret".
+
+# How to create a Key pair on DreamHost
+# https://help.dreamhost.com/hc/en-us/articles/115001736691-How-to-create-a-Key-pair-overview
+
+# Finding Known Hosts Entry
+# To find the Known Hosts Entry, go to your Dreamhost Panel, on the left side of your screen, click the more tab and then go to SSH Keys and you will be able to find the Known Hosts entry there.
+
+# Make sure to update the directory to push to below under "Deploy to DreamHost"!
+
+name: Deploy code to DreamHost
+
+on:
+  # Trigger when code is pushed to the main branch
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
+      - name: Add SSH Key to known_hosts
+        env:
+          KNOWN_HOSTS_ENTRY: ${{ secrets.KNOWN_HOSTS_ENTRY }}
+          HOST: ${{ secrets.DREAMHOST_SSH_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$KNOWN_HOSTS_ENTRY" >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Deploy to DreamHost
+        env:
+          USERNAME: ${{ secrets.DREAMHOST_SSH_USERNAME }}
+          PASSWORD: ${{ secrets.DREAMHOST_PASSWORD }}
+          HOST: ${{ secrets.DREAMHOST_SSH_HOST }}
+          DEPLOY_SOURCE: ./ # the github directory to deploy.
+          DEPLOY_PATH: /home/dh_parasole/parasole.dreamhosters.com/wp-content/themes/parasole # Change this to your project path
+        run: |
+          sshpass -p "$PASSWORD" rsync -avz --delete --exclude .git --exclude .github --exclude node_scripts/ $DEPLOY_SOURCE $USERNAME@$HOST:$DEPLOY_PATH
+

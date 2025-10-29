@@ -1,0 +1,70 @@
+
+:root{
+  --minWidth: var(--breakpoint-sm);
+  --maxWidth: var(--breakpoint-xl);
+}
+body{
+  @apply text-base;
+  @apply text-[clamp(var(--text-sm),var(--text-base))];
+  /* @apply leading-[clamp(100%,15%)]; */
+}
+a{
+  @apply underline text-accent;
+}
+
+h1, h2, h3, h4, h5, b, strong, .h1, .h2, .h3, .h4, .h5{
+  @apply font-bold;
+}
+
+h1, h2, h3, h4, h5{
+  @apply font-headline text-base; font-weight: 400;
+}
+
+h1, .h1 {
+  @apply text-[clamp(var(--text-3xl),var(--text-5xl))];
+  @apply my-[clamp(2,6)];
+}
+.h2-lg{
+  @apply text-[clamp(var(--text-2xl),var(--text-4xl))];
+  @apply my-[clamp(2,6)];
+}
+h2, .h2 {
+  @apply text-[clamp(var(--text-xl),var(--text-3xl))];
+  @apply my-[clamp(2,6)];
+}
+
+h3, .h3 {
+  @apply text-[clamp(var(--text-lg),var(--text-2xl))];
+  @apply my-[clamp(2,6)];
+}
+h4, .h4 {
+  @apply text-[clamp(var(--text-base),var(--text-lg))];
+  @apply my-[clamp(2,6)];
+}
+h5, .h5 {
+  @apply text-lg my-5;
+}
+h6, .h6 {
+  @apply text-lg my-5;
+}
+p{
+  @apply my-5;
+}
+
+p, h1, h2, h3, h4, h5, h6, .p, .h1, .h2, .h3, .h4, .h5, .h6{
+  &:first-child{
+    @apply mt-0;
+  }
+  &:last-child{
+    @apply mb-[var(--margin-bottom)];
+  }
+}
+blockquote{
+  @apply not-italic;
+  footer{
+    @apply text-right italic;
+    &:before{
+      @apply content-['~'] inline-block mr-2;
+    }
+  }
+}

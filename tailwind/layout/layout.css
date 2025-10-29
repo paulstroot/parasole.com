@@ -1,0 +1,30 @@
+[x-cloak] {
+  display: none !important;
+}
+*:focus, *:focus-visible{
+  /* browser defaults */
+}
+
+.container, .container-narrow, .container-wide{
+  @apply mx-auto;
+  @apply !px-[clamp(1rem,5rem)];
+}
+.container{
+  @apply !max-w-[var(--breakpoint-xl)];
+}
+.container-narrow{
+  @apply !max-w-[var(--breakpoint-lg)];
+}
+.container-wide{
+  @apply !max-w-[var(--breakpoint-2xl)];
+}
+
+
+
+
+
+.skip {
+  @apply absolute top-auto w-1 h-1 overflow-hidden -left-96;
+  @apply bg-white px-2 py-1;
+  @apply focus:w-auto focus:h-auto focus:left-0;
+}

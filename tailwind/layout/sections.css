@@ -1,0 +1,15 @@
+/**
+Each <section> element has fluid vertical margins, UNLESS it has a background color.
+In that case the spacing should be padding.
+*/
+
+
+section{
+  --spacingY: clamp(1rem,2.5rem);
+  @apply relative;
+  @apply my-[var(--spacingY)];
+  &[class*="bg-"]{
+    @apply my-0;
+    @apply py-[var(--spacingY)];
+  }
+}

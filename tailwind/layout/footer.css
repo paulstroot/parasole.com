@@ -1,0 +1,26 @@
+#footer{
+  @apply mt-0 bg-gray-300;
+  #footer-menu-container{
+    @apply list-none p-0 m-0;
+    li{
+      @apply m-0;
+    }
+    a{
+      @apply text-dark hover:text-primary-contrast no-underline;
+    }
+    ul.sub-menu{
+      @apply hidden text-sm;
+      li{
+      }
+    }
+  }
+  .social-media-icons{
+      @apply text-light flex flex-row gap-4 list-none p-0 m-0 text-lg;
+      li{
+        @apply m-0;
+        a{
+          @apply text-white hover:text-primary;
+        }
+      }
+  }
+}

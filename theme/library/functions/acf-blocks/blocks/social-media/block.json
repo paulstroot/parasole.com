@@ -1,0 +1,16 @@
+{
+    "name": "acf/social-media",
+    "title": "Social Media",
+    "description": "A custom social media block that uses ACF fields.",
+    "style": [ "file:./social-media.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["follow", "facebook", "twitter", "instagram", "linkedin", "youtube"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "social-media.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

@@ -1,0 +1,17 @@
+/*!
+SUPER IMPORTANT!
+Do not edit this .css file directly.
+
+library/css/style.css and library/css/admin-styles.css are compiled during a build process.
+If you make any manual edits to these .css files your changes will be overwritten the next
+time the site is built.
+
+Please read the theme docs for more information on how to make changes to the theme.
+
+If you need to make any quick-fix updates to the css file, you can create overriding
+styles in library/css/override.css. These styles will be compiled into library/css/style.css,
+and is loaded last so it will override any existing styles.
+
+
+
+*/

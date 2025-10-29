@@ -1,0 +1,89 @@
+.table {
+  @apply rounded-md border border-mid-200;
+
+  .mobile-label {
+    @apply md:hidden font-bold mr-2 inline-block;
+  }
+
+  thead {
+    @apply max-md:hidden;
+    /* @apply rounded-t-lg overflow-hidden; */
+    th {
+      @apply font-thin text-light;
+      @apply bg-dark;
+      &:first-child {
+        @apply rounded-tl-lg;
+      }
+      &:last-child {
+        @apply rounded-tr-lg;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        @apply bg-mid-0 dark:bg-mid-100;
+      }
+      &:last-child td:first-child {
+        @apply rounded-bl-lg;
+      }
+      &:last-child td:last-child {
+        @apply rounded-br-lg;
+      }
+    }
+  }
+
+  .sort-arrow {
+    @apply inline-block -my-2 text-xl text-primary;
+  }
+  .reorder-arrows {
+    @apply flex flex-col gap-2 text-xl;
+    button {
+      @apply w-0 h-0 !p-0;
+      @apply border-l-[0.35em] border-l-transparent;
+      @apply border-r-[0.35em] border-r-transparent;
+
+      &:first-child {
+        @apply border-b-[0.35em] border-b-inherit;
+        @apply border-b-[0.35em] hover:border-b-primary;
+      }
+      &:last-child {
+        @apply border-t-[0.35em] hover:border-t-primary;
+      }
+    }
+  }
+
+  /* RESPONSIVE STYLES */
+  tbody {
+    @apply bg-transparent;
+    tr {
+      @apply max-md:flex max-md:flex-col max-md:relative rounded-lg hover:bg-inherit;
+      td {
+        @apply max-md:block;
+        @apply max-md:order-2;
+        &.title {
+          @apply max-md:bg-mid-300 max-md:order-1 max-md:pr-12 max-md:font-bold;
+        }
+        &.accepted {
+          @apply max-md:order-9;
+          .rounded-full {
+            @apply max-md:inline-block;
+            @apply max-md:bg-transparent max-md:border-none;
+            &:after {
+              @apply max-md:content-['No'];
+            }
+            &.bg-success:after {
+              @apply max-md:content-['Yes'];
+            }
+          }
+        }
+        &.actions {
+          @apply max-md:absolute max-md:top-0 max-md:right-0 max-md:p-1;
+          > div {
+            @apply max-md:text-mid-900;
+          }
+        }
+      }
+    }
+  }
+}

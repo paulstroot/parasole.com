@@ -1,0 +1,12 @@
+
+dl.data-list {
+  @apply md:flex text-mid-800;
+  flex-flow: row wrap;
+  dt {
+    @apply mt-2 md:my-2 pr-2 font-bold md:basis-40;
+  }
+  dd {
+    @apply mb-6 md:my-2 grow;
+    @apply md:basis-[calc(100%-10rem)];
+  }
+}

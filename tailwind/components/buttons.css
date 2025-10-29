@@ -1,0 +1,10 @@
+
+
+/* .btn{
+  @apply bg-primary rounded-lg px-4 py-2 my-2 border-none;
+  @apply transition-colors;
+  @apply hover:bg-primary-contrast hover:text-white;
+  &[disabled]{
+    @apply opacity-50 hover:bg-primary hover:text-inherit;
+  }
+} */

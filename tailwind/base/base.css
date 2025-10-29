@@ -1,0 +1,55 @@
+/**
+ * Custom styles to immediately follow Tailwind’s `base` layer
+ *
+ * “Add things like base typography styles [or] opinionated global resets.”
+ *
+ * — from https://tailwindcss.com/docs/plugins#adding-base-styles
+ */
+
+/**
+ * This uses the background and foreground colors declared in the
+ * `theme.json` file and is applied both to the frontend and in the block
+ * editor.
+*/
+
+html{
+  @apply m-0 p-0;
+}
+
+body{
+  min-height: 100vh;
+  @apply flex flex-col font-sans;
+  header{}
+  main{flex:1;}
+  footer{}
+  &.admin-bar{
+    min-height: calc(100vh - 32px) ;
+  }
+}
+;
+
+p{
+  @apply my-4;
+}
+
+ul, ol, menu {
+  list-style-type: disc;
+  @apply pl-4 my-4 list-disc;
+  li{
+    @apply mb-2;
+  }
+}
+ul{
+  list-style-type: disc;
+}
+ol{
+  list-style-type: decimal;
+}
+
+blockquote{
+  @apply m-0 p-0;
+}
+
+a {
+  @apply text-primary-contrast hover:text-primary underline ;
+}
