@@ -29,7 +29,7 @@
       <p>Read the <a href="https://github.com/paulstroot/wordpress_starter/blob/main/src/wp-content/themes/starter/README.md" target="_blank">docs</a>, check out the <a href="/style-guide/">style guide</a>, some <a href="/sample-components/">example components</a>, or just dive in and start developing!</p>
     </section>
 
-    <section class="mb-0 text-white bg-primary-contrast">
+    <section class="mb-0 text-white bg-primary-content">
       <div class='container'>
         <p>Here is a search form for testing the search functionality</p>
         <?php get_search_form(); ?>

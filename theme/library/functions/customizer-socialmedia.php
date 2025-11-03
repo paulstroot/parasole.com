@@ -54,37 +54,37 @@ function pstroot_get_social_sites()
       (object) [
         'name' => 'Facebook',
         'id' => 'facebook',
-        'class' => 'fa-brands fa-facebook-f',
+        'class' => 'ri-facebook-fill',
       ],
       (object) [
         'name' => 'Twitter',
         'id' => 'twitter',
-        'class' => 'fa-brands fa-twitter',
+        'class' => 'ri-twitter-fill',
       ],
       (object) [
         'name' => 'YouTube',
         'id' => 'youtube',
-        'class' => 'fa-brands fa-youtube',
-      ],
-      (object) [
-        'name' => 'LinkedIn',
-        'id' => 'linkedin',
-        'class' => 'fa-brands fa-linkedin-in',
-      ],
-      (object) [
-        'name' => 'Google+',
-        'id' => 'googleplus',
-        'class' => 'fa-brands fa-google-plus-g',
-      ],
-      (object) [
-        'name' => 'Pinterest',
-        'id' => 'pinterest',
-        'class' => 'fa-brands fa-pinterest',
+        'class' => 'ri-youtube-fill',
       ],
       (object) [
         'name' => 'Instagram',
         'id' => 'instagram',
-        'class' => 'fa-brands fa-instagram',
+        'class' => 'ri-instagram-line',
+      ],
+      (object) [
+        'name' => 'LinkedIn',
+        'id' => 'linkedin',
+        'class' => 'ri-linkedin-fill',
+      ],
+      (object) [
+        'name' => 'Google+',
+        'id' => 'googleplus',
+        'class' => 'ri-google-fill',
+      ],
+      (object) [
+        'name' => 'Pinterest',
+        'id' => 'pinterest',
+        'class' => 'ri-pinterest-fill',
       ]
         //'flickr',
         //'vimeo',
@@ -99,6 +99,7 @@ function pstroot_show_social_icons()
 {
 
     $social_sites = pstroot_get_social_sites();
+
     $active_sites = [];
     //Any inputs that aren't empty are stored in $active_sites array
     foreach( $social_sites as $social_site ) {
@@ -112,7 +113,7 @@ function pstroot_show_social_icons()
         echo "<ul class='social-media-icons'>";
         foreach ( $active_sites as $active_site ) {
             ?><li>
-          <a href="<?php echo esc_url(get_theme_mod($active_site->id)); ?>" title="<?php echo esc_attr($active_site->name); ?>" target="_blank" class="text-white">
+          <a href="<?php echo esc_url(get_theme_mod($active_site->id)); ?>" title="<?php echo esc_attr($active_site->name); ?>" target="_blank">
             <i class="<?php echo esc_attr($active_site->class); ?>"></i>
           </a>
         </li><?php

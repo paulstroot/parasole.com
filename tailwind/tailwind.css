@@ -10,7 +10,9 @@
 /* @import "tailwindcss" source("../site*.{html,js,php}"); */
 
 
-@import "./base/theme.css";
+@import "./theme/plugins.css";
+@import "./theme/theme.css";
+@import "./theme/theme-dark.css";
 
 
 @import "./base/base.css";

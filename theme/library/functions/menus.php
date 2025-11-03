@@ -6,7 +6,7 @@ function pstroot_register_menus()
     register_nav_menus(
         array(
           'primary-nav' => __('Primary Nav', 'pstroot'),
-          'utility-nav' => __('Utility Nav', 'pstroot'),
+          'home-nav' => __('Home Nav', 'pstroot'),
           'footer' => __('Footer Navigation', 'pstroot')
         )
     );

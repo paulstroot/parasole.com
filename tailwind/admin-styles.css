@@ -1,14 +1,29 @@
 
-/* @import "./base/fonts.css"; */
+@import "tailwindcss";
+@import "./theme/plugins.css";
+@import "./theme/theme.css";
+@import "./theme/theme-dark.css";
 
-/* @import "tailwindcss/base"; */
-/* @import "./base/base.css"; */
 
-/* @import "./utilities/utilities.css"; */
-/*
-This stretches the background color of a group to be full width of the content.
-For this to work, make sure the group is set to "Inner blocks use content width".
-*/
+  @import "./base/base.css";
+  @import-glob "./base/**";
+
+  @import-glob "./layout/**";
+
+  @import-glob "./components/**";
+
+
+
+  @import "./vendor/slick.css";
+  @import "./vendor/slick-theme.css";
+
+  @import-glob "./utilities/**";
+
+
+
+
+
+
 .is-layout-constrained{
   max-width:100% !important;
 }

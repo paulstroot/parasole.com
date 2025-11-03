@@ -21,8 +21,8 @@ function pstroot_scripts()
     wp_enqueue_script('main');
 
     /**
- * ICONS
-*/
+     * ICONS
+    */
     wp_enqueue_style('remixicon', 'https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css', array(), THEME_VERSION);
 
     /**

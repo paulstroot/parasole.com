@@ -38,7 +38,7 @@
 		"watch:tailwind:editor": "npm run development:tailwind:editor -- --watch",
 		"watch:esbuild": "npx esbuild ./javascript/script.js --target=esnext --bundle --outfile=./theme/library/js/script.min.js --watch",
 		"watch:esbuild:top": "npx esbuild ./javascript/inline-header-scripts.js --target=esnext --bundle --outfile=./theme/library/js/top-script.min.js --watch",
-		"watch:browser-sync": "browser-sync start --proxy \"https://wp-starter.paulstroot.localhost\" --files \"theme\" --no-notify --no-inject-changes",
+		"watch:browser-sync": "browser-sync start --proxy \"https://www.parasole.localhost\" --files \"theme\" --no-notify --no-inject-changes",
 		"watch": "run-p watch:**",
 		"lint:eslint": "npx eslint theme/",
 		"lint:prettier": "npx prettier --check .",
@@ -52,6 +52,7 @@
 		"production": "run-p production:**",
 		"prod": "npm run production",
 		"zip": "node node_scripts/zip.js starter",
+		"generate:theme-json": "node node_scripts/generate-theme-json.js",
 		"bundle": "run-s production zip"
 	},
 	"prettier": "@wordpress/prettier-config",

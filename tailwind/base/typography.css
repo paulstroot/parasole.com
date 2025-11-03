@@ -2,11 +2,22 @@
 :root{
   --minWidth: var(--breakpoint-sm);
   --maxWidth: var(--breakpoint-xl);
+  /* --wp--preset--font-size--large: clamp(1.55rem, calc(1.55rem + 0.0198 * (100vw - 32rem)), 2.4375rem); */
 }
-body{
-  @apply text-base;
-  @apply text-[clamp(var(--text-sm),var(--text-base))];
-  /* @apply leading-[clamp(100%,15%)]; */
+:root {
+    --base-font-size: clamp(var(--text-sm),var(--text-base));
+    --h1-font-size: clamp(var(--text-3xl),var(--text-5xl));
+    --h2-lg-font-size: clamp(var(--text-2xl),var(--text-4xl));
+    --h2-font-size: clamp(var(--text-xl),var(--text-3xl));
+    --h3-font-size: clamp(var(--text-lg),var(--text-2xl));
+    --h4-font-size: clamp(var(--text-base),var(--text-lg));
+    --h5-font-size: clamp(var(--text-sm),var(--text-base));
+    --nav-font-size: clamp(26rem,var(--text-xl));
+    --small-font-size: clamp(var(--text-tiny),var(--text-tiny));
+}
+
+body, .has-base-font-size{
+  font-size:var(--base-font-size);
 }
 a{
   @apply underline text-accent;
@@ -20,36 +31,40 @@ h1, h2, h3, h4, h5{
   @apply font-headline text-base; font-weight: 400;
 }
 
-h1, .h1 {
-  @apply text-[clamp(var(--text-3xl),var(--text-5xl))];
+h1, .h1, .has-h-1-font-size {
+  font-size: var(--h1-font-size);
   @apply my-[clamp(2,6)];
 }
-.h2-lg{
-  @apply text-[clamp(var(--text-2xl),var(--text-4xl))];
-  @apply my-[clamp(2,6)];
-}
-h2, .h2 {
-  @apply text-[clamp(var(--text-xl),var(--text-3xl))];
+.has-h-2-lg-font-size{
+  font-size: var(--h2-lg-font-size);
   @apply my-[clamp(2,6)];
 }
 
-h3, .h3 {
-  @apply text-[clamp(var(--text-lg),var(--text-2xl))];
+h2, .h2, .has-h-2-font-size {
+  font-size: var(--h2-font-size);
   @apply my-[clamp(2,6)];
 }
-h4, .h4 {
-  @apply text-[clamp(var(--text-base),var(--text-lg))];
+
+h3, .h3, .has-h-3-font-size {
+  font-size: var(--h3-font-size);
   @apply my-[clamp(2,6)];
 }
-h5, .h5 {
-  @apply text-lg my-5;
+h4, .h4, .has-h-4-font-size {
+  font-size: var(--h4-font-size);
+  @apply my-[clamp(2,6)];
 }
-h6, .h6 {
-  @apply text-lg my-5;
+h5, .h5, .has-h-5-font-size {
+  font-size: var(--h5-font-size);
+  @apply my-5;
 }
+
 p{
   @apply my-5;
 }
+small, .has-small-font-size{
+  font-size: var(--small-font-size);
+}
+
 
 p, h1, h2, h3, h4, h5, h6, .p, .h1, .h2, .h3, .h4, .h5, .h6{
   &:first-child{
@@ -68,3 +83,5 @@ blockquote{
     }
   }
 }
+
+

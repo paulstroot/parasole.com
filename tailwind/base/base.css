@@ -51,5 +51,5 @@ blockquote{
 }
 
 a {
-  @apply text-primary-contrast hover:text-primary underline ;
+  @apply text-primary-content hover:text-primary underline ;
 }

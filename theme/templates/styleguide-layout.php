@@ -3,7 +3,7 @@
      * Template Name: Style Guide: Layout
      */
 ?><?php get_header(); ?>
-
+<div class="font-icon font-serif font-sans font-headline"></div>
 <?php if (have_posts() ) { while ( have_posts() ) : the_post(); ?>
 <main class="main cf" id="main">
 
@@ -103,14 +103,14 @@ John@Doe.com</td>
 <div class="divider divider-accent">Definition List</div>
 <section class="container">
 <dl class="data-list">
- 	<dt class="">Client:</dt>
- 	<dd class="">Johnson and Mable</dd>
- 	<dt class="">Description:</dt>
- 	<dd class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
- 	<dt class="">Location:</dt>
- 	<dd class="">Los Angeles, CA</dd>
- 	<dt class="">Rating</dt>
- 	<dd class="">Stellar</dd>
+     <dt class="">Client:</dt>
+     <dd class="">Johnson and Mable</dd>
+     <dt class="">Description:</dt>
+     <dd class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+     <dt class="">Location:</dt>
+     <dd class="">Los Angeles, CA</dd>
+     <dt class="">Rating</dt>
+     <dd class="">Stellar</dd>
 </dl>
 </section>
 <div class="divider divider-accent">Cards</div>

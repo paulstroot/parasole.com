@@ -1,54 +1,75 @@
-/* COLORS, FONTS, PADDING and BORDERS */
+
 .nav-wrapper{
+  @apply text-[clamp(1.25rem,var(--text-xl))];
+  @apply bg-primary/90;
+  @apply right-0 left-0 py-10 ;
+  @apply text-left ;
+  @apply hidden;
   &.open{
-    @apply max-md:top-[4.5rem];
+    @apply block;
+    @apply fixed;
+    @apply top-[9.7rem];
   }
-  @apply bg-gray-200 md:bg-white;
+  .nav-wrapper-inner{
+    @apply relative flex flex-col items-start justify-end gap-x-8 min-[520px]:flex-row;
+  }
   ul{
     @apply pl-0 my-0;
     li{
-      @apply mb-0;
-      &.current-menu-item, &.current_page_item, &.current-menu-ancestor, &.current-menu-parent {
-        > a, > button{
+      @apply mb-0 list-none ;
+      &.current-menu-item, &.current_page_item { /*, &.current-menu-ancestor, &.current-menu-parent */
+        > a:not([href^="/#"]), > button{
           @apply text-secondary;
         }
+      }
+      a{
+        @apply no-underline;
+        @apply text-primary-content hover:text-secondary ;
       }
 
     }
   }
-  > ul{
+  .nav-wrapper-inner > ul{
+    @apply flex flex-col items-start text-primary-content;
     > li{
-      @apply border-b border-gray-400 md:border-0;
+      > a{
+
+      }
+      &.menu-item-has-children{
+        a, button.nav-link{
+          white-space: normal;
+          text-align: left;
+        }
+      }
       border-bottom-style:solid;
     }
-    .sub-menu-wrap {
-      @apply bg-mid-200 text-mid-800;
-      @apply md:shadow-md;
-    }
+
     a {
       @apply text-inherit w-full;
-      @apply hover:bg-mid-0;
-      @apply focus:outline-4 focus:outline-primary-contrast;
+      @apply focus:underline focus:outline-none;
     }
     button.nav-link, a {
       font-size:inherit;
-      @apply px-4 py-2;
+      @apply block px-4;
+      @apply py-[clamp(7px,15px)];
     }
     ul.sub-menu{
-      @apply m-0 pl-0;
-      button.nav-link, a {
-        @apply max-md:pl-12; /* Indent the sub-nav */
+      font-size: clamp(1rem,var(--text-base));
+      @apply ml-4 min-[520px]:ml-0;
+      a{
+        @apply py-[clamp(5px,11px)];
       }
+
     }
 
 
     button.nav-link{
-      @apply md:!pr-0;
+      @apply !pr-0;
     }
     button.nav-link,
     > li > a {
-      @apply text-dark md:text-white no-underline bg-transparent border-none;
-      @apply hover:bg-accent hover:text-white;
+      @apply bg-transparent border-none;
+      /* @apply hover:bg-accent hover:text-base-content; */
     }
     button.nav-link,
     > li > a,
@@ -66,10 +87,10 @@
   &[aria-expanded="true"]{
     .hamburger{
       > div:nth-child(1){
-        transform: rotate(45deg) translateY(8px) translateX(8px);
+        transform: rotate(45deg) translateY(7px) translateX(7px);
       }
       > div:nth-child(3){
-        transform: rotate(-45deg) translateY(-9px) translateX(9px);
+        transform: rotate(-45deg) translateY(-7px) translateX(7px);
       }
       > div:nth-child(2){
         opacity:0;
@@ -80,129 +101,8 @@
 /* END MOBILE TOGGLE */
 
 
-.nav-wrapper {
-  @apply absolute hidden border right-0;
-  @apply md:relative md:flex md:flex-col-reverse md:items-end md:space-x-10 md:border-none md:bg-transparent/0;
-  @apply max-md:left-0 ;
-  &.open{
-    @apply max-md:block;
-  }
-  > ul {
-    @apply md:flex md:flex-row items-start;
-    > li {
-      @apply flex flex-col flex-wrap relative justify-start;
-      > a{
-        @apply flex-1 block w-auto;
-      }
-      &.menu-item-has-children{
-        a, button.nav-link{
-          white-space: normal;
-          text-align: left;
-        }
-      }
-    }
-    ul.sub-menu {
-      @apply w-full;
-      li{
-        @apply mb-0 list-none;
-      }
-      a {
-        @apply block w-auto ;
-      }
-    }
-
-  }
-}
 
 
-/* These style aply to the "Disclosure nav", which shows/hides sub-menus when the arrow is clicked. */
-/* if your navigation does not have drop-down menus, you can delete these styles */
-.disclosure-nav {
-  .nav-wrapper > ul {
-    @apply items-center;
-    > li{
-      @apply md:flex-row md:items-center ;
-      &:last-child ul.sub-menu-wrap{
-        @apply right-0; /* so the menu doesn't go off the right edge of the screen */
-      }
-    }
-    .sub-menu-wrap {
-      @apply hidden;
-      @apply w-full md:w-auto;
-      @apply top-full;
-      @apply md:absolute md:min-w-[200px];
-      a {
-        @apply md:whitespace-nowrap;
-      }
-      a, button.nav-link{
-        @apply max-md:pr-12; /* keeps the arrow from overlapping the text */
-      }
-    }
-    button[aria-expanded="true"] {
-      .arrow, &.arrow{
-        transform:rotate(180deg);
-      }
-    }
-    .arrow{
-      @apply aspect-square w-6 relative rounded-full;
-      @apply border-none bg-transparent;
-      @apply flex justify-center items-center;
-      @apply hover:bg-mid-400 hover:md:bg-mid-200;
-      @apply absolute right-3 md:right-0 top-2 md:top-0;
-      @apply md:relative;
-      &:before{
-        @apply absolute;
-        @apply content-["\ea50"] text-dark md:text-light hover:text-dark;
-        @apply text-3xl font-icon antialiased;
-      }
-    }
-
-    button.arrow{
-      @apply rounded-full ;
-      @apply -ml-3;
-      font-size:inherit;
-    }
-
-    button.nav-link,
-    > li > a {
-      font-size:inherit;
-      @apply w-full md:w-auto;
-      @apply items-center flex whitespace-nowrap  ;
-    }
-
-    button.nav-link .arrow{
-      pointer-events:none;
-    }
-  }
-  .sub-menu-wrap:not(.loaded){
-    display:none;
-  }
-
-  /*
-  Set this class on the containing "nav" element if you would like the nav-menus to open on focus instead of hover.
-  This will not only open the sub-menu on click, but when tabbing through with a keyboard
-  (note: there may need to be some javascript work to get arai-expanded=true )
-  */
-  &.open-on-focus{
-    .sub-menu-wrap{
-      @apply !block;
-      @apply h-0 opacity-0 overflow-hidden;
-      @apply w-full md:w-auto;
-    }
-    ul li:focus-within{
-      .sub-menu-wrap{
-        @apply h-auto;
-        @apply opacity-100;
-      }
-
-      button{
-        .arrow, &.arrow{
-          transform:rotate(180deg);
-        }
-      }
-    }
-  }
-}
 
 
 
@@ -212,29 +112,13 @@
 
 
 /* Some styling of individual navigations */
-#menu-primary-nav{
-  li{
-    /* @apply text-lg; */
-  }
-}
 
-#menu-utility-nav{
-  @apply bg-gray-400/0;
-  li{
-    @apply text-sm;
-    a, button.nav-link{
-      @apply py-1;
-    }
-    button.nav-link .arrow{
-      @apply max-md:top-0 ;
-    }
+footer nav{
+  ul{
+    @apply p-0 m-0;
   }
-}
-
-ul.footer-nav{
-  @apply flex;
   a{
-    @apply text-white px-3 py-1
+    @apply block py-1;
   }
 }
 

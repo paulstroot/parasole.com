@@ -4,7 +4,7 @@
 *:focus, *:focus-visible{
   /* browser defaults */
 }
-
+/* is-layout-constrained wp-block-group-is-layout-constrained */
 .container, .container-narrow, .container-wide{
   @apply mx-auto;
   @apply !px-[clamp(1rem,5rem)];

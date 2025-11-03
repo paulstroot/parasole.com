@@ -36,6 +36,7 @@ $accordion_content = [
 
     <div class="grid grid-cols-2 gap-2 my-8 md:grid-cols-4">
       <button class="btn">Default</button>
+      <button class="btn btn-neutral">btn-neutral</button>
       <button class="btn btn-primary">btn-primary</button>
       <button class="btn btn-secondary">btn-secondary</button>
       <button class="btn btn-accent">btn-accent</button>
@@ -62,15 +63,16 @@ $accordion_content = [
     </div>
     <div class="grid grid-cols-2 gap-2 mt-8 md:grid-cols-4">
       <button class="btn">
-        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
-        Icon
+      <i class="ri-add-large-fill"></i>
+      Icon
       </button>
       <button class="btn">
         Icon After
-        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path></svg>
+        <i class="ri-external-link-fill"></i>
+
       </button>
       <button class="btn btn-icon">
-        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M488.56 23.44a80 80 0 0 0-113.12 0l-352 352a80 80 0 1 0 113.12 113.12l352-352a80 80 0 0 0 0-113.12zm-49.93 95.19c-19.6 19.59-37.52 22.67-51.93 25.14C373.76 146 364.4 147.6 352 160s-14 21.76-16.23 34.71c-2.48 14.4-5.55 32.33-25.15 51.92s-37.52 22.67-51.92 25.15C245.75 274 236.4 275.6 224 288s-14 21.75-16.23 34.7c-2.47 14.4-5.54 32.33-25.14 51.92s-37.53 22.68-51.93 25.15C117.76 402 108.4 403.6 96 416a16 16 0 0 1-22.63-22.63c19.6-19.59 37.52-22.67 51.92-25.14 13-2.22 22.3-3.82 34.71-16.23s14-21.75 16.22-34.7c2.48-14.4 5.55-32.33 25.15-51.92s37.52-22.67 51.92-25.14c13-2.22 22.3-3.83 34.7-16.23s14-21.76 16.24-34.71c2.47-14.4 5.54-32.33 25.14-51.92s37.52-22.68 51.92-25.15C394.24 110 403.59 108.41 416 96a16 16 0 0 1 22.63 22.63zM31.44 322.18L322.18 31.44l-11.54-11.55c-25-25-63.85-26.66-86.79-3.72L16.17 223.85c-22.94 22.94-21.27 61.79 3.72 86.78zm449.12-132.36L189.82 480.56l11.54 11.55c25 25 63.85 26.66 86.79 3.72l207.68-207.68c22.94-22.94 21.27-61.79-3.72-86.79z"></path></svg>
+        <i class="ri-heart-3-fill"></i>
       </button>
     </div>
   </section>
@@ -96,15 +98,18 @@ $accordion_content = [
         <span class="badge badge-error badge-outline">error</span>
       </div>
       <div class="grid grid-cols-2 gap-2 my-8 place-items-center md:grid-cols-3">
-        <span class="badge badge-success"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path></svg>
+        <span class="badge badge-success">
+          <i class="ri-add-circle-fill"></i>
           Icon Before
         </span>
         <span class="badge badge-primary">
           Icon After
-          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg>
+          <i class="ri-add-circle-fill"></i>
+
         </span>
         <span class="badge badge-secondary">
-          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M488.56 23.44a80 80 0 0 0-113.12 0l-352 352a80 80 0 1 0 113.12 113.12l352-352a80 80 0 0 0 0-113.12zm-49.93 95.19c-19.6 19.59-37.52 22.67-51.93 25.14C373.76 146 364.4 147.6 352 160s-14 21.76-16.23 34.71c-2.48 14.4-5.55 32.33-25.15 51.92s-37.52 22.67-51.92 25.15C245.75 274 236.4 275.6 224 288s-14 21.75-16.23 34.7c-2.47 14.4-5.54 32.33-25.14 51.92s-37.53 22.68-51.93 25.15C117.76 402 108.4 403.6 96 416a16 16 0 0 1-22.63-22.63c19.6-19.59 37.52-22.67 51.92-25.14 13-2.22 22.3-3.82 34.71-16.23s14-21.75 16.22-34.7c2.48-14.4 5.55-32.33 25.15-51.92s37.52-22.67 51.92-25.14c13-2.22 22.3-3.83 34.7-16.23s14-21.76 16.24-34.71c2.47-14.4 5.54-32.33 25.14-51.92s37.52-22.68 51.92-25.15C394.24 110 403.59 108.41 416 96a16 16 0 0 1 22.63 22.63zM31.44 322.18L322.18 31.44l-11.54-11.55c-25-25-63.85-26.66-86.79-3.72L16.17 223.85c-22.94 22.94-21.27 61.79 3.72 86.78zm449.12-132.36L189.82 480.56l11.54 11.55c25 25 63.85 26.66 86.79 3.72l207.68-207.68c22.94-22.94 21.27-61.79-3.72-86.79z"></path></svg></span><span class="badge badge-success badge-outline"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path></svg> Icon Before</span><span class="badge badge-primary badge-outline"> <!-- -->Icon After <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path></svg></span><span class="badge badge-secondary badge-outline"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M488.56 23.44a80 80 0 0 0-113.12 0l-352 352a80 80 0 1 0 113.12 113.12l352-352a80 80 0 0 0 0-113.12zm-49.93 95.19c-19.6 19.59-37.52 22.67-51.93 25.14C373.76 146 364.4 147.6 352 160s-14 21.76-16.23 34.71c-2.48 14.4-5.55 32.33-25.15 51.92s-37.52 22.67-51.92 25.15C245.75 274 236.4 275.6 224 288s-14 21.75-16.23 34.7c-2.47 14.4-5.54 32.33-25.14 51.92s-37.53 22.68-51.93 25.15C117.76 402 108.4 403.6 96 416a16 16 0 0 1-22.63-22.63c19.6-19.59 37.52-22.67 51.92-25.14 13-2.22 22.3-3.82 34.71-16.23s14-21.75 16.22-34.7c2.48-14.4 5.55-32.33 25.15-51.92s37.52-22.67 51.92-25.14c13-2.22 22.3-3.83 34.7-16.23s14-21.76 16.24-34.71c2.47-14.4 5.54-32.33 25.14-51.92s37.52-22.68 51.92-25.15C394.24 110 403.59 108.41 416 96a16 16 0 0 1 22.63 22.63zM31.44 322.18L322.18 31.44l-11.54-11.55c-25-25-63.85-26.66-86.79-3.72L16.17 223.85c-22.94 22.94-21.27 61.79 3.72 86.78zm449.12-132.36L189.82 480.56l11.54 11.55c25 25 63.85 26.66 86.79 3.72l207.68-207.68c22.94-22.94 21.27-61.79-3.72-86.79z"></path></svg>
+          <i class="ri-html5-fill"></i>
+
         </span>
       </div>
   </section>
@@ -264,7 +269,7 @@ $accordion_content = [
       <i class="ri-facebook-circle-fill"></i>
       <i class="ri-twitter-fill"></i>
       <i class="ri-linkedin-box-fill"></i>
-      <i class="ri-instagram-fill"></i>
+      <i class="ri-instagram-line"></i>
       <i class="ri-star-fill"></i>
     </div>
   </section>
@@ -342,7 +347,7 @@ $accordion_content = [
                 <div class="py-20 text-center swiper-slide bg-secondary">Slide 3</div>
                 <div class="py-20 text-center swiper-slide bg-primary">Slide 4</div>
                 <div class="py-20 text-center swiper-slide bg-error">Slide 5</div>
-                <div class="py-20 text-center swiper-slide bg-primary-contrast">Slide 6</div>
+                <div class="py-20 text-center swiper-slide bg-primary-content">Slide 6</div>
             </div>
             <div class="swiper-pagination"></div>
 

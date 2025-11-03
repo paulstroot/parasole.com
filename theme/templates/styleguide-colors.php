@@ -24,7 +24,7 @@
             Primary
             <small class="block">(text color is primary-content)</small>
           </div>
-          <div class="px-3 py-1 text-primary-contrast">
+          <div class="px-3 py-1 text-primary-content">
             * Primary Contrast
           </div>
         </div>
@@ -34,7 +34,7 @@
             Secondary
             <small class="block">(text color is secondary-content)</small>
           </div>
-          <div class="px-3 py-1 text-secondary-contrast">
+          <div class="px-3 py-1 text-secondary-content">
             * Secondary Contrast
           </div>
         </div>
@@ -43,7 +43,7 @@
             Accent
             <small class="block">(text color is accent-content)</small>
           </div>
-          <div class="px-3 py-1 text-accent-contrast">
+          <div class="px-3 py-1 text-accent-content">
             * Accent Contrast
           </div>
         </div>

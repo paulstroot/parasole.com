@@ -1,11 +1,14 @@
-# Must have the following secrets in your GitHub repository:
-# DREAMHOST_PASSWORD
-# DREAMHOST_SSH_HOST
-# DREAMHOST_SSH_USERNAME
-# KNOWN_HOSTS_ENTRY
+# STEPS TO ACTIVATE CI/CD DEPLOYMENT TO DREAMHOST
+# - Make sure SSH is activated onyour dreamiest site.
+# - Populated the four secrets into the GitHub repository
+#     - DREAMHOST_SSH_HOST = the web server host name
+#     - DREAMHOST_SSH_USERNAME - Dreamhost username for this site
+#     - DREAMHOST_PASSWORD = The user password for this site
+#     - KNOWN_HOSTS_ENTRY = see "Finding Known Hosts Entry“ Below.
+# - Updated “DEPLOY_PATH“ to where the files should be moved to on the server.
 
 
-# Do this by going to your GitHub repository and clicking on the "Settings" tab,
+# To add secrets to our repo, go to your GitHub repository and clicking on the "Settings" tab,
 # then click on "Secrets and variables > Actions >  New repository secret".
 
 # How to create a Key pair on DreamHost
@@ -14,7 +17,7 @@
 # Finding Known Hosts Entry
 # To find the Known Hosts Entry, go to your Dreamhost Panel, on the left side of your screen, click the more tab and then go to SSH Keys and you will be able to find the Known Hosts entry there.
 
-# Make sure to update the directory to push to below under "Deploy to DreamHost"!
+# IMPORTANT! Make sure to update the directory to push to below under "Deploy to DreamHost"!
 
 name: Deploy code to DreamHost
 
@@ -27,7 +30,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: production
+    # environment: production
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -50,7 +53,7 @@ jobs:
           PASSWORD: ${{ secrets.DREAMHOST_PASSWORD }}
           HOST: ${{ secrets.DREAMHOST_SSH_HOST }}
           DEPLOY_SOURCE: ./ # the github directory to deploy.
-          DEPLOY_PATH: /home/dh_parasole/parasole.dreamhosters.com/wp-content/themes/parasole # Change this to your project path
+          DEPLOY_PATH: /home/${{ secrets.DREAMHOST_SSH_USERNAME }}/parasole.dreamhosters.com/wp-content/themes/parasole # Change this to your project path
         run: |
           sshpass -p "$PASSWORD" rsync -avz --delete --exclude .git --exclude .github --exclude node_scripts/ $DEPLOY_SOURCE $USERNAME@$HOST:$DEPLOY_PATH
 

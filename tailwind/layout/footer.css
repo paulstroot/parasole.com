@@ -1,25 +1,26 @@
 #footer{
-  @apply mt-0 bg-gray-300;
+  a{
+    @apply text-dark  no-underline cursor-default;
+  }
+  a:not([href^="#"]){
+    @apply hover:text-secondary cursor-pointer ;
+  }
   #footer-menu-container{
-    @apply list-none p-0 m-0;
+    @apply font-semibold;
     li{
-      @apply m-0;
+      @apply list-none m-0;
     }
-    a{
-      @apply text-dark hover:text-primary-contrast no-underline;
-    }
+
     ul.sub-menu{
-      @apply hidden text-sm;
-      li{
-      }
+      @apply p-0 m-0 font-normal;
     }
   }
   .social-media-icons{
-      @apply text-light flex flex-row gap-4 list-none p-0 m-0 text-lg;
+      @apply font-normal flex flex-row gap-4 list-none p-0 m-0 text-xl justify-center mt-18 gap-7;
       li{
         @apply m-0;
         a{
-          @apply text-white hover:text-primary;
+          @apply no-underline text-secondary hover:text-primary;
         }
       }
   }
