@@ -4,12 +4,15 @@ In that case the spacing should be padding.
 */
 
 
-section{
+section, main > .wp-block-group{
   --spacingY: clamp(1rem,2.5rem);
   @apply relative;
   @apply my-[var(--spacingY)];
-  &[class*="bg-"]{
-    @apply my-0;
-    @apply py-[var(--spacingY)];
-  }
 }
+main > .wp-block-group.has-light-background-color,
+.is-root-container > .wp-block-group[class*="-background-color"],
+section[class*="bg-"]{
+  @apply my-0;
+  @apply py-[var(--spacingY)];
+}
+

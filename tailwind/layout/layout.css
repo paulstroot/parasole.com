@@ -5,11 +5,18 @@
   /* browser defaults */
 }
 /* is-layout-constrained wp-block-group-is-layout-constrained */
-.container, .container-narrow, .container-wide{
-  @apply mx-auto;
+
+.container, .container-narrow, .container-wide, main > .wp-block-group, main > .wp-block-columns{
   @apply !px-[clamp(1rem,5rem)];
 }
-.container{
+main > .wp-block-separator{
+  @apply !mx-[clamp(1rem,5rem)];
+}
+.container, .container-narrow, .container-wide, main > .wp-block-group:not(.alignfull), main > .wp-block-columns:not(.alignfull){
+  @apply mx-auto;
+}
+
+.container, main > .wp-block-group:not(.alignfull), main > .wp-block-columns:not(.alignfull), main > .wp-block-separator{
   @apply !max-w-[var(--breakpoint-xl)];
 }
 .container-narrow{

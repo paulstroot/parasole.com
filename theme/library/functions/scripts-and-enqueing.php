@@ -2,7 +2,7 @@
 
 if (! defined('THEME_VERSION') ) {
     // Replace the version number of the theme on each release.
-    define('THEME_VERSION', '0.1.2');
+    define('THEME_VERSION', '0.1.5');
 }
 
 function pstroot_scripts()
@@ -10,13 +10,13 @@ function pstroot_scripts()
     /**
  * Our main stylesheet
 */
-    wp_enqueue_style('main', get_stylesheet_directory_uri() . '/library/css/style.css', array(), THEME_VERSION);
-    wp_enqueue_style('main-override', get_stylesheet_directory_uri() . '/library/css/override.css', array(), THEME_VERSION);
+    wp_enqueue_style('main', get_stylesheet_directory_uri() . '/library/css/style.css', array(), filemtime( get_template_directory() . '/library/css/style.css' ));
+    wp_enqueue_style('main-override', get_stylesheet_directory_uri() . '/library/css/override.css', array(), filemtime( get_template_directory() . '/library/css/override.css' ));
 
     /**
  * Our main javascript ('wp-localize-script' only needed if you need to pass javascript variables to scripts. Commmen when passing a nonce into a form script)
 */
-    wp_register_script('main', get_stylesheet_directory_uri() . '/library/js/script.min.js', array(), THEME_VERSION, true);
+    wp_register_script('main', get_stylesheet_directory_uri() . '/library/js/script.min.js', array(), filemtime( get_template_directory() . '/library/js/script.min.js' ), true);
     // wp_localize_script( 'main', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'formsNonce' => wp_create_nonce("pstroot_forms_nonce")));
     wp_enqueue_script('main');
 
@@ -75,9 +75,9 @@ function add_top_inline_scripts()
  */
 function pstroot_enqueue_admin_script()
 {
-    wp_enqueue_script('main-admin', get_template_directory_uri() . '/library/js/admin-scripts.js', array(), THEME_VERSION, true);
-    wp_enqueue_style('main-admin', get_template_directory_uri() . '/library/css/admin-styles.css', array(), THEME_VERSION);
-    wp_enqueue_style('main-admin-override', get_template_directory_uri() . '/library/css/admin-override.css', array(), THEME_VERSION);
+    wp_enqueue_script('main-admin', get_template_directory_uri() . '/library/js/admin-scripts.js', array(), filemtime( get_template_directory() . '/library/js/admin-scripts.js' ), true);
+    wp_enqueue_style('main-admin', get_template_directory_uri() . '/library/css/admin-styles.css', array(), filemtime( get_template_directory() . '/library/css/admin-styles.css' ));
+    wp_enqueue_style('main-admin-override', get_template_directory_uri() . '/library/css/admin-override.css', array(), filemtime( get_template_directory() . '/library/css/admin-override.css' ));
 }
 add_action('admin_init', 'pstroot_enqueue_admin_script');
 

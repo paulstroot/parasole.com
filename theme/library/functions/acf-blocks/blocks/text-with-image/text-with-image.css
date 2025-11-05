@@ -1,0 +1,21 @@
+.text-with-image {
+    --testimonial-font-family: Baskerville,Baskerville Old Face,Hoefler Text,Garamond,Times New Roman,serif;
+    --testimonial-font-size: 1.5rem;
+    --testimonial-spacing: 0.5rem;
+}
+
+.text-with-image {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.text-with-image > * {
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-width: 0;
+    overflow-wrap: break-word;
+    width: 100%;
+    word-break: break-word;
+}

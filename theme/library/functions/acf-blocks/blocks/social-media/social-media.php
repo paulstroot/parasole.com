@@ -16,7 +16,7 @@ $links   = get_field('links');
 
 
 // Create class attribute allowing for custom "className" and "align" values.
-$class_name = 'social-media';
+$class_name = 'social-media bg-cover bg-center';
 
 // Build a valid style attribute for background and text colors.
 $styles = array( 'color: ' . $text_color , 'background-image: url(' . $background_image['sizes']['medium_large']  . ')');
@@ -25,17 +25,15 @@ $style  = implode('; ', $styles);
 
 ?>
 
-<div class="relative <?php echo esc_attr($class_name); ?>" style="<?php echo esc_attr($style); ?>">
-  <div class="absolute inset-0 z-[1]" style="background-color: <?php echo esc_attr($background_overlay); ?>"></div>
-  <div class="relative z-[2] p-3">
-    <h1 class=""><?php echo esc_html($headline); ?></h1>
+<div class="relative b <?php echo esc_attr($class_name); ?>" style="<?php echo esc_attr($style); ?>">
+  <div class="absolute inset-0 z-[1] mix-blend-multiply" style="background-color: <?php echo esc_attr($background_overlay); ?>"></div>
+  <div class="container text-center relative z-[2] p-3">
+    <h2 class="h3"><?php echo esc_html($headline); ?></h2>
 
-    <?php foreach ( $links as $l ) : ?>
-      <a href="<?php echo esc_url($l['link_url']); ?>" target="_blank" class="text-xxl">
-        <span class="dashicons <?php echo esc_attr($l['link_icon']); ?>"></span>
-        <span class="sr-only visually-hidden"><?php echo esc_html($l['link_name']); ?></span>
-      </a>
-    <?php endforeach; ?>
+    <div class="w-62 mx-auto text-[4rem] text-secondary">
+      <?php pstroot_show_social_icons(); ?>
+    </div>
+
   </div>
 
 

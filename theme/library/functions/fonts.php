@@ -8,5 +8,6 @@ function my_theme_google_fonts() {
     wp_enqueue_style( 'google-fonts-preconnect-2', 'https://fonts.gstatic.com', array(), null, 'all', array( 'rel' => 'preconnect', 'crossorigin' => 'anonymous' ) );
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_google_fonts' );
+add_action('admin_init', 'my_theme_google_fonts');
 
 

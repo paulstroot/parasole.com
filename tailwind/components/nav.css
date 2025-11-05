@@ -1,6 +1,6 @@
 
 .nav-wrapper{
-  @apply text-[clamp(1.25rem,var(--text-xl))];
+  @apply text-[clamp(1.25rem,1.5rem)];
   @apply bg-primary/90;
   @apply right-0 left-0 py-10 ;
   @apply text-left ;
@@ -19,12 +19,12 @@
       @apply mb-0 list-none ;
       &.current-menu-item, &.current_page_item { /*, &.current-menu-ancestor, &.current-menu-parent */
         > a:not([href^="/#"]), > button{
-          @apply text-secondary;
+          @apply text-accent;
         }
       }
       a{
         @apply no-underline;
-        @apply text-primary-content hover:text-secondary ;
+        @apply text-primary-content hover:text-accent ;
       }
 
     }
@@ -54,7 +54,7 @@
       @apply py-[clamp(7px,15px)];
     }
     ul.sub-menu{
-      font-size: clamp(1rem,var(--text-base));
+      font-size: clamp(1rem,1rem);
       @apply ml-4 min-[520px]:ml-0;
       a{
         @apply py-[clamp(5px,11px)];

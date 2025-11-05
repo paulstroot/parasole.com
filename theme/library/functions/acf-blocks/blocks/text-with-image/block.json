@@ -1,0 +1,16 @@
+{
+    "name": "acf/text-with-image",
+    "title": "Text with Image",
+    "description": "A custom text-with-image block that uses ACF fields.",
+    "style": [ "file:./text-with-image.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["parasole", "restaurant"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "text-with-image.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

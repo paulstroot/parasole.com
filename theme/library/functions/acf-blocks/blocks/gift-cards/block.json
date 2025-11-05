@@ -1,0 +1,16 @@
+{
+    "name": "acf/gift-cards",
+    "title": "Gift Cards",
+    "description": "A custom gift card block that uses ACF fields.",
+    "style": [ "file:./gift-cards.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["parasole", "restaurant", "gift cards", "coupon", "gift certificate"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "gift-cards.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

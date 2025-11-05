@@ -110,10 +110,10 @@ function pstroot_show_social_icons()
 
     // For each active social site, add it as a list item
     if (!empty($active_sites) ) {
-        echo "<ul class='social-media-icons'>";
+        echo "<ul class='social-media-icons flex flex-row !list-none !p-0 m-0 text-xl justify-between w-full md:mt-18 text-[length:inherit]'>";
         foreach ( $active_sites as $active_site ) {
-            ?><li>
-          <a href="<?php echo esc_url(get_theme_mod($active_site->id)); ?>" title="<?php echo esc_attr($active_site->name); ?>" target="_blank">
+          ?><li class="m-0">
+          <a href="<?php echo esc_url(get_theme_mod($active_site->id)); ?>" title="<?php echo esc_attr($active_site->name); ?>" target="_blank" class="!no-underline !text-inherit hover:text-primary">
             <i class="<?php echo esc_attr($active_site->class); ?>"></i>
           </a>
         </li><?php

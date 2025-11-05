@@ -1,7 +1,7 @@
 
 
 .btn{
-  @apply font-normal;
+  @apply font-normal no-underline bg-base ;
   @apply px-4 py-2 my-2;
   @apply transition-colors;
   /* @apply hover:bg-primary-content hover:text-white; */
@@ -14,6 +14,12 @@
     &:not(.btn-outline){
       @apply border-[var(--btn-bg)];
     }
+   }
+   &.btn-primary{
+    @apply hover:text-primary-content;
+   }
+   &.btn-error{
+    @apply hover:text-error-content;
    }
    /* outline colors shoud have dark text, only the outline is colored*/
    &.btn-outline{

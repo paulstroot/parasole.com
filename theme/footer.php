@@ -3,11 +3,11 @@
   <div class="container py-12 p-0 m-0  text-xs">
     <div class="flex flex-col sm:flex-row">
 
-      <div class="flex flex-row w-full justify-between">
+      <div class="flex flex-col-reverse gap-y-8 md:flex-row w-full justify-between">
 
       <div class="flex flex-col gap-y-8">
-        <div class="flex flex-row left-side-address-and-menu gap-x-22">
-          <div class="address leading-7">
+        <div class="flex flex-col md:flex-row  left-side-address-and-menu gap-22">
+          <div class="address leading-7 text-center md:text-left">
             <b class="block">Parasole Restaurant Holdings</b>
             <address class="not-italic" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
               <?php
@@ -47,11 +47,11 @@
             );
           ?>
         </div>
-        <small class="copyright text-tiny text-normal">
+        <span class="copyright text-tiny text-normal">
           &copy;<?php echo esc_attr(gmdate('Y')); ?> <?php echo esc_html(get_bloginfo('name')); ?> Restaurant Holdings. All rights reserved
             |  Privacy Policy  |  Site Map
 
-        </small>
+        </span>
 
       </div>
 
@@ -66,7 +66,7 @@
           />
         </a>
 
-        <div class="">
+        <div class="w-36 text-xl m-auto">
           <?php
             pstroot_show_social_icons();
           ?>

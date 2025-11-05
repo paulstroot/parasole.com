@@ -1,0 +1,16 @@
+{
+    "name": "acf/image-ticker",
+    "title": "Hero Image Carousel",
+    "description": "A custom image-ticker block that uses ACF fields.",
+    "style": [ "file:./image-ticker.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["parasole", "hero", "ticker", "scroller", "carousel"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "image-ticker.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

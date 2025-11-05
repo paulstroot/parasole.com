@@ -1,8 +1,15 @@
-
 @import "tailwindcss";
 @import "./theme/plugins.css";
-@import "./theme/theme.css";
-@import "./theme/theme-dark.css";
+  @import "./theme/theme.css";
+
+.editor-styles-wrapper{
+  @import "./base/typography.css";
+  @import "./layout/layout.css";
+  @import "./layout/sections.css";
+  @import "./components/careers-gallery.css";
+}
+/*
+  @import "./theme/theme-dark.css";
 
 
   @import "./base/base.css";
@@ -19,12 +26,14 @@
 
   @import-glob "./utilities/**";
 
+ */
 
 
-
-
-
-.is-layout-constrained{
-  max-width:100% !important;
+html :where(.editor-styles-wrapper) {
+  font-family:var(--font-sans);
+  font-size:var(--text-base);
+  .wp-block-post-title{
+    @apply !mb-8;
+  }
 }
 

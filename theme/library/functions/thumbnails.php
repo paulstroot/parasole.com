@@ -1,4 +1,10 @@
 <?php
+// Allow svg uploads
+  function allow_svg_uploads( $mimes ) {
+        $mimes['svg'] = 'image/svg+xml';
+        return $mimes;
+    }
+    add_filter( 'upload_mimes', 'allow_svg_uploads' );
 
 
 // Adjust the maximum size of full-size images (to save space on hosting server and reduce size of migrations)
