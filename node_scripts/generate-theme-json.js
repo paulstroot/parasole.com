@@ -228,7 +228,7 @@ function main() {
 	const custom = buildCustom(vars);
 
 	// Start with existing, ensure version and settings
-	const next = mergeDeep({ version: 2, settings: {} }, existing || {});
+	let next = mergeDeep({ version: 2, settings: {} }, existing || {});
 
 	// Apply layout from variables (merge with existing if present)
 	if (Object.keys(layout).length) {
@@ -251,6 +251,21 @@ function main() {
 	// Add custom tokens
 	if (Object.keys(custom).length) {
 		next.settings.custom = mergeDeep(next.settings.custom || {}, custom);
+	}
+
+	// Optionally merge static theme fragments (lower precedence than generated)
+	const staticPath = path.resolve(root, 'node_scripts', 'theme_static.json');
+	const staticStr = readFileIfExists(staticPath);
+	if (staticStr) {
+		try {
+			const staticJson = JSON.parse(staticStr);
+			// Merge so that generated values in `next` take precedence
+			next = mergeDeep(staticJson || {}, next);
+		} catch (e) {
+			console.warn(
+				`WARN: theme_static.json is invalid JSON at ${staticPath}. Skipping.`
+			);
+		}
 	}
 
 	// Write out

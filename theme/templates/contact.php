@@ -1,8 +1,8 @@
-<?php
+  <?php
     /**
      * Template Name: Contact Us
      */
-?><?php get_header(); ?>
+    ?><?php get_header(); ?>
 
 <?php if (have_posts() ) { while ( have_posts() ) : the_post(); ?>
     <main class="main container cf" id="main">

@@ -1,8 +1,18 @@
 
 
 .btn{
-  @apply font-normal no-underline bg-base ;
-  @apply px-4 py-2 my-2;
+  @apply no-underline;
+  @apply px-[var(--button-padding-x)] py-[var(--button-padding-y)] my-2;
+  @apply text-[var(--button-default-font-size)];
+  @apply border-[var(--border)] border-solid;
+  @apply rounded-[var(--radius-field)];
+
+  @apply text-[var(--btn-color)];
+  @apply bg-[var(--btn-bg)];
+
+  @apply hover:text-[var(--btn-color-hover)];
+  @apply hover:bg-[var(--btn-bg-hover)];
+
   @apply transition-colors;
   /* @apply hover:bg-primary-content hover:text-white; */
   /* &[disabled]{

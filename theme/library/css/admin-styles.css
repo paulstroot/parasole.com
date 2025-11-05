@@ -31,7 +31,7 @@
     --text-2xl: var(--text-2xl);
     --text-2xl--line-height: calc(2 / 1.5);
     --text-3xl: var(--text-3xl);
-    --text-3xl--line-height: calc(2.25 / 1.875);
+    --text-3xl--line-height: 1.25;
     --text-4xl: var(--text-4xl);
     --text-4xl--line-height: calc(2.5 / 2.25);
     --text-5xl: var(--text-5xl);
@@ -48,9 +48,9 @@
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
-    --radius-field: 0rem;
-    --border: 2px;
-    --btn-color: #f6f5f4;
+    --radius-field: var(--radius-field);
+    --border: var(--border);
+    --btn-color: var(--btn-color);
     --radius-selector: 0.5rem;
     --radius-box: 0.5rem;
     --font-headline: "Montserrat", sans-serif;
@@ -800,7 +800,7 @@
       --btn-noise: var(--fx-noise);
       @media (hover: hover) {
         &:hover {
-          --btn-bg: color-mix(in srgb, #f6f5f4, #000 7%);
+          --btn-bg: var(--btn-color, var(--color-base-200));
           @supports (color: color-mix(in lab, red, red)) {
             --btn-bg: color-mix(in oklab, var(--btn-color, var(--color-base-200)), #000 7%);
           }
@@ -813,11 +813,11 @@
       }
       &:active:not(.btn-active) {
         translate: 0 0.5px;
-        --btn-bg: color-mix(in srgb, #f6f5f4, #000 5%);
+        --btn-bg: var(--btn-color, var(--color-base-200));
         @supports (color: color-mix(in lab, red, red)) {
           --btn-bg: color-mix(in oklab, var(--btn-color, var(--color-base-200)), #000 5%);
         }
-        --btn-border: color-mix(in srgb, #f6f5f4, #000 7%);
+        --btn-border: var(--btn-color, var(--color-base-200));
         @supports (color: color-mix(in lab, red, red)) {
           --btn-border: color-mix(in oklab, var(--btn-color, var(--color-base-200)), #000 7%);
         }
@@ -2484,6 +2484,9 @@
       }
     }
   }
+  .\!m-0 {
+    margin: calc(var(--spacing) * 0) !important;
+  }
   .m-0 {
     margin: calc(var(--spacing) * 0);
   }
@@ -3025,6 +3028,9 @@
   .mt-16 {
     margin-top: calc(var(--spacing) * 16);
   }
+  .\!mb-2 {
+    margin-bottom: calc(var(--spacing) * 2) !important;
+  }
   .mb-0 {
     margin-bottom: calc(var(--spacing) * 0);
   }
@@ -3327,17 +3333,17 @@
   .w-36 {
     width: calc(var(--spacing) * 36);
   }
-  .w-62 {
-    width: calc(var(--spacing) * 62);
-  }
   .w-64 {
     width: calc(var(--spacing) * 64);
+  }
+  .w-100 {
+    width: calc(var(--spacing) * 100);
   }
   .w-\[100vw\] {
     width: 100vw;
   }
-  .w-\[141\%\] {
-    width: 141%;
+  .w-\[116\%\] {
+    width: 116%;
   }
   .w-full {
     width: 100%;
@@ -3642,6 +3648,9 @@
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
   }
+  .px-\[18\%\] {
+    padding-inline: 18%;
+  }
   .\!py-0 {
     padding-block: calc(var(--spacing) * 0) !important;
   }
@@ -3675,8 +3684,14 @@
   .pt-0 {
     padding-top: calc(var(--spacing) * 0);
   }
+  .pt-20 {
+    padding-top: calc(var(--spacing) * 20);
+  }
   .pb-0 {
     padding-bottom: calc(var(--spacing) * 0);
+  }
+  .pb-18 {
+    padding-bottom: calc(var(--spacing) * 18);
   }
   .pl-0 {
     padding-left: calc(var(--spacing) * 0);
@@ -3698,6 +3713,10 @@
   }
   .font-serif {
     font-family: var(--font-serif);
+  }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
   .text-4xl {
     font-size: var(--text-4xl);
@@ -3723,8 +3742,8 @@
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
   }
-  .text-\[4rem\] {
-    font-size: 4rem;
+  .text-\[5\.25rem\] {
+    font-size: 5.25rem;
   }
   .text-\[length\:inherit\] {
     font-size: inherit;
@@ -4310,6 +4329,11 @@
       order: 2;
     }
   }
+  .\@2xl\:me-\[4\.6rem\] {
+    @container (width >= 42rem) {
+      margin-inline-end: 4.6rem;
+    }
+  }
   .\@2xl\:mt-26 {
     @container (width >= 42rem) {
       margin-top: calc(var(--spacing) * 26);
@@ -4340,9 +4364,9 @@
       max-height: none;
     }
   }
-  .\@2xl\:w-1\/2 {
+  .\@2xl\:w-\[43\.2\%\] {
     @container (width >= 42rem) {
-      width: calc(1/2 * 100%);
+      width: 43.2%;
     }
   }
   .\@2xl\:max-w-\[426px\] {
@@ -4353,6 +4377,11 @@
   .\@2xl\:max-w-none {
     @container (width >= 42rem) {
       max-width: none;
+    }
+  }
+  .\@2xl\:flex-1 {
+    @container (width >= 42rem) {
+      flex: 1;
     }
   }
   .\@2xl\:flex-col {
@@ -4380,19 +4409,19 @@
       justify-content: flex-end;
     }
   }
-  .\@2xl\:gap-8 {
+  .\@2xl\:gap-13 {
     @container (width >= 42rem) {
-      gap: calc(var(--spacing) * 8);
-    }
-  }
-  .\@2xl\:px-5 {
-    @container (width >= 42rem) {
-      padding-inline: calc(var(--spacing) * 5);
+      gap: calc(var(--spacing) * 13);
     }
   }
   .\@2xl\:py-10 {
     @container (width >= 42rem) {
       padding-block: calc(var(--spacing) * 10);
+    }
+  }
+  .\@2xl\:pe-\[12\%\] {
+    @container (width >= 42rem) {
+      padding-inline-end: 12%;
     }
   }
   .dark\:invert {
@@ -4417,7 +4446,7 @@
   --font-icon: "remixicon", sans-serif;
   --layout-contentSize: 768px;
   --layout-smallSize: 640px;
-  --layout-wideSize: 1250px;
+  --layout-wideSize: 1410px;
   --text-5xl: clamp(2.25rem, 0.5451rem + 4.2623vw, 3.875rem);
   --text-4xl: clamp(1.9375rem, 1.4129rem + 1.3115vw, 2.4375rem);
   --text-3xl: clamp(1.875rem, 1.4816rem + 0.9836vw, 2.25rem);
@@ -4426,11 +4455,22 @@
   --text-lg: clamp(1.125rem, 1.2561rem + -0.3279vw, 1rem);
   --text-sm: 1.125rem;
   --text-xs: 15px;
+  --radius-field: 0rem;
+  --border: 2px;
+  --btn-color: #f6f5f4;
+  --btn-bg: var(--color-light);
+  --btn-color-hover: #cc00cc;
+  --btn_bg-hover: #cc0000;
+  --button-padding-x: 1rem;
+  --button-padding-y: 0.5rem;
+  --button-default-font-size: 1.125rem;
 }
 .editor-styles-wrapper {
   body, .has-base-font-size {
     font-size: var(--text-base);
     font-family: var(--font-sans);
+    --tw-leading: 1.75;
+    line-height: 1.75;
   }
   a {
     color: var(--color-accent);
@@ -4499,6 +4539,9 @@
       }
     }
   }
+  h2, .h2, .has-3-xl-font-size {
+    line-height: var(--text-3xl--line-height);
+  }
   [x-cloak] {
     display: none !important;
   }
@@ -4541,7 +4584,7 @@
     }
   }
   section, main > .wp-block-group {
-    --spacingY: clamp(1rem, calc(1rem + 0.0268 * (100vw - 40rem)), 2.5rem);
+    --spacingY: clamp(1rem, calc(1rem + 0.0357 * (100vw - 40rem)), 3rem);
     position: relative;
     margin-block: var(--spacingY);
   }

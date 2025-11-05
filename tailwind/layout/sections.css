@@ -5,7 +5,7 @@ In that case the spacing should be padding.
 
 
 section, main > .wp-block-group{
-  --spacingY: clamp(1rem,2.5rem);
+  --spacingY: clamp(1rem,3rem);
   @apply relative;
   @apply my-[var(--spacingY)];
 }

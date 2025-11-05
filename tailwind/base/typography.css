@@ -1,6 +1,7 @@
 body, .has-base-font-size {
   font-size:var(--text-base);
   font-family:var(--font-sans);
+  @apply leading-[1.75];
 }
 a{
   @apply underline text-accent;
@@ -67,4 +68,14 @@ blockquote{
   }
 }
 
+
+/* Line Heights */
+h1, .h1{
+}
+h2, .h2, .has-3-xl-font-size{
+  line-height: var(--text-3xl--line-height);
+
+}
+h3, .h3, .has-2-xl-font-size{
+}
 

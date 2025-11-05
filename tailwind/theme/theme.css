@@ -23,7 +23,7 @@
 
   --layout-contentSize: 768px;
   --layout-smallSize: 640px;
-  --layout-wideSize: 1250px;
+  --layout-wideSize: 1410px;
 
   --text-5xl: clamp(2.25rem, 0.5451rem + 4.2623vw, 3.875rem); /* H1 */ /* 36px - 62px */
   --text-4xl: clamp(1.9375rem, 1.4129rem + 1.3115vw, 2.4375rem); /* 31px - 39px */
@@ -34,16 +34,28 @@
   --text-sm: 1.125rem; /* button, form label food blog intro */
   --text-xs: 15px; /* footer nav */
 
+  /* button */
+  --radius-field: 0rem;
+  --border:2px;
 
+  --btn-color: #f6f5f4;
+  --btn-bg: var(--color-light);
+
+  --btn-color-hover: #cc00cc;
+  --btn_bg-hover: #cc0000;
+
+  --button-padding-x: 1rem;
+  --button-padding-y: 0.5rem;
+  --button-default-font-size: 1.125rem;
 
 
 }
 
 @theme {
   /* button */
-  --radius-field: 0rem;
-  --border:2px;
-  --btn-color: #f6f5f4;
+  --radius-field: var(--radius-field);
+  --border: var(--border);
+  --btn-color: var(--btn-color);
 
   /* Badge */
   --radius-selector: 0.5rem;
@@ -71,6 +83,9 @@
   --text-tiny: 12.5px; /* copyright */
 
   --text-tiny--line-height: 1.4rem;
+  /* --text-xl--line-height: 4;
+  /* --text-3xl--line-height: 3; */
+  --text-3xl--line-height: 1.25;
   /* --text-tiny--letter-spacing: 0.125rem; */
   /* --text-tiny--font-weight: 500; */
 

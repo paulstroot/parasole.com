@@ -25,12 +25,12 @@ $style  = implode('; ', $styles);
 
 ?>
 
-<div class="relative b <?php echo esc_attr($class_name); ?>" style="<?php echo esc_attr($style); ?>">
+<div class="relative <?php echo esc_attr($class_name); ?>" style="<?php echo esc_attr($style); ?>">
   <div class="absolute inset-0 z-[1] mix-blend-multiply" style="background-color: <?php echo esc_attr($background_overlay); ?>"></div>
-  <div class="container text-center relative z-[2] p-3">
-    <h2 class="h3"><?php echo esc_html($headline); ?></h2>
+  <div class="container text-center relative z-[2] pt-20 pb-18">
+    <h2 class="!mb-2"><?php echo esc_html($headline); ?></h2>
 
-    <div class="w-62 mx-auto text-[4rem] text-secondary">
+    <div class="w-100 mx-auto text-[5.25rem] text-secondary">
       <?php pstroot_show_social_icons(); ?>
     </div>
 

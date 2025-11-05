@@ -66,7 +66,7 @@
           />
         </a>
 
-        <div class="w-36 text-xl m-auto">
+        <div class="w-36 md:mt-18 text-2xl m-auto text-secondary">
           <?php
             pstroot_show_social_icons();
           ?>
