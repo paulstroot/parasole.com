@@ -5,6 +5,11 @@
 	a:not([href^="#"]) {
 		@apply hover:text-secondary cursor-pointer;
 	}
+  .social-media-icons{
+    a i{
+      @apply hover:text-primary!;
+    }
+  }
 	#footer-menu-container {
 		@apply font-semibold;
 		li {
@@ -15,4 +20,15 @@
 			@apply m-0 p-0 font-normal;
 		}
 	}
+  #footer-utility-menu-container{
+    ul{
+    }
+    li{
+			@apply inline m-0 list-none not-first:before:content-['|'] md:before:content-['|'] before:inline before:px-2 whitespace-nowrap;
+      a{
+        @apply py-0 inline;
+      }
+    }
+  }
 }
+

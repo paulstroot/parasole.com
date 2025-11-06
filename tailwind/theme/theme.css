@@ -20,10 +20,10 @@
   --font-headline: "Montserrat", sans-serif;
   --font-icon: "remixicon", sans-serif;
 
-
-  --layout-contentSize: 768px;
-  --layout-smallSize: 640px;
-  --layout-wideSize: 1410px;
+/* Must also define these below in Tailwind's theme config. Tailwind can not use variable names for breaipoint sizes. */
+--layout-contentSize: 768px;
+--layout-smallSize: 640px;
+--layout-wideSize: 1410px;
 
   --text-5xl: clamp(2.25rem, 0.5451rem + 4.2623vw, 3.875rem); /* H1 */ /* 36px - 62px */
   --text-4xl: clamp(1.9375rem, 1.4129rem + 1.3115vw, 2.4375rem); /* 31px - 39px */
@@ -37,16 +37,18 @@
   /* button */
   --radius-field: 0rem;
   --border:2px;
-
-  --btn-color: #f6f5f4;
-  --btn-bg: var(--color-light);
-
-  --btn-color-hover: #cc00cc;
-  --btn_bg-hover: #cc0000;
-
-  --button-padding-x: 1rem;
-  --button-padding-y: 0.5rem;
   --button-default-font-size: 1.125rem;
+
+  --btn-color: var(--color-primary); /* button background color */
+  --btn-color-text: var(--color-white); /* button text color */
+  --btn-color-border: var(--color-dark); /* button border color */
+
+  --btn-color-hover: var(--color-dark);/* button text color hover */
+  --btn-color-border-hover: var(--color-primary);
+  --btn-bg-hover: var(--color-light);
+
+  --button-padding-x: 2rem;
+  --button-padding-y: 0.2rem;
 
 
 }
@@ -56,6 +58,7 @@
   --radius-field: var(--radius-field);
   --border: var(--border);
   --btn-color: var(--btn-color);
+  /* --btn-bg: #CC0000; */
 
   /* Badge */
   --radius-selector: 0.5rem;
@@ -98,10 +101,11 @@
 
   /* Tailwind screens */
 
- 	--breakpoint-sm: var(--layout-smallSize);
+  --breakpoint-xs: 500px;
+  --breakpoint-sm: 640px;
  	--breakpoint-md: 768px;
  	--breakpoint-lg: 1024px;
- 	--breakpoint-xl: var(--layout-wideSize);
+ 	--breakpoint-xl: 1410px;
  	/* --breakpoint-2xl: 1536px; */
 
 

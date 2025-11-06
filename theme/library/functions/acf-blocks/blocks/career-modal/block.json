@@ -1,0 +1,16 @@
+{
+    "name": "acf/career-modal",
+    "title": "Career Modal",
+    "description": "A custom block that uses ACF fields.",
+    "style": [ "file:./career-modal.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["parasole", "job", "hiring", "careers", "job board"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "career-modal.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

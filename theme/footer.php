@@ -6,9 +6,9 @@
       <div class="flex flex-col-reverse gap-y-8 md:flex-row w-full justify-between">
 
       <div class="flex flex-col gap-y-8">
-        <div class="flex flex-col md:flex-row  left-side-address-and-menu gap-22">
+        <div class="flex flex-col items-center md:flex-row md:items-top gap-x-22 gap-y-10">
           <div class="address leading-7 text-center md:text-left">
-            <b class="block">Parasole Restaurant Holdings</b>
+            <b class="block"><?php echo get_bloginfo( 'name' ); ?></b>
             <address class="not-italic" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
               <?php
               if (strlen(get_theme_mod('address')) > 0 ) {
@@ -47,9 +47,20 @@
             );
           ?>
         </div>
-        <span class="copyright text-tiny text-normal">
+        <span class="copyright text-center md:text-start text-tiny text-normal ">
           &copy;<?php echo esc_attr(gmdate('Y')); ?> <?php echo esc_html(get_bloginfo('name')); ?> Restaurant Holdings. All rights reserved
-            |  Privacy Policy  |  Site Map
+            <?php
+            wp_nav_menu(
+              array(
+              'menu' => 'Footer Utility Links',
+              'container' => 'nav',
+              'menu_id' => 'footer-utility-menu-container',
+              'container_class' => 'block md:inline',
+              'menu_class' => 'inline ',
+              'depth' => 1
+              )
+          );
+          ?>
 
         </span>
 

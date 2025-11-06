@@ -2,13 +2,17 @@
 .nav-wrapper{
   @apply text-[clamp(1.25rem,1.5rem)];
   @apply bg-primary/90;
-  @apply right-0 left-0 py-10 ;
-  @apply text-left ;
-  @apply hidden;
+  @apply right-0 left-0 ;
+  @apply text-left overflow-hidden;
+  @apply max-h-0;
+  @apply fixed;
+  transition:all 0.2s ease-in-out;
   &.open{
-    @apply block;
-    @apply fixed;
-    @apply top-[9.7rem];
+    @apply max-h-screen md:max-h-[500px];
+    /* @apply block; */
+  }
+  .container{
+    @apply py-10 ;
   }
   .nav-wrapper-inner{
     @apply relative flex flex-col items-start justify-end gap-x-8 min-[520px]:flex-row;
@@ -124,21 +128,25 @@ footer nav{
 
 
 /* Scroll up/down styles */
-.logo img,
+.logo,
 header#pageHeader > .container,
 .nav-wrapper > ul a{ transition:all 0.2s ease-in-out; }
 
+header .logo{
+  @apply overflow-hidden items-end;
+  /* transition-duration: 1s; */
+  max-height: 8rem;
+}
 
 body.scrolled{
-  .logo img{
-    width:50px !important;
+
+  header .logo{
+    max-height: 1.2rem;
+    overflow: hidden;
+    align-items: flex-end;
   }
   header#pageHeader > .container{
-    @apply py-0;
-  }
-  #menu-primary-nav > li > button.nav-link span,
-  #menu-primary-nav > li > a{
-    @apply py-0; font-size:16px;
+    @apply py-2;
   }
 }
 

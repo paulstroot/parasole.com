@@ -7,6 +7,8 @@
   @import "./layout/layout.css";
   @import "./layout/sections.css";
   @import "./components/careers-gallery.css";
+  @import "./components/buttons.css";
+
 }
 /*
   @import "./theme/theme-dark.css";

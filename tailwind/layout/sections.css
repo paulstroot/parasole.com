@@ -16,3 +16,6 @@ section[class*="bg-"]{
   @apply py-[var(--spacingY)];
 }
 
+section{
+  scroll-margin-top: 50px;
+}

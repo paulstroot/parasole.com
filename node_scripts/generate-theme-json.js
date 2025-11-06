@@ -122,6 +122,117 @@ function pick(obj, keys) {
 	return out;
 }
 
+function resolveCssVar(value, vars) {
+	// Resolve CSS variable references like var(--color-light)
+	if (typeof value !== 'string') return value;
+	const varMatch = value.match(/var\(--([a-z0-9\-_]+)\)/i);
+	if (varMatch) {
+		const varName = varMatch[1];
+		const resolved =
+			vars[varName] ||
+			vars[varName.replace(/_/g, '-')] ||
+			vars[varName.replace(/-/g, '_')];
+		if (resolved) {
+			return resolveCssVar(resolved, vars); // Recursively resolve
+		}
+	}
+	return value;
+}
+
+function convertRemToPx(value) {
+	// Convert 0rem to 0px for border radius
+	if (typeof value === 'string' && value.trim() === '0rem') {
+		return '0px';
+	}
+	return value;
+}
+
+function buildButtonStyles(vars) {
+	const buttonStyles = {};
+
+	// Typography
+	if (vars['button-default-font-size']) {
+		buttonStyles.typography = {
+			fontSize: vars['button-default-font-size'],
+		};
+	}
+
+	// Color
+	const btnTextColor = resolveCssVar(vars['btn-color-text'], vars);
+	const btnBg = resolveCssVar(vars['btn-color'], vars);
+	const btnBorderColor = resolveCssVar(vars['btn-color-border'], vars);
+
+	if (btnTextColor || btnBg) {
+		buttonStyles.color = {};
+		if (btnBg) buttonStyles.color.background = btnBg;
+		if (btnTextColor) buttonStyles.color.text = btnTextColor;
+	}
+
+	// Border
+	const radius = vars['radius-field'];
+	const borderWidth = vars['border'];
+
+	if (radius !== undefined || borderWidth !== undefined || btnBorderColor) {
+		buttonStyles.border = {};
+		if (radius !== undefined) {
+			buttonStyles.border.radius = convertRemToPx(radius);
+		}
+		if (borderWidth !== undefined) {
+			buttonStyles.border.width = borderWidth;
+		}
+		if (btnBorderColor) {
+			buttonStyles.border.color = btnBorderColor;
+			buttonStyles.border.style = 'solid';
+		}
+	}
+
+	// Spacing (padding)
+	const paddingX = vars['button-padding-x'];
+	const paddingY = vars['button-padding-y'];
+
+	if (paddingX || paddingY) {
+		buttonStyles.spacing = {
+			padding: {},
+		};
+		if (paddingX) {
+			buttonStyles.spacing.padding.left = paddingX;
+			buttonStyles.spacing.padding.right = paddingX;
+		}
+		if (paddingY) {
+			buttonStyles.spacing.padding.top = paddingY;
+			buttonStyles.spacing.padding.bottom = paddingY;
+		}
+	}
+
+	// Hover styles
+	const hoverTextColor = resolveCssVar(vars['btn-color-hover'], vars);
+	const hoverBg = resolveCssVar(vars['btn-bg-hover'], vars);
+	const hoverBorderColor = resolveCssVar(
+		vars['btn-color-border-hover'],
+		vars
+	);
+
+	if (hoverTextColor || hoverBg || hoverBorderColor) {
+		buttonStyles[':hover'] = {};
+
+		if (hoverTextColor || hoverBg) {
+			buttonStyles[':hover'].color = {};
+			if (hoverBg) buttonStyles[':hover'].color.background = hoverBg;
+			if (hoverTextColor)
+				buttonStyles[':hover'].color.text = hoverTextColor;
+		}
+
+		// Update border color on hover
+		if (hoverBorderColor && buttonStyles.border) {
+			buttonStyles[':hover'].border = {
+				color: hoverBorderColor,
+			};
+		}
+	}
+
+	return Object.keys(buttonStyles).length > 0 ? buttonStyles : null;
+}
+
 function buildCustom(vars) {
 	// Put non-WP-schema tokens safely under settings.custom
 	const custom = {};
@@ -141,7 +252,7 @@ function buildCustom(vars) {
 	);
 	if (Object.keys(radii).length) custom.radii = radii;
 
-	const button = pick(vars, ['border', 'btn-color']);
+	const button = pick(vars, ['border']);
 	if (Object.keys(button).length) custom.button = button;
 
 	const other = Object.fromEntries(
@@ -154,7 +265,9 @@ function buildCustom(vars) {
 				!k.startsWith('breakpoint-') &&
 				!k.startsWith('radius-') &&
 				!k.startsWith('layout-') &&
-				!['border', 'btn-color'].includes(k)
+				!k.startsWith('button-') &&
+				!k.startsWith('btn-') &&
+				!['border', 'radius-field'].includes(k)
 		)
 	);
 	if (Object.keys(other).length) custom.other = other;
@@ -226,9 +339,14 @@ function main() {
 	const fontSizes = buildFontSizes(vars);
 	const layout = buildLayout(vars);
 	const custom = buildCustom(vars);
+	const buttonStyles = buildButtonStyles(vars);
 
 	// Start with existing, ensure version and settings
 	let next = mergeDeep({ version: 2, settings: {} }, existing || {});
+
+	// Ensure styles structure exists
+	if (!next.styles) next.styles = {};
+	if (!next.styles.elements) next.styles.elements = {};
 
 	// Apply layout from variables (merge with existing if present)
 	if (Object.keys(layout).length) {
@@ -251,6 +369,14 @@ function main() {
 	// Add custom tokens
 	if (Object.keys(custom).length) {
 		next.settings.custom = mergeDeep(next.settings.custom || {}, custom);
+	}
+
+	// Apply button styles from CSS variables
+	if (buttonStyles) {
+		next.styles.elements.button = mergeDeep(
+			next.styles.elements.button || {},
+			buttonStyles
+		);
 	}
 
 	// Optionally merge static theme fragments (lower precedence than generated)

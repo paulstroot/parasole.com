@@ -1,44 +1,75 @@
 
+.btn { /* To target a specific theme */
+   /* Example: a different color for 'light' theme */
+}
 
 .btn{
+
   @apply no-underline;
   @apply px-[var(--button-padding-x)] py-[var(--button-padding-y)] my-2;
-  @apply text-[var(--button-default-font-size)];
-  @apply border-[var(--border)] border-solid;
+  @apply font-normal text-[var(--button-default-font-size)];
+  @apply border-solid;
   @apply rounded-[var(--radius-field)];
+  @apply border-[var(--border)];
 
-  @apply text-[var(--btn-color)];
+
+  @apply text-[var(--btn-color-text)];
   @apply bg-[var(--btn-bg)];
 
   @apply hover:text-[var(--btn-color-hover)];
   @apply hover:bg-[var(--btn-bg-hover)];
+  background-color: var(--btn-bg,--color-primary);
+  font-size: var(--button-default-font-size);
+  border-color: var(--btn-color-border);
+  &:hover{
+    border-color: var(--btn-color-border-hover);
+  }
 
   @apply transition-colors;
+
+  &.btn-outline{
+
+    border-color: var(--btn-color) !important;
+    color: var(--color-base-content);
+    background-color: transparent;
+
+  }
   /* @apply hover:bg-primary-content hover:text-white; */
   /* &[disabled]{
     @apply opacity-50 hover:bg-primary hover:text-inherit;
   } */
 
    /* Buttons with white text should have a border that matches their background color */
-   &.btn-primary,&.btn-error{
+   /* &.btn-primary,&.btn-error{
     &:not(.btn-outline){
       @apply border-[var(--btn-bg)];
     }
-   }
-   &.btn-primary{
+   } */
+   /* &.btn-primary{
     @apply hover:text-primary-content;
-   }
-   &.btn-error{
+   } */
+   /* &.btn-error{
     @apply hover:text-error-content;
-   }
+   } */
    /* outline colors shoud have dark text, only the outline is colored*/
-   &.btn-outline{
+   /* &.btn-outline{
     @apply text-base-content;
+   } */
+}
+.btn-arrow-after{
+  &:not(.wp-block-button),.wp-block-button__link{
+    @apply after:content-["\EA6E"] after:font-icon;
+  }
+}
 
-   }
+.btn-external-link{
+  @apply after:content-["\ECAE"] after:font-icon;
 }
 
 
+.wp-block-button.is-style-outline .wp-block-button__link{
+  @apply px-[var(--button-padding-x)] py-[var(--button-padding-y)] my-2;
+}
 
   /* padding-inline: var(--btn-p);
   color: var(--btn-fg);

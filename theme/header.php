@@ -8,11 +8,11 @@
   <div class='container py-7'>
     <div class='flex flex-row justify-between'>
       <div class="flex items-center logo">
-        <a href="/" class="flex flex-row items-baseline justify-end gap-7 text-base-content no-underline hover:text-primary">
+        <a href="/" class="logo flex flex-row items-baseline justify-end gap-7 text-base-content no-underline hover:text-primary">
           <img
             src="<?php bloginfo('template_url'); ?>/library/images/logo.svg"
             alt="Parasole"
-            class="logodark:invert"
+            class="logo-parasole logodark:invert"
             width=200
             priority
           />
@@ -37,7 +37,13 @@
           </div>
         </button>
 
-        <div class="nav-wrapper">
+
+
+      </nav>
+
+    </div>
+  </div>
+  <div class="nav-wrapper">
           <div class="container nav-wrapper-inner">
           <?php
 
@@ -63,10 +69,6 @@
           </div>
         </div>
 
-      </nav>
-
-    </div>
-  </div>
 </header>
 
 

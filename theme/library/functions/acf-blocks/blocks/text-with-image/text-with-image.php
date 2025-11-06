@@ -21,7 +21,7 @@ if ( ! empty( $block['anchor'] ) ) {
     $anchor = 'id=' . esc_attr($block['anchor']) . ' ';
 }
 
-$cta_btn_class = 'btn btn-outline btn-primary mx-auto';
+$cta_btn_class = 'btn btn-outline btn-primary mx-auto btn-sm z-10 bg-white! hover:bg-primary! hover:text-white! h-auto';
 
 
 // Create class attribute allowing for custom "className" and "align" values.
@@ -73,14 +73,14 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
             <?php endif; ?>
 
             <?php if ( $cta ) : ?>
-              <a dir="ltr" href="<?php echo esc_url( $cta['url'] ); ?>" class="inline-block @max-2xl:hidden h-auto <?php echo $cta_btn_class; ?>"><?php echo esc_html( $cta['title'] ); ?></a>
+              <a dir="ltr" href="<?php echo esc_url( $cta['url'] ); ?>" class="inline-block btn-arrow-after @max-2xl:hidden h-auto <?php echo $cta_btn_class; ?>"><?php echo esc_html( $cta['title'] ); ?></a>
             <?php endif; ?>
           </div><!-- END Padding -->
         </div>
 
 
         <?php if ( $cta ) : ?>
-          <a href="<?php echo esc_url( $cta['url'] ); ?>" class="inline-block mx-auto order-3 @2xl:hidden !mt-[-2.4rem] z-10 bg-white hover:bg-primary <?php echo $cta_btn_class; ?>"><?php echo esc_html( $cta['title'] ); ?></a>
+          <a href="<?php echo esc_url( $cta['url'] ); ?>" class="inline-block mx-auto order-3 @2xl:hidden mt-[-2.4rem]!  <?php echo $cta_btn_class; ?>"><?php echo esc_html( $cta['title'] ); ?></a>
         <?php endif; ?>
       </div>
 

@@ -7,7 +7,8 @@ function pstroot_register_menus()
         array(
           'primary-nav' => __('Primary Nav', 'pstroot'),
           'home-nav' => __('Home Nav', 'pstroot'),
-          'footer' => __('Footer Navigation', 'pstroot')
+          'footer' => __('Footer Navigation', 'pstroot'),
+          'footer-utility' => __('Footer Utility Links', 'pstroot')
         )
     );
 }

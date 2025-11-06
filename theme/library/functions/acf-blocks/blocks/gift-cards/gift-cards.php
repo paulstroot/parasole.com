@@ -21,36 +21,34 @@ if ( ! empty( $block['anchor'] ) ) {
     $anchor = 'id="' . esc_attr( $block['anchor'] ) . '" ';
 }
 
-$cta_btn_class = 'btn btn-outline btn-white mx-auto';
-
 
 // Create class attribute allowing for custom "className" and "align" values.
-$class_name = 'gift-cards container';
+$class_name = '@container gift-cards container';
 if ( ! empty( $block['className'] ) ) {
     $class_name .= ' ' . $block['className'];
 }
 
 // if ( $background_color ) {
-//     $class_name .= ' bg-light md:!bg-transparent bg-custom has-custom-acf-color';
-//     $style .= ' bg-light md:!bg-transparent bg-custom has-custom-acf-color';
+//     $class_name .= ' bg-light @md:!bg-transparent bg-custom has-custom-acf-color';
+//     $style .= ' bg-light @md:!bg-transparent bg-custom has-custom-acf-color';
 // }
 
 ?>
 
 <section <?php echo esc_attr( $anchor ); ?> <?php echo $direction; ?> class="<?php echo esc_attr( $class_name ); ?>" >
-  <div style="background-color: <?php echo $background_color; ?>; color: <?php echo $text_color; ?>;" class=" p-8 bg-exists flex flex-col md:flex-row md:gap-8 w-full">
+  <div style="background-color: <?php echo $background_color; ?>; color: <?php echo $text_color; ?>;" class=" p-4 bg-exists flex flex-col @lg:flex-row @lg:gap-8 w-full">
 
 
       <?php if ( $image ) : ?>
-        <figure class="md:w-1/2 block ">
-          <?php echo wp_get_attachment_image( $image['ID'], 'full',false , array( 'class' => 'max-w-full' ) ); ?>
+        <figure class="@lg:w-[40%] @lg:max-w-116 flex justify-end items-center mb-0!">
+          <?php echo wp_get_attachment_image( $image['ID'], 'full',false , array( 'class' => 'max-w-full max-h-max' ) ); ?>
         </figure><!-- .image_block -->
       <?php endif; ?>
 
-      <div class="md:flex-1 relative">
+      <div class="@container @md:flex-1 relative flex flex-col justify-center items-start gap-y-4">
 
         <?php if ( $headline ) : ?>
-          <h3 class="text-with-image__headline text-left !my-0"><?php echo esc_html( $headline ); ?></h3>
+          <h2 class="text-with-image__headline text-left my-0!"><?php echo esc_html( $headline ); ?></h2>
         <?php endif; ?>
 
         <?php if ( $description ) : ?>
@@ -58,17 +56,16 @@ if ( ! empty( $block['className'] ) ) {
         <?php endif; ?>
 
         <!-- LINKS -->
-
         <?php if ( $links ) : ?>
-          <div class="links">
+          <div class="links flex flex-col gap-4 @[460px]:flex-row @[460px]:divide-x-2 @[460px]:divide-y-0 @[460px]:space-y-4">
             <?php foreach ( $links as $link ) : ?>
-                <a href="<?php echo esc_url( $link['link']['url'] ); ?>" target="<?php echo esc_attr( $link['link']['target'] ); ?>" class="text-inherit !no-underline" style="color: <?php echo $text_color; ?>; "><?php echo esc_html( $link['link']['title'] ); ?></a> |
+                <a href="<?php echo esc_url( $link['link']['url'] ); ?>" target="<?php echo esc_attr( $link['link']['target'] ); ?>" class="text-inherit inline-block text-[clamp(16px,31px)] no-underline! pe-4 m-0 hover:text-accent! leading-5" style="color: <?php echo $text_color; ?>; "><?php echo esc_html( $link['link']['title'] ); ?></a>
             <?php endforeach; ?>
           </div>
         <?php endif; ?>
 
         <?php if ( $cta ) : ?>
-          <a href="<?php echo esc_url( $cta['url'] ); ?>" class="hidden md:inline-block <?php echo $cta_btn_class; ?>"><?php echo esc_html( $cta['title'] ); ?></a>
+          <a href="<?php echo esc_url( $cta['url'] ); ?>" class="btn btn-arrow-after text-dark! bg-white! hover:bg-secondary! hover:text-white! border-0"><?php echo esc_html( $cta['title'] ); ?></a>
         <?php endif; ?>
       </div>
 
