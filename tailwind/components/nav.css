@@ -6,7 +6,7 @@
   @apply text-left overflow-hidden;
   @apply max-h-0;
   @apply fixed;
-  transition:all 0.2s ease-in-out;
+  transition:all 0.5s ease-in-out;
   &.open{
     @apply max-h-screen md:max-h-[500px];
     /* @apply block; */

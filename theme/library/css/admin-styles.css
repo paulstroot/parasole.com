@@ -3369,8 +3369,14 @@
   .w-\[100vw\] {
     width: 100vw;
   }
+  .w-\[110\%\] {
+    width: 110%;
+  }
   .w-\[116\%\] {
     width: 116%;
+  }
+  .w-\[120\%\] {
+    width: 120%;
   }
   .w-\[clamp\(14rem\,25rem\)\] {
     width: clamp(14rem, calc(14rem + 0.1964 * (100vw - 40rem)), 25rem);

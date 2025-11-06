@@ -3,6 +3,8 @@
     "title": "Hero Image Carousel",
     "description": "A custom image-ticker block that uses ACF fields.",
     "style": [ "file:./image-ticker.css" ],
+    "editorScript": "file:./image-ticker.js",
+    "viewScript": "file:./image-ticker.js",
     "category": "formatting",
     "icon": "admin-comments",
     "keywords": ["parasole", "hero", "ticker", "scroller", "carousel"],
