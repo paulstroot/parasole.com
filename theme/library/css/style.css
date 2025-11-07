@@ -4534,6 +4534,11 @@ and is loaded last so it will override any existing styles.*/
       display: none;
     }
   }
+  .\@2xl\:aspect-42\/52 {
+    @container (width >= 42rem) {
+      aspect-ratio: 42/52;
+    }
+  }
   .\@2xl\:aspect-\[42\/52\] {
     @container (width >= 42rem) {
       aspect-ratio: 42/52;

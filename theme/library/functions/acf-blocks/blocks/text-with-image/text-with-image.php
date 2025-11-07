@@ -47,8 +47,8 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
       <div class="flex flex-col mb-12 @2xl:flex-row @2xl:gap-13 @2xl:items-start  @max-2xl:p-8">
 
         <?php if ( $image ) : ?>
-          <div class="z-[2] order-2 @2xl:order-1 @2xl:w-[43.2%] image block relative @2xl:flex @2xl:justify-end @2xl:items-start @2xl:mt-26">
-            <figure class="aspect-[16/9] @2xl:aspect-[42/52] mb-0 overflow-hidden block relative @2xl:max-w-[426px] w-full">
+          <div class="image-container z-2 order-2 @2xl:order-1 @2xl:w-[43.2%] image block relative @2xl:flex @2xl:justify-end @2xl:items-start">
+            <figure class="aspect-video @2xl:aspect-42/52 mb-0 overflow-hidden block relative @2xl:max-w-[426px] w-full">
               <?php echo wp_get_attachment_image( $image['ID'], 'full',false , array( 'class' => 'absolute inset-0 w-full h-full object-cover' ) ); ?>
             </figure><!-- .image_block -->
           </div>

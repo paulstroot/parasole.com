@@ -3,6 +3,8 @@
     "title": "Text with Image",
     "description": "A custom text-with-image block that uses ACF fields.",
     "style": [ "file:./text-with-image.css" ],
+    "editorScript": "file:./text-with-image.js",
+    "viewScript": "file:./text-with-image.js",
     "category": "formatting",
     "icon": "admin-comments",
     "keywords": ["parasole", "restaurant"],

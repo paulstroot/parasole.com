@@ -5,6 +5,7 @@
 <header id="pageHeader" class='sticky top-0 z-50 bg-base text-base-content '>
 
   <a href="#main" class="screen-reader-shortcut">Skip to main content</a>
+
   <div class='container py-7'>
     <div class='flex flex-row justify-between'>
       <div class="flex items-center logo">
