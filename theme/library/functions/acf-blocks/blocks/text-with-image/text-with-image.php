@@ -49,23 +49,23 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
         <?php if ( $image ) : ?>
           <div class="image-container z-2 order-2 @2xl:order-1 @2xl:w-[43.2%] image block relative @2xl:flex @2xl:justify-end @2xl:items-start">
             <figure class="aspect-video @2xl:aspect-42/52 mb-0 overflow-hidden block relative @2xl:max-w-[426px] w-full">
-              <?php echo wp_get_attachment_image( $image['ID'], 'full',false , array( 'class' => 'absolute inset-0 w-full h-full object-cover' ) ); ?>
+              <?php echo wp_get_attachment_image( $image['ID'], 'large',false , array( 'class' => 'absolute inset-0 w-full h-full object-cover' ) ); ?>
             </figure><!-- .image_block -->
           </div>
         <?php endif; ?>
 
         <div class="order-1 @2xl:items-end @2xl:me-[4.6rem] @2xl:order-2 @2xl:w-inherit @2xl:flex-1 relative @2xl:flex @2xl:flex-col">
-          <div class="@max-2xl:hidden @2xl:absolute top-0 bottom-0 left-inherit z-[0] bg-light w-[116%]"></div>
+          <div class="@max-2xl:hidden @2xl:absolute top-0 bottom-0 left-inherit z-0 bg-light w-[125%]"></div>
 
-          <div class="z-[1] relative @2xl:py-10 @2xl:pe-[12%]" >
+          <div class="z-1 relative @2xl:py-10 @2xl:pe-[12%]" >
             <?php if ( $logo ) : ?>
-              <figure class="logo max-w-[250px] @2xl:max-w-none !mx-auto px-[18%]">
-                <?php echo wp_get_attachment_image( $logo['ID'], 'full',false , array( 'class' => 'text-with-image__img max-h-[150px] @2xl:max-h-none mx-auto @2xl:h-40' ) ); ?>
+              <figure class="logo max-w-[250px] @2xl:max-w-none mx-auto! px-[18%]">
+                <?php echo wp_get_attachment_image( $logo['ID'], 'large',false , array( 'class' => 'text-with-image__img max-h-[150px] @2xl:max-h-none mx-auto @2xl:h-40' ) ); ?>
               </figure><!-- .logo_block -->
             <?php endif; ?>
 
             <?php if ( $headline ) : ?>
-              <h2 dir="ltr" class="text-with-image__headline text-left !my-0"><?php echo esc_html( $headline ); ?></h2>
+              <h2 dir="ltr" class="text-with-image__headline text-left my-0!"><?php echo esc_html( $headline ); ?></h2>
             <?php endif; ?>
 
             <?php if ( $description ) : ?>

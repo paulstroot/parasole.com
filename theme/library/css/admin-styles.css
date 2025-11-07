@@ -2378,6 +2378,12 @@
       }
     }
   }
+  .z-0 {
+    z-index: 0;
+  }
+  .z-1 {
+    z-index: 1;
+  }
   .z-2 {
     z-index: 2;
   }
@@ -2510,6 +2516,9 @@
   }
   .mx-auto {
     margin-inline: auto;
+  }
+  .mx-auto\! {
+    margin-inline: auto !important;
   }
   .\!my-0 {
     margin-block: calc(var(--spacing) * 0) !important;
@@ -3377,6 +3386,9 @@
   }
   .w-\[120\%\] {
     width: 120%;
+  }
+  .w-\[125\%\] {
+    width: 125%;
   }
   .w-\[clamp\(14rem\,25rem\)\] {
     width: clamp(14rem, calc(14rem + 0.1964 * (100vw - 40rem)), 25rem);
