@@ -1,8 +1,12 @@
 <?php
-    /**
-     * Template Name: Style Guide: Components
-     */
-?><?php get_header(); ?>
+/**
+ * Template Name: Style Guide: Components
+ *
+ * @package Parasole
+ *
+ */
+
+ get_header(); ?>
 
 
 <?php

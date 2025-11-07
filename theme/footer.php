@@ -1,3 +1,12 @@
+<?php
+/**
+ *
+ * Footer template.
+ *
+ * @package Parasole
+ */
+
+?>
 <footer id="footer" class="mt-0 bg-primary/10">
 
   <div class="container py-12 p-0 m-0  text-xs">
@@ -6,14 +15,16 @@
       <div class="flex flex-col-reverse gap-y-8 md:flex-row w-full justify-between">
 
       <div class="flex flex-col gap-y-8">
-        <div class="flex flex-col items-center md:flex-row md:items-top gap-x-22 gap-y-10">
+        <div class="flex flex-col items-center md:flex-row md:items-start gap-x-22 gap-y-10">
           <div class="address leading-7 text-center md:text-left">
-            <b class="block"><?php echo get_bloginfo( 'name' ); ?></b>
+            <b class="block"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></b>
             <address class="not-italic" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
               <?php
-              if (strlen(get_theme_mod('address')) > 0 ) {
-                  echo '<div class="address" itemprop="streetAddress">' . esc_html(get_theme_mod('address')) . '</div>';
+              $address = get_theme_mod('address');
+              if ( ! empty( $address ) ) {
+                  echo '<div class="address" itemprop="streetAddress">' . esc_html( $address ) . '</div>';
               }
+
               if (strlen(get_theme_mod('address2')) > 0 ) {
                   echo '<div class="address2">' . esc_html(get_theme_mod('address2')) . '</div>';
               }

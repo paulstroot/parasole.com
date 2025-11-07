@@ -1,7 +1,8 @@
 <?php
 /**
- * text-with-image Block template.
+ * Text-with-image Block template.
  *
+ * @package Parasole
  * @param array $block The block settings and attributes.
  */
 
@@ -9,11 +10,10 @@
 $headline         = get_field( 'headline' );
 $description      = get_field( 'description' );
 $cta              = get_field( 'cta' );
-$background_color = get_field( 'background_color' ); // ACF's color picker.
-$reverse_order    = get_field( 'reverse_order' ); // boolean
-$logo             = get_field( 'logo' );// ACF's imagepicker.
-$image            = get_field( 'image' ); // ACF's imagepicker.
-
+$background_color = get_field( 'background_color' );
+$reverse_order    = get_field( 'reverse_order' );
+$logo             = get_field( 'logo' );
+$image            = get_field( 'image' );
 
 // Support custom "anchor" values.
 $anchor = '';
@@ -41,7 +41,7 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
 
 ?>
 
-<section <?php echo esc_html( $anchor ); ?> <?php echo $direction; ?> class="<?php echo esc_attr( $class_name ); ?>" >
+<section <?php echo $anchor ? esc_attr( $anchor ) : ''; ?><?php echo $reverse_order ? ' dir="rtl"' : ''; ?> class="<?php echo esc_attr( $class_name ); ?>">
   <div class="@max-2xl:bg-light">
     <div class="container">
       <div class="flex flex-col mb-12 @2xl:flex-row @2xl:gap-13 @2xl:items-start  @max-2xl:p-8">
@@ -73,14 +73,14 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
             <?php endif; ?>
 
             <?php if ( $cta ) : ?>
-              <a dir="ltr" href="<?php echo esc_url( $cta['url'] ); ?>" class="inline-block btn-arrow-after @max-2xl:hidden h-auto <?php echo $cta_btn_class; ?>"><?php echo esc_html( $cta['title'] ); ?></a>
+              <a dir="ltr" href="<?php echo esc_url( $cta['url'] ); ?>" class="inline-block btn-arrow-after @max-2xl:hidden h-auto <?php echo esc_attr( $cta_btn_class ); ?>"><?php echo esc_html( $cta['title'] ); ?></a>
             <?php endif; ?>
           </div><!-- END Padding -->
         </div>
 
 
         <?php if ( $cta ) : ?>
-          <a href="<?php echo esc_url( $cta['url'] ); ?>" class="inline-block mx-auto order-3 @2xl:hidden mt-[-2.4rem]!  <?php echo $cta_btn_class; ?>"><?php echo esc_html( $cta['title'] ); ?></a>
+          <a href="<?php echo esc_url( $cta['url'] ); ?>" class="inline-block mx-auto order-3 @2xl:hidden mt-[-2.4rem]! <?php echo esc_attr( $cta_btn_class ); ?>"><?php echo esc_html( $cta['title'] ); ?></a>
         <?php endif; ?>
       </div>
 

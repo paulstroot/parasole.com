@@ -2,6 +2,7 @@
 /**
  * Testimonial Block template.
  *
+ * @package Parasole
  * @param array $block The block settings and attributes.
  */
 

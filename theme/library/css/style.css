@@ -57,6 +57,7 @@ and is loaded last so it will override any existing styles.*/
     --font-weight-bold: 700;
     --radius-md: 0.375rem;
     --radius-lg: 0.5rem;
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --aspect-video: 16 / 9;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -2407,14 +2408,8 @@ and is loaded last so it will override any existing styles.*/
   .z-50 {
     z-index: 50;
   }
-  .z-\[0\] {
-    z-index: 0;
-  }
   .z-\[1\] {
     z-index: 1;
-  }
-  .z-\[2\] {
-    z-index: 2;
   }
   .order-1 {
     order: 1;
@@ -2522,9 +2517,6 @@ and is loaded last so it will override any existing styles.*/
   .m-auto {
     margin: auto;
   }
-  .\!mx-auto {
-    margin-inline: auto !important;
-  }
   .mx-0 {
     margin-inline: calc(var(--spacing) * 0);
   }
@@ -2533,9 +2525,6 @@ and is loaded last so it will override any existing styles.*/
   }
   .mx-auto\! {
     margin-inline: auto !important;
-  }
-  .\!my-0 {
-    margin-block: calc(var(--spacing) * 0) !important;
   }
   .my-0 {
     margin-block: calc(var(--spacing) * 0);
@@ -3330,9 +3319,6 @@ and is loaded last so it will override any existing styles.*/
   .table {
     display: table;
   }
-  .aspect-\[16\/9\] {
-    aspect-ratio: 16/9;
-  }
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
@@ -3391,9 +3377,6 @@ and is loaded last so it will override any existing styles.*/
   }
   .w-\[100vw\] {
     width: 100vw;
-  }
-  .w-\[116\%\] {
-    width: 116%;
   }
   .w-\[125\%\] {
     width: 125%;
@@ -4371,6 +4354,11 @@ and is loaded last so it will override any existing styles.*/
       flex-direction: row;
     }
   }
+  .md\:items-start {
+    @media (width >= 768px) {
+      align-items: flex-start;
+    }
+  }
   .md\:text-left {
     @media (width >= 768px) {
       text-align: left;
@@ -4486,11 +4474,6 @@ and is loaded last so it will override any existing styles.*/
       flex: 1;
     }
   }
-  .\@md\:\!bg-transparent {
-    @container (width >= 28rem) {
-      background-color: transparent !important;
-    }
-  }
   .\@lg\:w-\[40\%\] {
     @container (width >= 32rem) {
       width: 40%;
@@ -4531,11 +4514,6 @@ and is loaded last so it will override any existing styles.*/
       margin-inline-end: 4.6rem;
     }
   }
-  .\@2xl\:mt-26 {
-    @container (width >= 42rem) {
-      margin-top: calc(var(--spacing) * 26);
-    }
-  }
   .\@2xl\:flex {
     @container (width >= 42rem) {
       display: flex;
@@ -4547,11 +4525,6 @@ and is loaded last so it will override any existing styles.*/
     }
   }
   .\@2xl\:aspect-42\/52 {
-    @container (width >= 42rem) {
-      aspect-ratio: 42/52;
-    }
-  }
-  .\@2xl\:aspect-\[42\/52\] {
     @container (width >= 42rem) {
       aspect-ratio: 42/52;
     }
@@ -4981,6 +4954,13 @@ section[class*="bg-"] {
 section {
   scroll-margin-top: 50px;
 }
+.join-the-team-image {
+  aspect-ratio: 1.93;
+}
+.float-above-preceeding-element {
+  z-index: 10;
+  margin-top: calc(var(--spacing) * -40) !important;
+}
 .table {
   border-radius: var(--radius-md);
   border-style: var(--tw-border-style);
@@ -5207,11 +5187,37 @@ section {
   &:not(.wp-block-button),.wp-block-button__link {
     &::after {
       content: var(--tw-content);
+      position: relative;
+    }
+    &::after {
+      content: var(--tw-content);
+      left: calc(var(--spacing) * 0);
+    }
+    &::after {
+      content: var(--tw-content);
       font-family: var(--font-icon);
     }
     &::after {
       --tw-content: "\EA6E";
       content: var(--tw-content);
+    }
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
+    &::after {
+      content: var(--tw-content);
+      transition-property: all;
+      transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+      transition-duration: var(--tw-duration, var(--default-transition-duration));
+    }
+    &:hover {
+      @media (hover: hover) {
+        &::after {
+          content: var(--tw-content);
+          left: calc(var(--spacing) * 1);
+        }
+      }
     }
   }
 }
@@ -6809,6 +6815,14 @@ figure.wp-caption {
   inherits: false;
   initial-value: "";
 }
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-outline-style {
   syntax: "*";
   inherits: false;
@@ -6859,6 +6873,8 @@ figure.wp-caption {
       --tw-divide-x-reverse: 0;
       --tw-divide-y-reverse: 0;
       --tw-content: "";
+      --tw-duration: initial;
+      --tw-ease: initial;
       --tw-outline-style: solid;
     }
   }

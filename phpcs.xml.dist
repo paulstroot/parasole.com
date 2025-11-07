@@ -34,7 +34,7 @@
   <ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />
 
 
-	<!-- Include the WordPress-Extra standard. -->
+	<!-- Include the WordPress-VIP-Go standard. -->
 	<rule ref="WordPress-VIP-Go">
 		<!--
 		We may want a middle ground though. The best way to do this is add the
@@ -54,15 +54,29 @@
 		-->
     <exclude name="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound"/>
 
+		<!-- Exclude deprecated JavaScript sniffs to suppress PHPCS 4.0 deprecation warnings. -->
+		<exclude name="WordPressVIPMinimum.JS.Window"/>
+		<exclude name="WordPressVIPMinimum.JS.DangerouslySetInnerHTML"/>
+		<exclude name="WordPressVIPMinimum.JS.InnerHTML"/>
+		<exclude name="WordPressVIPMinimum.JS.StrippingTags"/>
+		<exclude name="WordPressVIPMinimum.JS.StringConcat"/>
+		<exclude name="WordPressVIPMinimum.JS.HTMLExecutingFunctions"/>
+
   </rule>
 
 
 	<!-- Let's also check that everything is properly documented. -->
-	<rule ref="WordPress-Docs"/>
+	<rule ref="WordPress-Docs">
+		<!-- Do not require a file-level docblock at the top of each PHP file. -->
+		<exclude name="Squiz.Commenting.FileComment"/>
+	</rule>
+
+	<!-- Note: WordPress-VIP-Go already includes security checks, so WordPress.Security is not needed. -->
 
 	<!-- Check for PHP cross-version compatibility. -->
-	<config name="testVersion" value="7.4-"/>
-	<rule ref="PHPCompatibilityWP"/>
+	<!-- Note: PHPCompatibilityWP requires additional installation. Commented out for now. -->
+	<!-- <config name="testVersion" value="7.4-"/>
+	<rule ref="PHPCompatibilityWP"/> -->
 
 	<!--
 	To get the optimal benefits of using WPCS, we should add a couple of

@@ -58,7 +58,12 @@
 }
 .btn-arrow-after{
   &:not(.wp-block-button),.wp-block-button__link{
-    @apply after:content-["\EA6E"] after:font-icon;
+    @apply after:relative after:left-0 after:content-["\EA6E"] after:font-icon;
+    @apply after:transition-all duration-300 ease-in-out;
+    @apply hover:after:left-1;
+    /* &:hover:after{
+      transform:translateX(5px);
+    } */
   }
 }
 

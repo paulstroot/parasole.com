@@ -2,6 +2,7 @@
 /**
  * Gift-cards Block template.
  *
+ * @package Parasole
  * @param array $block The block settings and attributes.
  */
 
@@ -28,16 +29,9 @@ if ( ! empty( $block['className'] ) ) {
     $class_name .= ' ' . $block['className'];
 }
 
-// if ( $background_color ) {
-//     $class_name .= ' bg-light @md:!bg-transparent bg-custom has-custom-acf-color';
-//     $style .= ' bg-light @md:!bg-transparent bg-custom has-custom-acf-color';
-// }
-
 ?>
-
-<section <?php echo esc_attr( $anchor ); ?> <?php echo $direction; ?> class="<?php echo esc_attr( $class_name ); ?>" >
-  <div style="background-color: <?php echo $background_color; ?>; color: <?php echo $text_color; ?>;" class=" p-4 bg-exists flex flex-col @lg:flex-row @lg:gap-8 w-full">
-
+<section <?php echo $anchor ? esc_attr( $anchor ) : ''; ?> class="<?php echo esc_attr( $class_name ); ?>">
+  <div style="background-color: <?php echo esc_attr( $background_color ); ?>; color: <?php echo esc_attr( $text_color ); ?>;" class="p-4 bg-exists flex flex-col @lg:flex-row @lg:gap-8 w-full">
 
       <?php if ( $image ) : ?>
         <figure class="@lg:w-[40%] @lg:max-w-116 flex justify-end items-center mb-0!">
@@ -58,8 +52,17 @@ if ( ! empty( $block['className'] ) ) {
         <!-- LINKS -->
         <?php if ( $links ) : ?>
           <div class="links flex flex-col gap-4 @[460px]:flex-row @[460px]:divide-x-2 @[460px]:divide-y-0 @[460px]:space-y-4">
-            <?php foreach ( $links as $link ) : ?>
-                <a href="<?php echo esc_url( $link['link']['url'] ); ?>" target="<?php echo esc_attr( $link['link']['target'] ); ?>" class="text-inherit inline-block text-[clamp(16px,31px)] no-underline! pe-4 m-0 hover:text-accent! leading-5" style="color: <?php echo $text_color; ?>; "><?php echo esc_html( $link['link']['title'] ); ?></a>
+            <?php foreach ( $links as $l ) : ?>
+                <a
+                  href="<?php echo esc_url( $l['link']['url'] ); ?>"
+                  target="<?php echo esc_attr( $l['link']['target'] ); ?>"
+                  class="text-inherit inline-block text-[clamp(16px,31px)] no-underline! pe-4 m-0 hover:text-accent! leading-5"
+                  <?php if ( $text_color ) : ?>
+                    style="color: <?php echo esc_attr( $text_color ); ?>;"
+                  <?php endif; ?>
+                >
+                  <?php echo esc_html( $l['link']['title'] ); ?>
+                </a>
             <?php endforeach; ?>
           </div>
         <?php endif; ?>
