@@ -4726,6 +4726,7 @@ body, .has-base-font-size {
   font-family: var(--font-sans);
   --tw-leading: 1.75;
   line-height: 1.75;
+  text-wrap: pretty;
 }
 a {
   color: var(--color-accent);
@@ -4743,6 +4744,7 @@ h1, h2, h3, h4, h5 {
   animation: slide-fade-in linear both;
   animation-timeline: view();
   animation-range: entry 0% cover 30%;
+  text-wrap: balance;
 }
 .slide-fade-in {
   animation: slide-fade-in linear both;
