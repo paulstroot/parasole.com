@@ -2403,9 +2403,6 @@
   .order-2 {
     order: 2;
   }
-  .order-3 {
-    order: 3;
-  }
   .hero {
     @layer daisyui.component {
       display: grid;
@@ -3974,6 +3971,9 @@
   .no-underline\! {
     text-decoration-line: none !important;
   }
+  .opacity-\[0\.8\] {
+    opacity: 0.8;
+  }
   .mix-blend-multiply {
     mix-blend-mode: multiply;
   }
@@ -4010,6 +4010,11 @@
   }
   .transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-all {
+    transition-property: all;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
@@ -4185,6 +4190,16 @@
       }
     }
   }
+  .hover\:scale-105 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-scale-x: 105%;
+        --tw-scale-y: 105%;
+        --tw-scale-z: 105%;
+        scale: var(--tw-scale-x) var(--tw-scale-y);
+      }
+    }
+  }
   .hover\:bg-accent\! {
     &:hover {
       @media (hover: hover) {
@@ -4224,6 +4239,13 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-white) !important;
+      }
+    }
+  }
+  .hover\:opacity-100 {
+    &:hover {
+      @media (hover: hover) {
+        opacity: 100%;
       }
     }
   }
@@ -4778,6 +4800,7 @@
   }
   .join-the-team-image {
     aspect-ratio: 1.93;
+    max-width: 100%;
   }
   .float-above-preceeding-element {
     z-index: 10;
@@ -5537,6 +5560,21 @@ html :where(.editor-styles-wrapper) {
   syntax: "*";
   inherits: false;
 }
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 @property --tw-space-y-reverse {
   syntax: "*";
   inherits: false;
@@ -5606,6 +5644,9 @@ html :where(.editor-styles-wrapper) {
       --tw-drop-shadow-color: initial;
       --tw-drop-shadow-alpha: 100%;
       --tw-drop-shadow-size: initial;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
       --tw-space-y-reverse: 0;
       --tw-divide-x-reverse: 0;
       --tw-divide-y-reverse: 0;

@@ -9,7 +9,7 @@
 // Load values and assign defaults.
 $headline         = get_field( 'headline' );
 $description      = get_field( 'description' );
-$cta              = get_field( 'cta' );
+$buttons          = get_field( 'buttons' );
 $background_color = get_field( 'background_color' );
 $reverse_order    = get_field( 'reverse_order' );
 $logo             = get_field( 'logo' );
@@ -72,16 +72,28 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
               <div dir="ltr" class="text-with-image__description text-left"><?php echo wp_kses_post( $description ); ?></div>
             <?php endif; ?>
 
-            <?php if ( $cta ) : ?>
-              <a dir="ltr" href="<?php echo esc_url( $cta['url'] ); ?>" class="inline-block btn-arrow-after @max-2xl:hidden h-auto <?php echo esc_attr( $cta_btn_class ); ?>"><?php echo esc_html( $cta['title'] ); ?></a>
+            <?php if ( $buttons ) : ?>
+              <div dir="ltr" class="@max-2xl:hidden">
+                <?php
+                foreach($buttons as $button):?>
+                  <a  href="<?php echo esc_url( $button['button_url'] ); ?>" class="inline-block btn-arrow-after h-auto <?php echo esc_attr( $cta_btn_class ); ?>" target="_blank"><?php echo esc_html( $button['button_label'] ); ?></a>
+                <?php endforeach; ?>
+              </div>
             <?php endif; ?>
-          </div><!-- END Padding -->
+          </div><!-- END Buttons -->
         </div>
 
 
-        <?php if ( $cta ) : ?>
-          <a href="<?php echo esc_url( $cta['url'] ); ?>" class="inline-block mx-auto order-3 @2xl:hidden mt-[-2.4rem]! <?php echo esc_attr( $cta_btn_class ); ?>"><?php echo esc_html( $cta['title'] ); ?></a>
-        <?php endif; ?>
+        <?php if ( $buttons ) : ?>
+            <div dir="ltr" class="@2xl:hidden mt-[-2.4rem]!">
+              <?php foreach($buttons as $button): ?>
+                <a href="<?php echo esc_url( $button['button_url'] ); ?>" class="inline-block btn-arrow-after h-auto <?php echo esc_attr( $cta_btn_class ); ?>" target="_blank"><?php echo esc_html( $button['button_label'] ); ?></a>
+              <?php endforeach; ?>
+            </div>
+          <?php endif; ?>
+        </div><!-- END Buttons -->
+
+
       </div>
 
 

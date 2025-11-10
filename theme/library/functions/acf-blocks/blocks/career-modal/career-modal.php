@@ -34,8 +34,8 @@ $style  = implode('; ', $styles);
 ?>
 
 <div class="<?php echo esc_attr($class_name); ?>">
-  <button class="cursor-pointer w-full h-full " onclick="modal_<?php echo esc_attr($block['id']); ?>.showModal()">
-    <?php echo wp_get_attachment_image($image['ID'], 'large', false, array('class' => 'absolute inset-0 w-full h-full! object-cover object-center', 'alt' => esc_attr($image['alt']))); ?>
+  <button class="cursor-pointer w-full h-full bg-black " onclick="modal_<?php echo esc_attr($block['id']); ?>.showModal()">
+    <?php echo wp_get_attachment_image($image['ID'], 'large', false, array('class' => 'absolute inset-0 w-full h-full! object-cover object-center hover:scale-105 opacity-[0.8] hover:opacity-100 transition-all', 'alt' => esc_attr($image['alt']))); ?>
   </button>
   <dialog id="modal_<?php echo esc_attr($block['id']); ?>" class="modal">
     <div class="modal-box bg-base">

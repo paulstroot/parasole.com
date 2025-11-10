@@ -22,7 +22,7 @@ section{
 
 
 .join-the-team-image{
-  aspect-ratio: 1.93;
+  @apply aspect-[1.93] max-w-full;
 }
 .float-above-preceeding-element{
   @apply -mt-40! z-10;
