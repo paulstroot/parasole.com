@@ -2417,6 +2417,9 @@ and is loaded last so it will override any existing styles.*/
   .order-2 {
     order: 2;
   }
+  .order-3 {
+    order: 3;
+  }
   .hero {
     @layer daisyui.component {
       display: grid;
@@ -3036,6 +3039,9 @@ and is loaded last so it will override any existing styles.*/
   }
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
+  }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
   }
   .mt-8 {
     margin-top: calc(var(--spacing) * 8);
@@ -3772,6 +3778,9 @@ and is loaded last so it will override any existing styles.*/
   }
   .text-center {
     text-align: center;
+  }
+  .text-center\! {
+    text-align: center !important;
   }
   .text-left {
     text-align: left;
@@ -4537,6 +4546,11 @@ and is loaded last so it will override any existing styles.*/
   .\@2xl\:me-\[4\.6rem\] {
     @container (width >= 42rem) {
       margin-inline-end: 4.6rem;
+    }
+  }
+  .\@2xl\:mt-0 {
+    @container (width >= 42rem) {
+      margin-top: calc(var(--spacing) * 0);
     }
   }
   .\@2xl\:flex {

@@ -47,7 +47,7 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
       <div class="flex flex-col mb-12 @2xl:flex-row @2xl:gap-13 @2xl:items-start  @max-2xl:p-8">
 
         <?php if ( $image ) : ?>
-          <div class="image-container z-2 order-2 @2xl:order-1 @2xl:w-[43.2%] image block relative @2xl:flex @2xl:justify-end @2xl:items-start">
+          <div class="image-container z-2 order-2  image block relative  @2xl:order-1 mt-4 @2xl:mt-0 @2xl:w-[43.2%] @2xl:flex @2xl:justify-end @2xl:items-start">
             <figure class="aspect-video @2xl:aspect-42/52 mb-0 overflow-hidden block relative @2xl:max-w-[426px] w-full">
               <?php echo wp_get_attachment_image( $image['ID'], 'large',false , array( 'class' => 'absolute inset-0 w-full h-full object-cover' ) ); ?>
             </figure><!-- .image_block -->
@@ -85,7 +85,7 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
 
 
         <?php if ( $buttons ) : ?>
-            <div dir="ltr" class="@2xl:hidden mt-[-2.4rem]!">
+            <div dir="ltr" class="@2xl:hidden mt-[-2.4rem]! order-3 z-2 text-center!">
               <?php foreach($buttons as $button): ?>
                 <a href="<?php echo esc_url( $button['button_url'] ); ?>" class="inline-block btn-arrow-after h-auto <?php echo esc_attr( $cta_btn_class ); ?>" target="_blank"><?php echo esc_html( $button['button_label'] ); ?></a>
               <?php endforeach; ?>
