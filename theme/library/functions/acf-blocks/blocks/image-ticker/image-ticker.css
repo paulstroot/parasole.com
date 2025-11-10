@@ -8,6 +8,15 @@
   }
 }
 
+/* @keyframes fadeIn{
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+} */
+
 
 .carousel-container {
   margin-top: 0;
@@ -32,6 +41,11 @@
 .carousel-item {
   position: relative;
   background-color: black; /* Or any dark color */
+  /* opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 0.25s;
+  animation-fill-mode: forwards;
+  animation-delay: calc(sibling-index() * .2s); */
 }
 .carousel-item-inner{
   width:calc(100% + 160px);
@@ -51,3 +65,4 @@
     opacity:1 !important;
   }
 }
+
