@@ -59,8 +59,8 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
 
           <div class="z-1 relative @2xl:py-10 @2xl:pe-[12%]" >
             <?php if ( $logo ) : ?>
-              <figure class="logo max-w-[250px] @2xl:max-w-none mx-auto! px-[18%]">
-                <?php echo wp_get_attachment_image( $logo['ID'], 'large',false , array( 'class' => 'text-with-image__img max-h-[150px] @2xl:max-h-none mx-auto @2xl:h-40' ) ); ?>
+              <figure class="slide-fade-in logo max-w-[250px] @2xl:max-w-none mx-auto! px-[18%]">
+                <?php echo wp_get_attachment_image( $logo['ID'], 'large',false , array( 'class' => 'text-with-image__img w-auto max-h-[150px] @2xl:max-h-none mx-auto @2xl:h-40' ) ); ?>
               </figure><!-- .logo_block -->
             <?php endif; ?>
 
