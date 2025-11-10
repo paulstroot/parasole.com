@@ -1,8 +1,21 @@
 <?php get_template_part("head"); ?>
 
+<?php
+$add_promotion_bug = get_field('promotion_bug', 'option');
+$bug_image = get_field('bug_image', 'option');
+?>
+
 <body <?php body_class(); ?>>
 
+<?php if ($add_promotion_bug): ?>
+  <div class="container relative">
+  <?php echo wp_get_attachment_image($bug_image['ID'], 'medium', false, array('class' => 'w-[160px] absolute z-60 right-40', 'alt' => esc_attr($bug_image['alt']))); ?>
+</div>
+<?php endif; ?>
+
 <header id="pageHeader" class='sticky top-0 z-50 bg-base text-base-content '>
+
+
 
   <a href="#main" class="screen-reader-shortcut">Skip to main content</a>
 

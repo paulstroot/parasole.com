@@ -2292,17 +2292,47 @@ and is loaded last so it will override any existing styles.*/
   .top-2 {
     top: calc(var(--spacing) * 2);
   }
+  .top-\[50\%\] {
+    top: 50%;
+  }
+  .top-\[58\%\] {
+    top: 58%;
+  }
+  .top-\[65\%\] {
+    top: 65%;
+  }
+  .top-\[74\%\] {
+    top: 74%;
+  }
+  .top-\[96\%\] {
+    top: 96%;
+  }
   .right-0 {
     right: calc(var(--spacing) * 0);
   }
   .right-2 {
     right: calc(var(--spacing) * 2);
   }
+  .right-20 {
+    right: calc(var(--spacing) * 20);
+  }
+  .right-40 {
+    right: calc(var(--spacing) * 40);
+  }
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
   }
+  .bottom-\[10\%\] {
+    bottom: 10%;
+  }
+  .left-0 {
+    left: calc(var(--spacing) * 0);
+  }
   .left-1\/2 {
     left: calc(1/2 * 100%);
+  }
+  .left-50 {
+    left: calc(var(--spacing) * 50);
   }
   .textarea {
     @layer daisyui.component {
@@ -2405,8 +2435,14 @@ and is loaded last so it will override any existing styles.*/
   .z-10 {
     z-index: 10;
   }
+  .z-20 {
+    z-index: 20;
+  }
   .z-50 {
     z-index: 50;
+  }
+  .z-60 {
+    z-index: 60;
   }
   .z-\[1\] {
     z-index: 1;
@@ -3384,6 +3420,12 @@ and is loaded last so it will override any existing styles.*/
   .w-\[125\%\] {
     width: 125%;
   }
+  .w-\[160\] {
+    width: 160;
+  }
+  .w-\[160px\] {
+    width: 160px;
+  }
   .w-\[clamp\(14rem\,25rem\)\] {
     width: clamp(14rem, calc(14rem + 0.1964 * (100vw - 40rem)), 25rem);
   }
@@ -3410,6 +3452,10 @@ and is loaded last so it will override any existing styles.*/
   }
   .-translate-x-1\/2 {
     --tw-translate-x: calc(calc(1/2 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .-translate-y-1\/2 {
+    --tw-translate-y: calc(calc(1/2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .transform {
@@ -4338,6 +4384,11 @@ and is loaded last so it will override any existing styles.*/
       flex-direction: row;
     }
   }
+  .md\:top-\[74\%\] {
+    @media (width >= 768px) {
+      top: 74%;
+    }
+  }
   .md\:mx-0 {
     @media (width >= 768px) {
       margin-inline: calc(var(--spacing) * 0);
@@ -4453,9 +4504,19 @@ and is loaded last so it will override any existing styles.*/
       padding-right: calc(var(--spacing) * 16);
     }
   }
+  .\@max-\[500px\]\:top-\[74\%\] {
+    @container (width < 500px) {
+      top: 74%;
+    }
+  }
   .\@max-2xl\:hidden {
     @container (width < 42rem) {
       display: none;
+    }
+  }
+  .\@max-2xl\:h-auto {
+    @container (width < 42rem) {
+      height: auto;
     }
   }
   .\@max-2xl\:bg-light {
@@ -4466,6 +4527,76 @@ and is loaded last so it will override any existing styles.*/
   .\@max-2xl\:p-8 {
     @container (width < 42rem) {
       padding: calc(var(--spacing) * 8);
+    }
+  }
+  .\@max-2xl\:py-1 {
+    @container (width < 42rem) {
+      padding-block: calc(var(--spacing) * 1);
+    }
+  }
+  .\@max-2xl\:text-\[12px\] {
+    @container (width < 42rem) {
+      font-size: 12px;
+    }
+  }
+  .\@max-2xl\:whitespace-nowrap {
+    @container (width < 42rem) {
+      white-space: nowrap;
+    }
+  }
+  .\@max-xl\:h-auto {
+    @container (width < 36rem) {
+      height: auto;
+    }
+  }
+  .\@max-xl\:py-1 {
+    @container (width < 36rem) {
+      padding-block: calc(var(--spacing) * 1);
+    }
+  }
+  .\@max-xl\:text-\[12px\] {
+    @container (width < 36rem) {
+      font-size: 12px;
+    }
+  }
+  .\@max-xl\:whitespace-nowrap {
+    @container (width < 36rem) {
+      white-space: nowrap;
+    }
+  }
+  .\@max-lg\:top-\[74\%\] {
+    @container (width < 32rem) {
+      top: 74%;
+    }
+  }
+  .\@max-lg\:h-auto {
+    @container (width < 32rem) {
+      height: auto;
+    }
+  }
+  .\@max-lg\:py-1 {
+    @container (width < 32rem) {
+      padding-block: calc(var(--spacing) * 1);
+    }
+  }
+  .\@max-lg\:text-\[12px\] {
+    @container (width < 32rem) {
+      font-size: 12px;
+    }
+  }
+  .\@max-lg\:whitespace-nowrap {
+    @container (width < 32rem) {
+      white-space: nowrap;
+    }
+  }
+  .\@max-sm\:top-\[74\%\] {
+    @container (width < 24rem) {
+      top: 74%;
+    }
+  }
+  .\@max-xs\:top-\[74\%\] {
+    @container (width < 20rem) {
+      top: 74%;
     }
   }
   .\@\[460px\]\:flex-row {
@@ -4503,6 +4634,11 @@ and is loaded last so it will override any existing styles.*/
       }
     }
   }
+  .\@min-\[500px\]\:top-\[74\%\] {
+    @container (width >= 500px) {
+      top: 74%;
+    }
+  }
   .\@md\:flex-1 {
     @container (width >= 28rem) {
       flex: 1;
@@ -4528,9 +4664,19 @@ and is loaded last so it will override any existing styles.*/
       gap: calc(var(--spacing) * 8);
     }
   }
+  .\@min-xl\:top-\[74\%\] {
+    @container (width >= 36rem) {
+      top: 74%;
+    }
+  }
   .\@2xl\:absolute {
     @container (width >= 42rem) {
       position: absolute;
+    }
+  }
+  .\@min-2xl\:top-\[74\%\] {
+    @container (width >= 42rem) {
+      top: 74%;
     }
   }
   .\@2xl\:order-1 {
@@ -4571,6 +4717,11 @@ and is loaded last so it will override any existing styles.*/
   .\@2xl\:h-40 {
     @container (width >= 42rem) {
       height: calc(var(--spacing) * 40);
+    }
+  }
+  .\@min-2xl\:h-auto {
+    @container (width >= 42rem) {
+      height: auto;
     }
   }
   .\@2xl\:max-h-none {
@@ -4633,9 +4784,19 @@ and is loaded last so it will override any existing styles.*/
       padding-block: calc(var(--spacing) * 10);
     }
   }
+  .\@min-2xl\:py-1 {
+    @container (width >= 42rem) {
+      padding-block: calc(var(--spacing) * 1);
+    }
+  }
   .\@2xl\:pe-\[12\%\] {
     @container (width >= 42rem) {
       padding-inline-end: 12%;
+    }
+  }
+  .\@min-2xl\:text-\[12px\] {
+    @container (width >= 42rem) {
+      font-size: 12px;
     }
   }
   .dark\:invert {
