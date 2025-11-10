@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5{
   animation: slide-fade-in linear both;
   animation-timeline: view();
   animation-range: entry 0% cover 30%;
-  /* text-wrap: balance; */
+  text-wrap: balance;
 }
 .slide-fade-in{
   animation: slide-fade-in linear both;

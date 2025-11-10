@@ -4690,6 +4690,7 @@
     animation: slide-fade-in linear both;
     animation-timeline: view();
     animation-range: entry 0% cover 30%;
+    text-wrap: balance;
   }
   .slide-fade-in {
     animation: slide-fade-in linear both;
