@@ -3,18 +3,27 @@
 <?php
 $add_promotion_bug = get_field('promotion_bug', 'option');
 $bug_image = get_field('bug_image', 'option');
+$bug_link = get_field('link', 'option');
+$mobile_text = get_field('mobile_text', 'option');
+$mobile_style = get_field('mobile_style', 'option');
 ?>
 
 <body <?php body_class(); ?>>
 
+
+
 <?php if ($add_promotion_bug): ?>
-  <div class="container relative">
-  <?php echo wp_get_attachment_image($bug_image['ID'], 'medium', false, array('class' => 'w-[160px] absolute z-60 right-40', 'alt' => esc_attr($bug_image['alt']))); ?>
-</div>
+  <div class="min-[816px]:bg-transparent!" style="<?php echo esc_attr($mobile_style); ?>">
+    <div class="container relative">
+      <a href="<?php echo esc_url($bug_link);?>" class="text-inherit! no-underline!">
+        <div class="min-[816px]:hidden text-center"><?php echo wp_kses_post($mobile_text); ?></div>
+        <?php echo wp_get_attachment_image($bug_image['ID'], 'medium', false, array('class' => 'w-[160px] absolute z-60 right-40 hidden min-[816px]:block', 'alt' => esc_attr($bug_image['alt']))); ?>
+      </a>
+    </div>
+  </div>
 <?php endif; ?>
 
 <header id="pageHeader" class='sticky top-0 z-50 bg-base text-base-content '>
-
 
 
   <a href="#main" class="screen-reader-shortcut">Skip to main content</a>

@@ -8,6 +8,7 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-300: oklch(80.8% 0.114 19.571);
+    --color-green-500: oklch(72.3% 0.219 149.579);
     --color-blue-200: oklch(88.2% 0.059 254.128);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-400: oklch(70.7% 0.022 261.325);
@@ -3633,6 +3634,9 @@
   .bg-gray-600 {
     background-color: var(--color-gray-600);
   }
+  .bg-green-500 {
+    background-color: var(--color-green-500);
+  }
   .bg-info {
     background-color: var(--color-info);
   }
@@ -3987,6 +3991,9 @@
   .text-inherit {
     color: inherit;
   }
+  .text-inherit\! {
+    color: inherit !important;
+  }
   .text-mid-0 {
     color: var(--color-mid-0);
   }
@@ -4319,9 +4326,19 @@
       left: auto;
     }
   }
+  .sm\:block {
+    @media (width >= 640px) {
+      display: block;
+    }
+  }
   .sm\:flex {
     @media (width >= 640px) {
       display: flex;
+    }
+  }
+  .sm\:hidden {
+    @media (width >= 640px) {
+      display: none;
     }
   }
   .sm\:h-72 {
@@ -4370,6 +4387,11 @@
       flex-direction: row;
     }
   }
+  .sm\:bg-transparent {
+    @media (width >= 640px) {
+      background-color: transparent;
+    }
+  }
   .md\:top-\[74\%\] {
     @media (width >= 768px) {
       top: 74%;
@@ -4388,6 +4410,16 @@
   .md\:mt-18 {
     @media (width >= 768px) {
       margin-top: calc(var(--spacing) * 18);
+    }
+  }
+  .md\:block {
+    @media (width >= 768px) {
+      display: block;
+    }
+  }
+  .md\:hidden {
+    @media (width >= 768px) {
+      display: none;
     }
   }
   .md\:inline {
@@ -4430,6 +4462,11 @@
       align-items: flex-start;
     }
   }
+  .md\:bg-transparent {
+    @media (width >= 768px) {
+      background-color: transparent;
+    }
+  }
   .md\:text-left {
     @media (width >= 768px) {
       text-align: left;
@@ -4438,6 +4475,26 @@
   .md\:text-start {
     @media (width >= 768px) {
       text-align: start;
+    }
+  }
+  .min-\[816px\]\:block {
+    @media (width >= 816px) {
+      display: block;
+    }
+  }
+  .min-\[816px\]\:hidden {
+    @media (width >= 816px) {
+      display: none;
+    }
+  }
+  .min-\[816px\]\:bg-transparent {
+    @media (width >= 816px) {
+      background-color: transparent;
+    }
+  }
+  .min-\[816px\]\:bg-transparent\! {
+    @media (width >= 816px) {
+      background-color: transparent !important;
     }
   }
   .lg\:absolute {
