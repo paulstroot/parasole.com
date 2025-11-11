@@ -22,3 +22,8 @@
 .text-with-image p {
     text-align:left !important;
 }
+.text-with-image .cta-button{
+  font-size:var(--button-default-font-size);
+  padding-block: 3.2px;
+  line-height:24px;
+}

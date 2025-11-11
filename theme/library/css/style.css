@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.16 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.17 | MIT License | https://tailwindcss.com */
 @charset 'UTF-8';
 @layer properties;
 @layer theme, base, components, utilities;
@@ -22,6 +22,7 @@ and is loaded last so it will override any existing styles.*/
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-300: oklch(80.8% 0.114 19.571);
+    --color-red-500: oklch(63.7% 0.237 25.331);
     --color-blue-200: oklch(88.2% 0.059 254.128);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-400: oklch(70.7% 0.022 261.325);
@@ -75,7 +76,8 @@ and is loaded last so it will override any existing styles.*/
     --color-light: var(--color-light);
     --color-dark: var(--color-dark);
     --color-base: var(--color-light);
-    --color-base-100: var(--color-light);
+    --color-base-100: var(--color-white);
+    --color-base-200: var(--color-light);
     --color-base-content: #333333;
     --color-primary: var(--color-primary);
     --color-secondary: var(--color-secondary);
@@ -389,6 +391,15 @@ and is loaded last so it will override any existing styles.*/
           scale: 1;
           opacity: 1;
         }
+        :root:has(&) {
+          --page-has-backdrop: 1;
+          --page-overflow: hidden;
+          --page-scroll-bg: var(--page-scroll-bg-on);
+          --page-scroll-gutter: stable;
+          --page-scroll-transition: var(--page-scroll-transition-on);
+          animation: set-page-has-scroll forwards;
+          animation-timeline: scroll();
+        }
       }
       @starting-style {
         &.modal-open, &[open], &:target, .modal-toggle:checked + & {
@@ -414,7 +425,7 @@ and is loaded last so it will override any existing styles.*/
           color: var(--color-base-content);
         }
       }
-      --tab-p: 1rem;
+      --tab-p: 0.75rem;
       --tab-bg: var(--color-base-100);
       --tab-border-color: var(--color-base-300);
       --tab-radius-ss: 0;
@@ -423,6 +434,11 @@ and is loaded last so it will override any existing styles.*/
       --tab-radius-ee: 0;
       --tab-order: 0;
       --tab-radius-min: calc(0.75rem - var(--border));
+      --tab-radius-limit: min(var(--radius-field), var(--tab-radius-min));
+      --tab-radius-grad: #0000 calc(69% - var(--border)),
+      var(--tab-border-color) calc(calc(69% - var(--border)) + 0.25px),
+      var(--tab-border-color) calc(calc(69% - var(--border)) + var(--border)),
+      var(--tab-bg) calc(calc(69% - var(--border)) + var(--border) + 0.25px);
       border-color: #0000;
       order: var(--tab-order);
       height: var(--tab-height);
@@ -449,7 +465,6 @@ and is loaded last so it will override any existing styles.*/
       &:checked, &:is(label:has(:checked)), &:is(.tab-active, [aria-selected="true"], [aria-current="true"], [aria-current="page"]) {
         & + .tab-content {
           display: block;
-          height: calc(100% - var(--tab-height) + var(--border));
         }
       }
       &:not( :checked, label:has(:checked), :hover, .tab-active, [aria-selected="true"], [aria-current="true"], [aria-current="page"] ) {
@@ -552,6 +567,22 @@ and is loaded last so it will override any existing styles.*/
           box-shadow: 2px 2px inset;
           pointer-events: none;
         }
+      }
+      details {
+        overflow: hidden;
+        interpolate-size: allow-keywords;
+      }
+      details::details-content {
+        block-size: 0;
+        @media (prefers-reduced-motion: no-preference) {
+          transition-behavior: allow-discrete;
+          transition-property: block-size, content-visibility;
+          transition-duration: 0.2s;
+          transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+      }
+      details[open]::details-content {
+        block-size: auto;
       }
       :where(li > details[open] > summary):after, :where(li > .menu-dropdown-toggle.menu-dropdown-show):after {
         rotate: 45deg;
@@ -668,7 +699,7 @@ and is loaded last so it will override any existing styles.*/
       position: relative;
       display: inline-block;
       position-area: var(--anchor-v, bottom) var(--anchor-h, span-right);
-      & > *:not(summary):focus {
+      & > *:not(:has(~ [class*="dropdown-content"])):focus {
         --tw-outline-style: none;
         outline-style: none;
         @media (forced-colors: active) {
@@ -679,7 +710,7 @@ and is loaded last so it will override any existing styles.*/
       .dropdown-content {
         position: absolute;
       }
-      &:not(details, .dropdown-open, .dropdown-hover:hover, :focus-within) .dropdown-content, &.dropdown-hover:not(:hover) [tabindex]:first-child:focus:not(:focus-visible) ~ .dropdown-content {
+      &.dropdown-close .dropdown-content, &:not(details, .dropdown-open, .dropdown-hover:hover, :focus-within) .dropdown-content, &.dropdown-hover:not(:hover) [tabindex]:first-child:focus:not(:focus-visible) ~ .dropdown-content {
         display: none;
         transform-origin: top;
         opacity: 0%;
@@ -701,18 +732,21 @@ and is loaded last so it will override any existing styles.*/
           opacity: 0;
         }
       }
-      &.dropdown-open, &:not(.dropdown-hover):focus, &:focus-within {
-        > [tabindex]:first-child {
-          pointer-events: none;
+      &:not(.dropdown-close) {
+        &.dropdown-open, &:not(.dropdown-hover):focus, &:focus-within {
+          > [tabindex]:first-child {
+            pointer-events: none;
+          }
+          .dropdown-content {
+            opacity: 100%;
+            scale: 100%;
+          }
         }
-        .dropdown-content {
-          opacity: 100%;
-        }
-      }
-      &.dropdown-hover:hover {
-        .dropdown-content {
-          opacity: 100%;
-          scale: 100%;
+        &.dropdown-hover:hover {
+          .dropdown-content {
+            opacity: 100%;
+            scale: 100%;
+          }
         }
       }
       &:is(details) {
@@ -720,11 +754,6 @@ and is loaded last so it will override any existing styles.*/
           &::-webkit-details-marker {
             display: none;
           }
-        }
-      }
-      &.dropdown-open, &:focus, &:focus-within {
-        .dropdown-content {
-          scale: 100%;
         }
       }
       &:where([popover]) {
@@ -735,7 +764,7 @@ and is loaded last so it will override any existing styles.*/
         color: inherit;
         @supports not (position-area: bottom) {
           margin: auto;
-          &.dropdown-open:not(:popover-open) {
+          &.dropdown-close, &.dropdown-open:not(:popover-open) {
             display: none;
             transform-origin: top;
             opacity: 0%;
@@ -745,7 +774,7 @@ and is loaded last so it will override any existing styles.*/
             background-color: color-mix(in oklab, #000 30%, #0000);
           }
         }
-        &:not(.dropdown-open, :popover-open) {
+        &.dropdown-close, &:not(.dropdown-open, :popover-open) {
           display: none;
           transform-origin: top;
           opacity: 0%;
@@ -759,9 +788,6 @@ and is loaded last so it will override any existing styles.*/
       @layer daisyui.component {
         width: unset;
       }
-    }
-    .prose & {
-      text-decoration-line: none;
     }
     @layer daisyui.component {
       display: inline-flex;
@@ -868,20 +894,6 @@ and is loaded last so it will override any existing styles.*/
         @supports (color: color-mix(in lab, red, red)) {
           --btn-fg: color-mix(in oklch, var(--color-base-content) 20%, #0000);
         }
-        @media (hover: hover) {
-          &:hover {
-            pointer-events: none;
-            background-color: var(--color-neutral);
-            @supports (color: color-mix(in lab, red, red)) {
-              background-color: color-mix(in oklab, var(--color-neutral) 20%, transparent);
-            }
-            --btn-border: #0000;
-            --btn-fg: color-mix(in srgb, #333333 20%, #0000);
-            @supports (color: color-mix(in lab, red, red)) {
-              --btn-fg: color-mix(in oklch, var(--color-base-content) 20%, #0000);
-            }
-          }
-        }
       }
     }
     &[disabled] {
@@ -899,20 +911,6 @@ and is loaded last so it will override any existing styles.*/
         --btn-fg: color-mix(in srgb, #333333 20%, #0000);
         @supports (color: color-mix(in lab, red, red)) {
           --btn-fg: color-mix(in oklch, var(--color-base-content) 20%, #0000);
-        }
-        @media (hover: hover) {
-          &:hover {
-            pointer-events: none;
-            background-color: var(--color-neutral);
-            @supports (color: color-mix(in lab, red, red)) {
-              background-color: color-mix(in oklab, var(--color-neutral) 20%, transparent);
-            }
-            --btn-border: #0000;
-            --btn-fg: color-mix(in srgb, #333333 20%, #0000);
-            @supports (color: color-mix(in lab, red, red)) {
-              --btn-fg: color-mix(in oklch, var(--color-base-content) 20%, #0000);
-            }
-          }
         }
       }
     }
@@ -1156,7 +1154,7 @@ and is loaded last so it will override any existing styles.*/
           --list-grid-cols: minmax(0, auto) minmax(0, auto) minmax(0, auto) minmax(0, auto)
           minmax(0, auto) 1fr;
         }
-        :not(.list-col-wrap) {
+        > :not(.list-col-wrap) {
           grid-row-start: 1;
         }
       }
@@ -2530,6 +2528,9 @@ and is loaded last so it will override any existing styles.*/
   .mx-0 {
     margin-inline: calc(var(--spacing) * 0);
   }
+  .mx-0\! {
+    margin-inline: calc(var(--spacing) * 0) !important;
+  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -3086,6 +3087,12 @@ and is loaded last so it will override any existing styles.*/
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
   }
+  .ml-2 {
+    margin-left: calc(var(--spacing) * 2);
+  }
+  .ml-4 {
+    margin-left: calc(var(--spacing) * 4);
+  }
   .carousel-item {
     @layer daisyui.component {
       box-sizing: content-box;
@@ -3301,6 +3308,7 @@ and is loaded last so it will override any existing styles.*/
         border-radius: var(--radius-selector);
         border: var(--border) solid var(--color-base-300);
         padding-inline: 0.5em;
+        padding-block: 0.2em;
         font-weight: inherit;
         &:before, &:after {
           display: none;
@@ -3482,6 +3490,9 @@ and is loaded last so it will override any existing styles.*/
   .flex-row {
     flex-direction: row;
   }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
   .place-items-center {
     place-items: center;
   }
@@ -3566,6 +3577,10 @@ and is loaded last so it will override any existing styles.*/
     border-style: var(--tw-border-style);
     border-width: 0px;
   }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
   .border-none {
     --tw-border-style: none;
     border-style: none;
@@ -3577,6 +3592,9 @@ and is loaded last so it will override any existing styles.*/
       background-image: none;
       border-color: currentColor;
     }
+  }
+  .border-primary {
+    border-color: var(--color-primary);
   }
   .bg-accent {
     background-color: var(--color-accent);
@@ -3677,6 +3695,12 @@ and is loaded last so it will override any existing styles.*/
   .bg-red-300 {
     background-color: var(--color-red-300);
   }
+  .bg-red-500 {
+    background-color: var(--color-red-500);
+  }
+  .bg-red-500\! {
+    background-color: var(--color-red-500) !important;
+  }
   .bg-secondary {
     background-color: var(--color-secondary);
   }
@@ -3773,6 +3797,9 @@ and is loaded last so it will override any existing styles.*/
   }
   .py-20 {
     padding-block: calc(var(--spacing) * 20);
+  }
+  .py-\[3\.2px\] {
+    padding-block: 3.2px;
   }
   .pe-4 {
     padding-inline-end: calc(var(--spacing) * 4);
@@ -3944,6 +3971,9 @@ and is loaded last so it will override any existing styles.*/
   .\!text-inherit {
     color: inherit !important;
   }
+  .text-\[var\(--button-default-font-size\)\] {
+    color: var(--button-default-font-size);
+  }
   .text-accent-content {
     color: var(--color-accent-content);
   }
@@ -4001,9 +4031,6 @@ and is loaded last so it will override any existing styles.*/
   .text-white {
     color: var(--color-white);
   }
-  .lowercase {
-    text-transform: lowercase;
-  }
   .not-italic {
     font-style: normal;
   }
@@ -4015,6 +4042,11 @@ and is loaded last so it will override any existing styles.*/
   }
   .no-underline\! {
     text-decoration-line: none !important;
+  }
+  .prose {
+    & :where(.btn-link):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+      text-decoration-line: none;
+    }
   }
   .opacity-\[0\.8\] {
     opacity: 0.8;
@@ -4028,23 +4060,24 @@ and is loaded last so it will override any existing styles.*/
   }
   .btn-ghost {
     @layer daisyui.modifier {
-      &:not(.btn-active, :hover, :active:focus, :focus-visible) {
+      &:not(.btn-active, :hover, :active:focus, :focus-visible, input:checked:not(.filter .btn)) {
         --btn-shadow: "";
         --btn-bg: #0000;
         --btn-border: #0000;
         --btn-noise: none;
         &:not(:disabled, [disabled], .btn-disabled) {
           outline-color: currentcolor;
-          --btn-fg: currentColor;
+          --btn-fg: var(--btn-color, currentColor);
         }
       }
       @media (hover: none) {
-        &:hover:not(.btn-active, :active, :focus-visible, :disabled, [disabled], .btn-disabled) {
+        &:not(.btn-active, :active, :focus-visible, input:checked:not(.filter .btn)):hover {
+          outline-color: currentcolor;
           --btn-shadow: "";
           --btn-bg: #0000;
+          --btn-fg: var(--btn-color, currentColor);
           --btn-border: #0000;
           --btn-noise: none;
-          --btn-fg: currentColor;
         }
       }
     }
@@ -4065,7 +4098,7 @@ and is loaded last so it will override any existing styles.*/
   }
   .btn-outline {
     @layer daisyui.modifier {
-      &:not( .btn-active, :hover, :active:focus, :focus-visible, :disabled, [disabled], .btn-disabled, :checked ) {
+      &:not( .btn-active, :hover, :active:focus, :focus-visible, input:checked:not(.filter .btn), :disabled, [disabled], .btn-disabled ) {
         --btn-shadow: "";
         --btn-bg: #0000;
         --btn-fg: var(--btn-color);
@@ -4073,7 +4106,7 @@ and is loaded last so it will override any existing styles.*/
         --btn-noise: none;
       }
       @media (hover: none) {
-        &:hover:not( .btn-active, :active, :focus-visible, :disabled, [disabled], .btn-disabled, :checked ) {
+        &:not(.btn-active, :active, :focus-visible, input:checked:not(.filter .btn)):hover {
           --btn-shadow: "";
           --btn-bg: #0000;
           --btn-fg: var(--btn-color);
@@ -4607,6 +4640,11 @@ and is loaded last so it will override any existing styles.*/
       margin-top: calc(var(--spacing) * 0);
     }
   }
+  .\@2xl\:mt-8 {
+    @container (width >= 42rem) {
+      margin-top: calc(var(--spacing) * 8);
+    }
+  }
   .\@2xl\:flex {
     @container (width >= 42rem) {
       display: flex;
@@ -4707,10 +4745,29 @@ and is loaded last so it will override any existing styles.*/
       font-size: 12px;
     }
   }
-  .dark\:invert {
+  .dark\:bg-base-300\! {
     @media (prefers-color-scheme: dark) {
-      --tw-invert: invert(100%);
-      filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+      background-color: var(--color-base-300) !important;
+    }
+  }
+  .dark\:bg-black\! {
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-black) !important;
+    }
+  }
+  .dark\:bg-dark {
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-dark);
+    }
+  }
+  .dark\:bg-dark\! {
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-dark) !important;
+    }
+  }
+  .dark\:bg-red-500\! {
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-red-500) !important;
     }
   }
 }
@@ -4759,6 +4816,7 @@ and is loaded last so it will override any existing styles.*/
     --wp--preset--color--light: #444444 !important;
     --wp--preset--color--primary: #baabf2 !important;
     --color-base-100: #333333;
+    --color-base-200: #333333;
     --color-base-content: #EBEBEB;
     --color-primary-content: #0F5257;
     --color-secondary-content: #7A2900;
@@ -6516,106 +6574,25 @@ figure.wp-caption {
   }
 }
 @layer base {
-  :root:has(.modal-open, .modal[open], .modal:target, .modal-toggle:checked) {
-    overflow: hidden;
-    --page-has-backdrop: 1;
-  }
-  :root:has(.drawer:not([class*="drawer-open"]) > .drawer-toggle:checked) {
-    overflow: hidden;
-    --page-has-backdrop: 1;
-  }
-  :root:has(.sm\:drawer-open > .drawer-toggle:checked) {
-    @media (width < 40rem) {
-      overflow: hidden;
-    }
-    @media (width < 40rem) {
-      --page-has-backdrop: 1;
-    }
-  }
-  :root:has(.md\:drawer-open > .drawer-toggle:checked) {
-    @media (width < 48rem) {
-      overflow: hidden;
-    }
-    @media (width < 48rem) {
-      --page-has-backdrop: 1;
-    }
-  }
-  :root:has(.lg\:drawer-open > .drawer-toggle:checked) {
-    @media (width < 64rem) {
-      overflow: hidden;
-    }
-    @media (width < 64rem) {
-      --page-has-backdrop: 1;
-    }
-  }
-  :root:has(.xl\:drawer-open > .drawer-toggle:checked) {
-    @media (width < 80rem) {
-      overflow: hidden;
-    }
-    @media (width < 80rem) {
-      --page-has-backdrop: 1;
-    }
-  }
-  :root:has(.\32xl\:drawer-open > .drawer-toggle:checked) {
-    @media (width < 96rem) {
-      overflow: hidden;
-    }
-    @media (width < 96rem) {
-      --page-has-backdrop: 1;
-    }
-  }
-  :root:has(.max-sm\:drawer-open > .drawer-toggle:checked) {
-    @media (width >= 40rem) {
-      overflow: hidden;
-    }
-    @media (width >= 40rem) {
-      --page-has-backdrop: 1;
-    }
-  }
-  :root:has(.max-md\:drawer-open > .drawer-toggle:checked) {
-    @media (width >= 48rem) {
-      overflow: hidden;
-    }
-    @media (width >= 48rem) {
-      --page-has-backdrop: 1;
-    }
-  }
-  :root:has(.max-lg\:drawer-open > .drawer-toggle:checked) {
-    @media (width >= 64rem) {
-      overflow: hidden;
-    }
-    @media (width >= 64rem) {
-      --page-has-backdrop: 1;
-    }
-  }
-  :root:has(.max-xl\:drawer-open > .drawer-toggle:checked) {
-    @media (width >= 80rem) {
-      overflow: hidden;
-    }
-    @media (width >= 80rem) {
-      --page-has-backdrop: 1;
-    }
-  }
-  :root:has(.max-2xl\:drawer-open > .drawer-toggle:checked) {
-    @media (width >= 96rem) {
-      overflow: hidden;
-    }
-    @media (width >= 96rem) {
-      --page-has-backdrop: 1;
-    }
+  :root:not(span) {
+    overflow: var(--page-overflow);
   }
 }
 @layer base {
-  :root:has( .modal-open, .modal[open], .modal:target, .modal-toggle:checked, .drawer:not(.drawer-open) > .drawer-toggle:checked ) {
-    background-image: linear-gradient(var(--root-bg), var(--root-bg));
-    background-color: var(--root-bg);
+  :root {
+    --page-scroll-bg-on: linear-gradient(var(--root-bg), var(--root-bg))
+    var(--root-bg);
     @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix( in srgb, var(--root-bg), oklch(0% 0 0) calc(var(--page-has-backdrop, 0) * 40%) );
+      --page-scroll-bg-on: linear-gradient(var(--root-bg), var(--root-bg))
+    color-mix(in srgb, var(--root-bg), oklch(0% 0 0) calc(var(--page-has-backdrop, 0) * 40%));
     }
-    animation: set-page-has-scroll forwards;
-    animation-timeline: scroll();
-    scrollbar-gutter: stable;
-    scrollbar-gutter: if(style(--page-has-scroll: 1): stable; else: unset);
+    --page-scroll-transition-on: background-color 0.3s ease-out;
+    transition: var(--page-scroll-transition);
+    scrollbar-gutter: var(--page-scroll-gutter, unset);
+    scrollbar-gutter: if(style(--page-has-scroll: 1): var(--page-scroll-gutter, unset) ; else: unset);
+  }
+  :root:root {
+    background: var(--page-scroll-bg, var(--root-bg, var(--color-base-100)));
   }
   @keyframes set-page-has-scroll {
     0%, to {
@@ -6659,6 +6636,17 @@ figure.wp-caption {
   100% {
     scale: 1;
     opacity: 1;
+  }
+}
+@keyframes rotator {
+  89.9999%, 100% {
+    --first-item-position: 0 0%;
+  }
+  90%, 99.9999% {
+    --first-item-position: 0 calc(var(--items) * 100%);
+  }
+  100% {
+    translate: 0 -100%;
   }
 }
 @keyframes skeleton {

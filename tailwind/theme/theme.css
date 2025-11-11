@@ -116,7 +116,8 @@
   --color-black: var(--color-black);
 
   --color-base: var(--color-light);
-  --color-base-100: var(--color-light);
+  --color-base-100: var(--color-white);
+  --color-base-200: var(--color-light);
   --color-base-content: #333333;
   --color-primary: var(--color-primary);
   --color-secondary: var(--color-secondary);

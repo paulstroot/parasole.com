@@ -72,3 +72,12 @@ if (document.readyState === 'loading') {
 } else {
 	initTextWithImageParallax();
 }
+
+function MM_jumpMenu(targ, selObj, restore) {
+	var target = targ ? targ : '_blank';
+	var url = selObj.options[selObj.selectedIndex].value;
+	if (!url) return;
+
+	window.open(selObj.options[selObj.selectedIndex].value, target);
+	if (restore) selObj.selectedIndex = 0;
+}
