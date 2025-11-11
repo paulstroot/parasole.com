@@ -1,0 +1,6 @@
+
+form{
+  label, .frm_primary_label{
+    @apply dark:text-white;
+  }
+}

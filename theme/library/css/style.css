@@ -3397,6 +3397,12 @@ and is loaded last so it will override any existing styles.*/
   .w-\[160px\] {
     width: 160px;
   }
+  .w-\[200px\] {
+    width: 200px;
+  }
+  .w-\[205px\] {
+    width: 205px;
+  }
   .w-\[clamp\(14rem\,25rem\)\] {
     width: clamp(14rem, calc(14rem + 0.1964 * (100vw - 40rem)), 25rem);
   }
@@ -3617,6 +3623,9 @@ and is loaded last so it will override any existing styles.*/
   .bg-light {
     background-color: var(--color-light);
   }
+  .bg-light\! {
+    background-color: var(--color-light) !important;
+  }
   .bg-mid-0 {
     background-color: var(--color-mid-0);
   }
@@ -3682,9 +3691,6 @@ and is loaded last so it will override any existing styles.*/
   }
   .bg-white {
     background-color: var(--color-white);
-  }
-  .bg-white\! {
-    background-color: var(--color-white) !important;
   }
   .divider-accent {
     @layer daisyui.modifier {
@@ -4267,6 +4273,13 @@ and is loaded last so it will override any existing styles.*/
       }
     }
   }
+  .hover\:text-light\! {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-light) !important;
+      }
+    }
+  }
   .hover\:text-primary {
     &:hover {
       @media (hover: hover) {
@@ -4740,6 +4753,9 @@ and is loaded last so it will override any existing styles.*/
 @media (prefers-color-scheme: dark) {
   :root {
     --color-light: #444444;
+    --color-dark: #ffffff;
+    --wp--preset--color--white: #000000 !important;
+    --wp--preset--color--black: #FFFFFF !important;
     --wp--preset--color--light: #444444 !important;
     --wp--preset--color--primary: #baabf2 !important;
     --color-base-100: #333333;
@@ -4770,6 +4786,29 @@ and is loaded last so it will override any existing styles.*/
     --color-mid-200: #333333;
     --color-mid-100: #141414;
     --color-mid-0: #000000;
+  }
+  .with_frm_style {
+    --label-color: #FFFFFF;
+    --text-color: #FFFFFF;
+    --bg-color: #555555;
+    --border-color: #444444;
+    .frm_description {
+      color: #CCCCCC !important;
+    }
+    .form-field textarea:focus {
+      background-color: var(--bg-color) !important;
+    }
+    .frm_form_field :invalid {
+      &:invalid {
+        background-color: #886a6a !important;
+        color: var(--color-white) !important;
+      }
+    }
+    .form-field input:not([type=file]):not([type=range]):not([readonly]) {
+      &:focus {
+        background-color: var(--color-mid-400) !important;
+      }
+    }
   }
 }
 html {
@@ -4827,6 +4866,9 @@ body, .has-base-font-size {
 a {
   color: var(--color-accent);
   text-decoration-line: underline;
+  @media (prefers-color-scheme: dark) {
+    color: var(--color-primary);
+  }
 }
 h1, h2, h3, h4, h5, b, strong, .h1, .h2, .h3, .h4, .h5 {
   font-weight: 400;
@@ -5043,7 +5085,7 @@ main > .wp-block-separator {
   height: calc(var(--spacing) * 1);
   width: calc(var(--spacing) * 1);
   overflow: hidden;
-  background-color: var(--color-white);
+  background-color: var(--color-light);
   padding-inline: calc(var(--spacing) * 2);
   padding-block: calc(var(--spacing) * 1);
   &:focus {
@@ -5382,11 +5424,21 @@ section {
     }
   }
 }
+form {
+  label, .frm_primary_label {
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-white);
+    }
+  }
+}
 .nav-wrapper {
   font-size: clamp(1.25rem, calc(1.25rem + 0.0045 * (100vw - 40rem)), 1.5rem);
   background-color: var(--color-primary);
   @supports (color: color-mix(in lab, red, red)) {
     background-color: color-mix(in oklab, var(--color-primary) 90%, transparent);
+  }
+  @media (prefers-color-scheme: dark) {
+    background-color: color-mix(in oklab, #6e57c1 90%, transparent);
   }
   right: calc(var(--spacing) * 0);
   left: calc(var(--spacing) * 0);
@@ -5424,6 +5476,9 @@ section {
       &.current-menu-item, &.current_page_item {
         > a:not([href^="/#"]), > button {
           color: var(--color-accent);
+          @media (prefers-color-scheme: dark) {
+            color: var(--color-white);
+          }
         }
       }
       a {
@@ -5432,6 +5487,13 @@ section {
         &:hover {
           @media (hover: hover) {
             color: var(--color-accent);
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          &:hover {
+            @media (hover: hover) {
+              color: var(--color-white);
+            }
           }
         }
       }

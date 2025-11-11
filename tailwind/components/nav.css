@@ -1,7 +1,7 @@
 
 .nav-wrapper{
   @apply text-[clamp(1.25rem,1.5rem)];
-  @apply bg-primary/90;
+  @apply bg-primary/90 dark:bg-[#6e57c1]/90;
   @apply right-0 left-0 ;
   @apply text-left overflow-hidden;
   @apply max-h-0;
@@ -23,12 +23,12 @@
       @apply mb-0 list-none ;
       &.current-menu-item, &.current_page_item { /*, &.current-menu-ancestor, &.current-menu-parent */
         > a:not([href^="/#"]), > button{
-          @apply text-accent;
+          @apply text-accent dark:text-white;
         }
       }
       a{
         @apply no-underline;
-        @apply text-primary-content hover:text-accent ;
+        @apply text-primary-content hover:text-accent dark:hover:text-white ;
       }
 
     }

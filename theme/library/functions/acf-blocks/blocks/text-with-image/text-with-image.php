@@ -21,73 +21,8 @@ if ( ! empty( $block['anchor'] ) ) {
     $anchor = 'id=' . esc_attr($block['anchor']) . ' ';
 }
 
-$cta_btn_class = 'btn btn-outline btn-primary mx-auto btn-sm z-10 bg-white! hover:bg-primary! hover:text-white! h-auto';
-$allowed_svg_args = array(
-  'svg' => array(
-      'xmlns' => true,
-      'width' => true,
-      'height' => true,
-      'viewbox' => true, // Must be lowercase
-      'aria-hidden' => true,
-      'aria-labelledby' => true,
-      'role' => true,
-      'class' => true,
-      'id' => true,
-    ),
-    'style' => array(
-    ),
-    'g' => array(
-      'fill' => true,
-      'stroke' => true,
-      'stroke-width' => true,
-      'transform' => true,
-      'class' => true,
-      'id' => true,
-      'd' => true,
-  ),
-  'path' => array(
-      'd' => true,
-      'fill' => true,
-      'stroke' => true,
-      'stroke-width' => true,
-      'class' => true,
-      'id' => true,
-  ),
-  'circle' => array(
-      'cx' => true,
-      'cy' => true,
-      'r' => true,
-      'fill' => true,
-      'stroke' => true,
-      'stroke-width' => true,
-      'class' => true,
-      'id' => true,
-  ),
-  'rect' => array(
-      'x' => true,
-      'y' => true,
-      'width' => true,
-      'height' => true,
-      'class' => true,
-      'id' => true,
-  ),
-  'polygon' => array(
-      'points' => true,
-      'fill' => true,
-      'stroke' => true,
-      'stroke-width' => true,
-      'class' => true,
-      'id' => true,
-  ),
-  'polyline' => array(
-      'points' => true,
-      'fill' => true,
-      'stroke' => true,
-      'stroke-width' => true,
-      'class' => true,
-      'id' => true,
-  ),
-);
+$cta_btn_class = 'btn btn-outline btn-primary mx-auto btn-sm z-10 bg-light! hover:bg-primary! hover:text-light! h-auto';
+
 
 // Create class attribute allowing for custom "className" and "align" values.
 $class_name = 'text-with-image';
@@ -133,7 +68,7 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
                   $upload_base_path = $upload_dir['basedir'];
                   $relative_path = str_replace( $upload_base_path, '', $absolute_path );
                   $relative_path = ltrim( $relative_path, '/' );
-                  echo wp_kses(file_get_contents( wp_upload_dir()["basedir"] . '/' . $relative_path ), $allowed_svg_args);
+                  echo wp_kses(file_get_contents( wp_upload_dir()["basedir"] . '/' . $relative_path ), pstroot_get_allowed_svg_args());
                 } else {
                   echo wp_get_attachment_image( $logo['ID'], 'large',false , array( 'class' => 'text-with-image__img w-auto max-h-[150px] @2xl:max-h-none mx-auto @2xl:h-40' ) );
                 }

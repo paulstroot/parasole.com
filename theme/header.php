@@ -6,6 +6,11 @@ $bug_image = get_field('bug_image', 'option');
 $bug_link = get_field('link', 'option');
 $mobile_text = get_field('mobile_text', 'option');
 $mobile_style = get_field('mobile_style', 'option');
+
+$logo = file_get_contents( get_template_directory() . '/library/images/logo.svg' );
+$tagline = file_get_contents( get_template_directory() . '/library/images/restaurant-holdings.svg' );
+
+
 ?>
 
 <body <?php body_class(); ?>>
@@ -32,20 +37,12 @@ $mobile_style = get_field('mobile_style', 'option');
     <div class='flex flex-row justify-between'>
       <div class="flex items-center logo">
         <a href="/" class="logo flex flex-row items-baseline justify-end gap-7 text-base-content no-underline hover:text-primary">
-          <img
-            src="<?php bloginfo('template_url'); ?>/library/images/logo.svg"
-            alt="Parasole"
-            class="logo-parasole logodark:invert"
-            width=200
-            priority
-          />
-          <img
-            src="<?php bloginfo('template_url'); ?>/library/images/restaurant-holdings.svg"
-            alt="Restaurant Holdings"
-            class="tagline dark:invert min-[520px]:block hidden"
-            width=205
-            priority
-          />
+        <div class="logo-parasole logodark:invert relative w-[200px]">
+            <?php echo wp_kses($logo, pstroot_get_allowed_svg_args()); ?>
+          </div>
+          <div class="tagline min-[520px]:block hidden w-[205px]">
+            <?php echo wp_kses($tagline, pstroot_get_allowed_svg_args()); ?>
+          </div>
         </a>
       </div>
 

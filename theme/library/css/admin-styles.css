@@ -8,7 +8,9 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-300: oklch(80.8% 0.114 19.571);
+    --color-red-500: oklch(63.7% 0.237 25.331);
     --color-blue-200: oklch(88.2% 0.059 254.128);
+    --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-400: oklch(70.7% 0.022 261.325);
     --color-gray-600: oklch(44.6% 0.03 256.802);
@@ -3383,6 +3385,12 @@
   .w-\[160px\] {
     width: 160px;
   }
+  .w-\[200px\] {
+    width: 200px;
+  }
+  .w-\[205px\] {
+    width: 205px;
+  }
   .w-\[clamp\(14rem\,25rem\)\] {
     width: clamp(14rem, calc(14rem + 0.1964 * (100vw - 40rem)), 25rem);
   }
@@ -3603,6 +3611,9 @@
   .bg-light {
     background-color: var(--color-light);
   }
+  .bg-light\! {
+    background-color: var(--color-light) !important;
+  }
   .bg-mid-0 {
     background-color: var(--color-mid-0);
   }
@@ -3668,9 +3679,6 @@
   }
   .bg-white {
     background-color: var(--color-white);
-  }
-  .bg-white\! {
-    background-color: var(--color-white) !important;
   }
   .divider-accent {
     @layer daisyui.modifier {
@@ -4253,6 +4261,13 @@
       }
     }
   }
+  .hover\:text-light\! {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-light) !important;
+      }
+    }
+  }
   .hover\:text-primary {
     &:hover {
       @media (hover: hover) {
@@ -4733,6 +4748,9 @@
   a {
     color: var(--color-accent);
     text-decoration-line: underline;
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-primary);
+    }
   }
   h1, h2, h3, h4, h5, b, strong, .h1, .h2, .h3, .h4, .h5 {
     font-weight: 400;
@@ -4844,7 +4862,7 @@
     height: calc(var(--spacing) * 1);
     width: calc(var(--spacing) * 1);
     overflow: hidden;
-    background-color: var(--color-white);
+    background-color: var(--color-light);
     padding-inline: calc(var(--spacing) * 2);
     padding-block: calc(var(--spacing) * 1);
     &:focus {

@@ -70,7 +70,7 @@ if ( ! empty( $block['className'] ) ) {
         <?php endif; ?>
 
         <?php if ( $cta ) : ?>
-          <a href="<?php echo esc_url( $cta['url'] ); ?>" class="btn btn-arrow-after text-dark! bg-white! hover:bg-secondary! hover:text-white! border-0"><?php echo esc_html( $cta['title'] ); ?></a>
+          <a href="<?php echo esc_url( $cta['url'] ); ?>" class="btn btn-arrow-after text-dark! bg-light! hover:bg-secondary! hover:text-white! border-0"><?php echo esc_html( $cta['title'] ); ?></a>
         <?php endif; ?>
       </div>
 

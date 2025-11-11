@@ -3,6 +3,9 @@
   /* ...require('daisyui/src/theming/themes')['[data-theme=dark]'], */
   :root{
     --color-light: #444444;
+    --color-dark: #ffffff;
+    --wp--preset--color--white: #000000 !important;
+    --wp--preset--color--black: #FFFFFF !important;
     --wp--preset--color--light: #444444 !important;
     --wp--preset--color--primary: #baabf2 !important;
 
@@ -49,5 +52,32 @@
     --color-mid-200: #333333;
     --color-mid-100: #141414;
     --color-mid-0: #000000;
+
+
+  }
+
+  .with_frm_style {
+    --label-color: #FFFFFF;
+    --text-color:#FFFFFF;
+    --bg-color:#555555;
+    --border-color:#444444;
+    .frm_description{
+      color:#CCCCCC !important;
+    }
+    .form-field textarea:focus{
+      @apply bg-[var(--bg-color)]!;
+    }
+    .frm_form_field :invalid{
+      &:invalid{
+        @apply bg-[#886a6a]!;
+        @apply text-white!;
+      }
+    }
+    .form-field input:not([type=file]):not([type=range]):not([readonly]){
+      &:focus{
+        @apply bg-mid-400!;
+      }
+    }
+
   }
 }

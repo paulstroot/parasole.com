@@ -37,7 +37,7 @@ if ( ! empty( $block['className'] ) ) {
 
       <?php if ( $cta ) : ?>
         <div class="absolute left-1/2 -translate-x-1/2 top-[65%] @min-2xl:top-[74%]">
-          <a href="<?php echo esc_url( $cta['url'] ); ?>" class="btn btn-arrow-after text-dark! bg-white! hover:bg-secondary! hover:text-white! border-0 @min-2xl:text-[12px] @min-2xl:h-auto @min-2xl:py-1  @max-lg:whitespace-nowrap"><?php echo esc_html( $cta['title'] ); ?></a>
+          <a href="<?php echo esc_url( $cta['url'] ); ?>" class="btn btn-arrow-after text-dark! bg-light! hover:bg-secondary! hover:text-white! border-0 @min-2xl:text-[12px] @min-2xl:h-auto @min-2xl:py-1  @max-lg:whitespace-nowrap"><?php echo esc_html( $cta['title'] ); ?></a>
         </div>
       <?php endif; ?>
 
