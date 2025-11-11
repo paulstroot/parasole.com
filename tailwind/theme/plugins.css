@@ -2,10 +2,5 @@
 @plugin "@tailwindcss/forms";
 
 @plugin "daisyui" {
-  themes: light --default, abyss --prefersdark;
-  root: ":root";
-  include: ;
-  exclude: ;
-  prefix: ;
-  logs: false;
+  themes: false
 }

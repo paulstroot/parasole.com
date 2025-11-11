@@ -22,7 +22,72 @@ if ( ! empty( $block['anchor'] ) ) {
 }
 
 $cta_btn_class = 'btn btn-outline btn-primary mx-auto btn-sm z-10 bg-white! hover:bg-primary! hover:text-white! h-auto';
-
+$allowed_svg_args = array(
+  'svg' => array(
+      'xmlns' => true,
+      'width' => true,
+      'height' => true,
+      'viewbox' => true, // Must be lowercase
+      'aria-hidden' => true,
+      'aria-labelledby' => true,
+      'role' => true,
+      'class' => true,
+      'id' => true,
+    ),
+    'style' => array(
+    ),
+    'g' => array(
+      'fill' => true,
+      'stroke' => true,
+      'stroke-width' => true,
+      'transform' => true,
+      'class' => true,
+      'id' => true,
+      'd' => true,
+  ),
+  'path' => array(
+      'd' => true,
+      'fill' => true,
+      'stroke' => true,
+      'stroke-width' => true,
+      'class' => true,
+      'id' => true,
+  ),
+  'circle' => array(
+      'cx' => true,
+      'cy' => true,
+      'r' => true,
+      'fill' => true,
+      'stroke' => true,
+      'stroke-width' => true,
+      'class' => true,
+      'id' => true,
+  ),
+  'rect' => array(
+      'x' => true,
+      'y' => true,
+      'width' => true,
+      'height' => true,
+      'class' => true,
+      'id' => true,
+  ),
+  'polygon' => array(
+      'points' => true,
+      'fill' => true,
+      'stroke' => true,
+      'stroke-width' => true,
+      'class' => true,
+      'id' => true,
+  ),
+  'polyline' => array(
+      'points' => true,
+      'fill' => true,
+      'stroke' => true,
+      'stroke-width' => true,
+      'class' => true,
+      'id' => true,
+  ),
+);
 
 // Create class attribute allowing for custom "className" and "align" values.
 $class_name = 'text-with-image';
@@ -60,13 +125,27 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
           <div class="z-1 relative @2xl:py-10 @2xl:pe-[12%]" >
             <?php if ( $logo ) : ?>
               <figure class="slide-fade-in logo max-w-[250px] @2xl:max-w-none mx-auto! px-[18%]">
-                <?php echo wp_get_attachment_image( $logo['ID'], 'large',false , array( 'class' => 'text-with-image__img w-auto max-h-[150px] @2xl:max-h-none mx-auto @2xl:h-40' ) ); ?>
-              </figure><!-- .logo_block -->
-            <?php endif; ?>
+                <?php
 
-            <?php if ( $headline ) : ?>
-              <h2 dir="ltr" class="text-with-image__headline text-left my-0!"><?php echo esc_html( $headline ); ?></h2>
-            <?php endif; ?>
+                $absolute_path = get_attached_file( $logo['ID'] );
+                if (str_ends_with($absolute_path, '.svg')) {
+                  $upload_dir = wp_upload_dir();
+                  $upload_base_path = $upload_dir['basedir'];
+                  $relative_path = str_replace( $upload_base_path, '', $absolute_path );
+                  $relative_path = ltrim( $relative_path, '/' );
+                  echo wp_kses(file_get_contents( wp_upload_dir()["basedir"] . '/' . $relative_path ), $allowed_svg_args);
+                } else {
+                  echo wp_get_attachment_image( $logo['ID'], 'large',false , array( 'class' => 'text-with-image__img w-auto max-h-[150px] @2xl:max-h-none mx-auto @2xl:h-40' ) );
+                }
+                ?>
+
+
+              </figure><!-- .logo_block -->
+              <?php endif; ?>
+
+              <?php if ( $headline ) : ?>
+                <h2 dir="ltr" class="text-with-image__headline text-left my-0!"><?php echo esc_html( $headline ); ?></h2>
+              <?php endif; ?>
 
             <?php if ( $description ) : ?>
               <div dir="ltr" class="text-with-image__description text-left"><?php echo wp_kses_post( $description ); ?></div>

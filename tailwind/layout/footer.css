@@ -1,6 +1,6 @@
 #footer {
 	a {
-		@apply text-dark  cursor-default no-underline;
+		@apply text-base-content  cursor-default no-underline;
 	}
 	a:not([href^="#"]) {
 		@apply hover:text-secondary cursor-pointer;

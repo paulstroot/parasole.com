@@ -23,7 +23,7 @@ $mobile_style = get_field('mobile_style', 'option');
   </div>
 <?php endif; ?>
 
-<header id="pageHeader" class='sticky top-0 z-50 bg-base text-base-content '>
+<header id="pageHeader" class='sticky top-0 z-50 bg-base-100 text-base-content'>
 
 
   <a href="#main" class="screen-reader-shortcut">Skip to main content</a>

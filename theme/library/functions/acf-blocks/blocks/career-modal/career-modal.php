@@ -38,9 +38,9 @@ $style  = implode('; ', $styles);
     <?php echo wp_get_attachment_image($image['ID'], 'large', false, array('class' => 'absolute inset-0 w-full h-full! object-cover object-center hover:scale-105 opacity-[0.8] hover:opacity-100 transition-all', 'alt' => esc_attr($image['alt']))); ?>
   </button>
   <dialog id="modal_<?php echo esc_attr($block['id']); ?>" class="modal">
-    <div class="modal-box bg-base">
+    <div class="modal-box bg-base-100">
       <form method="dialog">
-        <button class="absolute btn btn-sm w-6 h-6 p-0! leading-0 rounded-full! right-2 top-2 border! bg-base! hover:bg-accent! text-base-content!"><i class="ri-close-line"></i>
+        <button class="absolute btn btn-sm w-6 h-6 p-0! leading-0 rounded-full! right-2 top-2 border! bg-base-100! hover:bg-accent! text-base-content!"><i class="ri-close-line"></i>
         </button>
       </form>
 
