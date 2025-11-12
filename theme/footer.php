@@ -78,7 +78,7 @@
       </div>
 
       <div class="flex flex-col">
-        <a href="<?php echo esc_url(get_home_url()); ?>" class="mx-auto my-4 md:my-0 md:mx-0 logo">
+        <a href="<?php echo esc_url(get_home_url()); ?>" class="mx-auto my-4 md:my-0 md:mx-0 logo" aria-label="<?php echo esc_attr(get_bloginfo( 'name' )); ?>">
           <img
             src="<?php bloginfo('template_url'); ?>/library/images/logo.svg"
             alt="<?php echo esc_url(get_bloginfo('name')); ?>"
