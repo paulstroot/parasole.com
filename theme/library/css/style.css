@@ -22,7 +22,6 @@ and is loaded last so it will override any existing styles.*/
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-300: oklch(80.8% 0.114 19.571);
-    --color-red-500: oklch(63.7% 0.237 25.331);
     --color-blue-200: oklch(88.2% 0.059 254.128);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-400: oklch(70.7% 0.022 261.325);
@@ -2528,9 +2527,6 @@ and is loaded last so it will override any existing styles.*/
   .mx-0 {
     margin-inline: calc(var(--spacing) * 0);
   }
-  .mx-0\! {
-    margin-inline: calc(var(--spacing) * 0) !important;
-  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -3048,6 +3044,9 @@ and is loaded last so it will override any existing styles.*/
   .mt-0 {
     margin-top: calc(var(--spacing) * 0);
   }
+  .mt-0\! {
+    margin-top: calc(var(--spacing) * 0) !important;
+  }
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
   }
@@ -3086,12 +3085,6 @@ and is loaded last so it will override any existing styles.*/
   }
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
-  }
-  .ml-2 {
-    margin-left: calc(var(--spacing) * 2);
-  }
-  .ml-4 {
-    margin-left: calc(var(--spacing) * 4);
   }
   .carousel-item {
     @layer daisyui.component {
@@ -3695,12 +3688,6 @@ and is loaded last so it will override any existing styles.*/
   .bg-red-300 {
     background-color: var(--color-red-300);
   }
-  .bg-red-500 {
-    background-color: var(--color-red-500);
-  }
-  .bg-red-500\! {
-    background-color: var(--color-red-500) !important;
-  }
   .bg-secondary {
     background-color: var(--color-secondary);
   }
@@ -3970,9 +3957,6 @@ and is loaded last so it will override any existing styles.*/
   }
   .\!text-inherit {
     color: inherit !important;
-  }
-  .text-\[var\(--button-default-font-size\)\] {
-    color: var(--button-default-font-size);
   }
   .text-accent-content {
     color: var(--color-accent-content);
@@ -4640,11 +4624,6 @@ and is loaded last so it will override any existing styles.*/
       margin-top: calc(var(--spacing) * 0);
     }
   }
-  .\@2xl\:mt-8 {
-    @container (width >= 42rem) {
-      margin-top: calc(var(--spacing) * 8);
-    }
-  }
   .\@2xl\:flex {
     @container (width >= 42rem) {
       display: flex;
@@ -4750,34 +4729,14 @@ and is loaded last so it will override any existing styles.*/
       background-color: var(--color-base-300) !important;
     }
   }
-  .dark\:bg-black\! {
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--color-black) !important;
-    }
-  }
-  .dark\:bg-dark {
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--color-dark);
-    }
-  }
-  .dark\:bg-dark\! {
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--color-dark) !important;
-    }
-  }
-  .dark\:bg-red-500\! {
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--color-red-500) !important;
-    }
-  }
 }
 :root {
   --color-white: #FFFFFF;
   --color-light: #f6f5f4;
   --color-dark: #333333;
   --color-black: #000000;
-  --color-primary: #6e57c1;
-  --color-secondary: #c04fa7;
+  --color-primary: #5C43B6;
+  --color-secondary: #ce32b8;
   --color-accent: #de9c57;
   --color-neutral: #A3A3A3;
   --font-serif: "Georgia", serif;
@@ -5496,7 +5455,7 @@ form {
     background-color: color-mix(in oklab, var(--color-primary) 90%, transparent);
   }
   @media (prefers-color-scheme: dark) {
-    background-color: color-mix(in oklab, #6e57c1 90%, transparent);
+    background-color: color-mix(in oklab, #5C43B6 90%, transparent);
   }
   right: calc(var(--spacing) * 0);
   left: calc(var(--spacing) * 0);

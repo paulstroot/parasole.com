@@ -35,7 +35,7 @@
         {
           "slug": "primary",
           "name": "Primary",
-          "color": "#6e57c1"
+          "color": "#5C43B6"
         },
         {
           "slug": "secondary",
@@ -136,7 +136,7 @@
           "fontSize": "1.125rem"
         },
         "color": {
-          "background": "#6e57c1",
+          "background": "#5C43B6",
           "text": "#FFFFFF"
         },
         "border": {
@@ -159,7 +159,7 @@
             "text": "#333333"
           },
           "border": {
-            "color": "#6e57c1"
+            "color": "#5C43B6"
           }
         }
       }

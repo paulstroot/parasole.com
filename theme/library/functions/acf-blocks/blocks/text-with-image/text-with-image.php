@@ -95,7 +95,7 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
               <?php endif; ?>
 
               <?php if ( $headline ) : ?>
-                <h2 dir="ltr" class="text-with-image__headline text-left my-0!"><?php echo esc_html( $headline ); ?></h2>
+                <h2 dir="ltr" class="text-with-image__headline text-left mt-0!"><?php echo esc_html( $headline ); ?></h2>
               <?php endif; ?>
 
             <?php if ( $description ) : ?>

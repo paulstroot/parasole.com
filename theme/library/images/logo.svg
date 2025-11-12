@@ -4,13 +4,14 @@
   <defs>
     <style>
       .fill-pink {
-        fill: #bc529f;
+        fill: #ce32b8;
       }
       .fill-purple {
-        fill: #6c5ca7;
+        fill: #6e57c1;
+
       }
       .fill-yellow {
-        fill: #e09d58;
+        fill: #de9c57;
       }
 
       .fill-evenodd{

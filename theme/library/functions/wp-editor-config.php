@@ -76,7 +76,7 @@ function pstroot_setup_theme_features()
         array(
             'name'  => esc_attr__('Primary Color', 'pstroot'),
             'slug'  => 'primary',
-            'color' => '#6e57c1',
+            'color' => '#5C43B6',
          ),
          array(
             'name'  => esc_attr__('Secondary Color', 'pstroot'),
