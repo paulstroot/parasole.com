@@ -25,12 +25,12 @@ foreach ($gallery as $image) :
   $verticalFocus = get_field('vertical_focus',$image['ID']) ? get_field('vertical_focus',$image['ID']) . "%" :  'center';
   $imageMarkup .=  '<div class="carousel-item overflow-hidden" style="aspect-ratio: '. esc_attr($aspect_ratio) . '">';
   $imageMarkup .=   '<div class="carousel-item-inner absolute h-full">';
-  $imageMarkup .=     wp_get_attachment_image($image['ID'], 'large', false, array('alt' => esc_attr($image['alt']),'loading'=>'lazy','style'=>'object-position:center '.$verticalFocus.';'));
+
+  $imageMarkup .=     wp_get_attachment_image($image['ID'], 'carousel', false, array('alt' => esc_attr($image['alt']),'loading'=>'lazy','style'=>'object-position:center '.$verticalFocus.';'));
   $imageMarkup .=    '</div>';
   $imageMarkup .=  '</div>';
 endforeach;
 $imageMarkup .= '</div>';
-
 
 
 ?>
