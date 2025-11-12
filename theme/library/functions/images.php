@@ -102,28 +102,28 @@ add_filter( 'upload_mimes', 'pstroot_allow_svg_uploads' );
  * @return int   New threshold value.
  */
 function pstroot_increase_big_image_threshold( $threshold, $imagesize, $file, $attachment_id ){
-    return 1920; // Default 2560.
+    return 1500; // Default 2560.
 }
 add_filter('big_image_size_threshold', 'pstroot_increase_big_image_threshold', 10, 4);
 
 
 
 
-/*
-Image Guidelines
-These are the image areas that should be kept in mind when editing.
-The rest of the images live in image galleries or the page in a reduced
-size that is taken care of in the backend!
-*/
-
-
-add_image_size('hero', 1920, 9999);
-add_image_size('medium_large', 700, 1000);
+add_image_size('hero', 1920);
+add_image_size('carousel', 688);
+add_image_size('carousel-sm', 370);
 
 if (function_exists('add_theme_support')) {
     add_theme_support('post-thumbnails');
 }
-
+/* Remove unneeded image sizes */
+add_filter( 'intermediate_image_sizes_advanced', 'pstroot_remove_default_images' );
+function pstroot_remove_default_images( $sizes ) {
+    // unset( $sizes['1536x1536']);
+    // unset( $sizes['2048x2048']);
+    unset( $sizes['medium_large']);
+    return $sizes;
+}
 
 
 
@@ -152,5 +152,30 @@ function pstroot_display_custom_image_sizes($sizes)
     return $sizes;
 }
 add_filter('image_size_names_choose', 'pstroot_display_custom_image_sizes');
+
+
+
+
+/**
+ * Allow 'srcset' and 'sizes' attributes for <img> and <source> tags in wp_kses_post.
+ *
+ * @param array  $tags    Allowed HTML tags and their attributes.
+ * @param string $context The context for which to filter allowed tags.
+ * @return array Modified allowed tags.
+ */
+function pstroot_allow_srcset_and_sizes_in_wpkses_post( $tags, $context ) {
+    if ( 'post' === $context ) {
+        $tags['img']['srcset'] = true;
+        $tags['img']['sizes']  = true;
+        /* Optionally, allow for the <source> tag if you are using <picture> */
+        $tags['source'] = array(
+            'srcset' => true,
+            'sizes'  => true,
+            'type'   => true,
+        );
+    }
+    return $tags;
+}
+add_filter( 'wp_kses_allowed_html', 'pstroot_allow_srcset_and_sizes_in_wpkses_post', 10, 2 );
 
 
