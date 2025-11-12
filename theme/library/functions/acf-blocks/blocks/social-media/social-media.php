@@ -19,7 +19,7 @@ $links   = get_field('links');
 $class_name = 'social-media bg-cover bg-center';
 
 // Build a valid style attribute for background and text colors.
-$styles = array( 'color: ' . $text_color , 'background-image: url(' . $background_image['sizes']['medium_large']  . ')');
+$styles = array( 'color: ' . $text_color , 'background-image: url(' . $background_image['sizes']['hero']  . ')');
 $style  = implode('; ', $styles);
 
 
