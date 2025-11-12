@@ -31,7 +31,7 @@ if ( $buttons ) :
   if(count($buttons) == 1){
     $button_markup .= '<a href="'.esc_url( $buttons[0]['button_url'] ).'" class="cta-button inline-block btn-arrow-after h-auto m-0! '.esc_attr( $cta_btn_class ).'" target="_blank">'. esc_html( $buttons[0]['button_label'] ).'</a>';
   } else {
-    $button_markup .= '<select class="cta-button border-2 border-primary mx-0 py-[3.2px] dark:bg-base-300!" name="restaurantsMenu" id="restaurantsMenu" onchange="MM_jumpMenu(\'_blank\',this,0)"><option value="">Make a Reservation</option>';
+    $button_markup .= '<select class="cta-button border-2 border-primary mx-0 py-[3.2px] dark:bg-base-300!" name="restaurantsMenu" aria-label="Select a restaurant" id="restaurantsMenu" onchange="MM_jumpMenu(\'_blank\',this,0)"><option value="">Make a Reservation</option>';
     foreach($buttons as $button):
       $button_markup .= '<option value="'. esc_url( $button['button_url'] ).'">'.esc_html( $button['button_label'] ).'</option>';
     endforeach;

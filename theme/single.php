@@ -3,7 +3,7 @@
 ?>
 
 
-<main class="main cf" id="main">
+<main class="main cf" id="main" tabindex="-1">
 
   <section class="container">
     <?php

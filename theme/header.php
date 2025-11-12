@@ -31,12 +31,12 @@ $tagline = file_get_contents( get_template_directory() . '/library/images/restau
 <header id="pageHeader" class='sticky top-0 z-50 bg-base-100 text-base-content'>
 
 
-  <a href="#main" class="screen-reader-shortcut">Skip to main content</a>
+  <a href="#main" class="screen-reader-shortcut" tabindex="0">Skip to main content</a>
 
   <div class='container py-7'>
     <div class='flex flex-row justify-between'>
       <div class="flex items-center logo">
-        <a href="/" class="logo flex flex-row items-baseline justify-end gap-7 text-base-content no-underline hover:text-primary">
+        <a href="/" class="logo flex flex-row items-baseline justify-end gap-7 text-base-content no-underline hover:text-primary" name="<?php echo esc_attr(get_bloginfo( 'name' )); ?>">
         <div class="logo-parasole logodark:invert relative w-[200px]">
             <?php echo wp_kses($logo, pstroot_get_allowed_svg_args()); ?>
           </div>

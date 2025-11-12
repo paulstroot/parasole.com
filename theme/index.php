@@ -3,7 +3,7 @@
 ?>
 
 
-<main class="main cf" id="main">
+<main class="main cf" id="main" tabindex="-1">
   <section>
     <h1 class="pagetitle tk-purista-web cf"><?php echo esc_html(get_the_title()); ?></h1>
 
