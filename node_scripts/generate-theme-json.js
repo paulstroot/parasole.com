@@ -397,7 +397,6 @@ function main() {
 	// Write out
 	const output = JSON.stringify(next, null, 2);
 	fs.writeFileSync(outputJson, output, 'utf8');
-	console.log(`Wrote ${outputJson}`);
 }
 
 if (require.main === module) {

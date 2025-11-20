@@ -4,6 +4,6 @@
  - phpcs --standard=WordPress-VIP-Go -sp themes/parasole/theme
 
 To show errors only:
- - phpcs -n --standard=WordPress-VIP-Go -sp themes/parasole/theme
+ - phpcs -n --standard=WordPress-VIP-Go -sp wp-content/themes/parasole/theme
 
 

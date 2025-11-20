@@ -20,7 +20,7 @@ if ( ! empty( $block['anchor'] ) ) {
     $anchor = 'id=' . esc_attr($block['anchor']) . ' ';
 }
 
-$cta_btn_class = 'btn btn-outline btn-primary mx-auto btn-sm z-10 bg-light! hover:bg-primary! hover:text-light! h-auto';
+$cta_btn_class = 'btn btn-outline btn-primary mx-auto btn-sm z-10 bg-mid-0! dark:bg-mid-200! hover:bg-primary! hover:text-light! h-auto';
 
 $button_markup = '';
 if($cta):
@@ -75,7 +75,7 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
 
           <div class="z-1 relative @2xl:py-10 @2xl:pe-[12%]" >
             <?php if ( $logo ) : ?>
-              <figure class="slide-fade-in logo max-w-[250px] @2xl:max-w-none mx-auto! px-[18%]">
+              <figure class="slide-fade-in logomb-8 max-w-[250px] max-h-[180px] flex @2xl:max-w-none mx-auto! @2xl:px-[14%]">
                 <?php
 
                 $absolute_path = get_attached_file( $logo['ID'] );
@@ -102,14 +102,14 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
               <div dir="ltr" class="text-with-image__description text-left"><?php echo wp_kses_post( $description ); ?></div>
             <?php endif; ?>
 
-            <div dir="ltr" class="flex flex-wrap gap-4 mt-4 @max-2xl:hidden">
+            <div dir="ltr" class="flex flex-wrap gap-4 mt-4 @max-2xl:hidden ">
               <?php echo ( $button_markup ); // phpcs:ignore ?>
             </div>
           </div>
         </div>
 
 
-        <div dir="ltr" class="flex flex-wrap gap-4 @2xl:hidden mt-[-2.4rem]! order-3 z-2 text-center!">
+        <div dir="ltr" class="flex flex-wrap gap-4 @2xl:hidden mt-[-2.4rem]! order-3 z-2 text-center! justify-center">
           <?php echo ( $button_markup ); // phpcs:ignore ?>
         </div>
 

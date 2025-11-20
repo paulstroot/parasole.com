@@ -48,8 +48,8 @@
         },
         {
             "key": "field_690a5d1344b41",
-            "label": "Height",
-            "name": "height",
+            "label": "Image Width",
+            "name": "width",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -60,7 +60,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "44vw",
+            "default_value": "30vw",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -115,5 +115,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1762287102
+    "modified": 1763664076
 }

@@ -7,6 +7,7 @@ module.exports = {
 		require('postcss-import-ext-glob'),
 		require('postcss-import'),
 		tailwindcss(),
+		require('autoprefixer'),
 		(clampwind.default ? clampwind.default : clampwind)(),
 	],
 };

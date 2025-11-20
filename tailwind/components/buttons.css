@@ -73,7 +73,7 @@
 
 
 .wp-block-button.is-style-outline .wp-block-button__link{
-  @apply px-[var(--button-padding-x)] py-[var(--button-padding-y)] my-2;
+  @apply px-[var(--button-padding-x)] py-[var(--button-padding-y)] my-2 ;
 }
 
   /* padding-inline: var(--btn-p);
@@ -84,3 +84,7 @@
   outline-color: var(--btn-color, var(--color-base-content));
   border-width: var(--border);
   border-color: var(--btn-border); */
+
+  .has-primary-button .wp-block-button a{
+    @apply bg-mid-0! dark:bg-mid-200! hover:bg-primary! hover:text-light! hover:border-primary!;
+  }

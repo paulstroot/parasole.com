@@ -7,7 +7,6 @@
 'use strict';
 class DisclosureNav {
 	constructor(domNode) {
-		console.log('init top nav');
 		this.rootNode = domNode;
 		this.timers = [];
 		this.controlledNodes = [];
@@ -284,12 +283,10 @@ document.addEventListener('DOMContentLoaded', () => {
 /** Open and close mobile menu when hamburger icon is clicked */
 document.addEventListener('DOMContentLoaded', () => {
 	var mainMenu = document.getElementById('pageHeader').querySelector('nav');
-	console.log(mainMenu);
 
 	document.getElementById('mobile-menu-toggle').addEventListener(
 		'click',
 		function (e) {
-			console.log('Clicked Hamburger', mainMenu);
 			var navWrapper = document.getElementsByClassName('nav-wrapper')[0];
 			var toggleBtn = mainMenu.querySelector('#mobile-menu-toggle');
 
@@ -297,7 +294,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				navWrapper.classList.remove('open');
 				toggleBtn.ariaExpanded = 'false';
 			} else {
-				console.log('Add Open');
 				navWrapper.classList.add('open');
 				toggleBtn.ariaExpanded = 'true';
 			}

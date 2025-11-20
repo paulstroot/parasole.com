@@ -102,14 +102,14 @@ add_filter( 'upload_mimes', 'pstroot_allow_svg_uploads' );
  * @return int   New threshold value.
  */
 function pstroot_increase_big_image_threshold( $threshold, $imagesize, $file, $attachment_id ){
-    return 1500; // Default 2560.
+    return 1950; // Default 2560.
 }
 add_filter('big_image_size_threshold', 'pstroot_increase_big_image_threshold', 10, 4);
 
 
 
 
-add_image_size('hero', 1920);
+add_image_size('hero', 1500);
 add_image_size('carousel', 688);
 add_image_size('carousel-sm', 370);
 
@@ -117,13 +117,18 @@ if (function_exists('add_theme_support')) {
     add_theme_support('post-thumbnails');
 }
 /* Remove unneeded image sizes */
-add_filter( 'intermediate_image_sizes_advanced', 'pstroot_remove_default_images' );
+
+/**
+ * Remove unneeded default image sizes.
+ *
+ * @param array $sizes Array of intermediate image sizes.
+ * @return array Filtered array of image sizes.
+ */
 function pstroot_remove_default_images( $sizes ) {
-    // unset( $sizes['1536x1536']);
-    // unset( $sizes['2048x2048']);
-    unset( $sizes['medium_large']);
+  unset( $sizes['2048x2048'] ); // Remove the 2048x2048 image size.
     return $sizes;
 }
+add_filter( 'intermediate_image_sizes_advanced', 'pstroot_remove_default_images' );
 
 
 

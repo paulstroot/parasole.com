@@ -57,6 +57,7 @@
 	},
 	"prettier": "@wordpress/prettier-config",
 	"dependencies": {
+		"autoprefixer": "^10.4.22",
 		"postcss-import": "^16.1.1"
 	}
 }
