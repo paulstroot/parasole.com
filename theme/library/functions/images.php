@@ -184,3 +184,28 @@ function pstroot_allow_srcset_and_sizes_in_wpkses_post( $tags, $context ) {
 add_filter( 'wp_kses_allowed_html', 'pstroot_allow_srcset_and_sizes_in_wpkses_post', 10, 2 );
 
 
+
+
+/**
+ * Remove specific image widths from the generated srcset attribute.
+ *
+ * @param array  $sources      Array of image sources for srcset.
+ * @param array  $size_array   Array of width and height values.
+ * @param string $image_src    The image source URL.
+ * @param array  $image_meta   The image meta data.
+ * @param int    $attachment_id Attachment ID.
+ * @return array Filtered image sources.
+ */
+function pstroot_remove_specific_image_width_from_srcset( $sources, $size_array, $image_src, $image_meta, $attachment_id ) {
+    // Define the width(s) you want to remove (e.g., 1920, 2560).
+    $remove = array( '1920', '2560' );
+
+    foreach ( $remove as $width ) {
+        if ( isset( $sources[ $width ] ) ) {
+            unset( $sources[ $width ] );
+        }
+    }
+
+    return $sources;
+}
+add_filter( 'wp_calculate_image_srcset', 'pstroot_remove_specific_image_width_from_srcset', 10, 5 );

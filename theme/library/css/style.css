@@ -3662,9 +3662,6 @@ and is loaded last so it will override any existing styles.*/
   .gap-8 {
     gap: calc(var(--spacing) * 8);
   }
-  .gap-10 {
-    gap: calc(var(--spacing) * 10);
-  }
   .gap-x-22 {
     -moz-column-gap: calc(var(--spacing) * 22);
          column-gap: calc(var(--spacing) * 22);
@@ -4514,16 +4511,6 @@ and is loaded last so it will override any existing styles.*/
   .sm\:flex-row {
     @media (width >= 640px) {
       flex-direction: row;
-    }
-  }
-  .sm\:gap-10 {
-    @media (width >= 640px) {
-      gap: calc(var(--spacing) * 10);
-    }
-  }
-  .sm\:text-left {
-    @media (width >= 640px) {
-      text-align: left;
     }
   }
   .md\:mx-0 {
