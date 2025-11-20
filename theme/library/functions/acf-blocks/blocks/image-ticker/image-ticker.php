@@ -16,7 +16,7 @@ $aspect_ratio        = get_field( 'aspect_ratio' ) ? get_field( 'aspect_ratio' )
 $width               = get_field( 'width' ) ? get_field( 'width' ) : '30vw';
 $gallery             = get_field( 'gallery' );
 $object_position     = 'center center';
-// shuffle($gallery);
+shuffle($gallery);
 
 $carouselStyle = 'animation-duration:'.$animation_duration.'s;';
 
