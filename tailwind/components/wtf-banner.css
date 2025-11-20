@@ -1,0 +1,17 @@
+.wtf-banner{
+
+  @apply gap-0;
+
+  .wp-block-button a{
+    @apply my-0! relative -top-2;
+  }
+  @media (max-width: 766px){
+    .columns{
+      @apply flex-col-reverse text-center;
+    }
+    .wp-block-button a{
+      @apply mt-4! relative top-0;
+    }
+  }
+
+}

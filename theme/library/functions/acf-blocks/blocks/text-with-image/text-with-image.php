@@ -109,7 +109,7 @@ $direction = $reverse_order ? ' dir="rtl"' : '';
         </div>
 
 
-        <div dir="ltr" class="flex flex-wrap gap-4 @2xl:hidden mt-[-2.4rem]! order-3 z-2 text-center! justify-center">
+        <div dir="ltr" class="flex flex-wrap gap-4 @2xl:hidden order-3 z-2 text-center! justify-center">
           <?php echo ( $button_markup ); // phpcs:ignore ?>
         </div>
 

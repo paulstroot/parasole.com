@@ -52,8 +52,7 @@
                 'menu' => 'footer',
                 'container' => 'nav',
                 'menu_id' => 'footer-menu-container',
-                'menu_class' => 'flex flex-row gap-10 mt-0 pl-0',
-                // 'walker' => new Pstroot_Nav_Menu()
+                'menu_class' => 'flex flex-col md:flex-row text-center md:text-left gap-5 md:gap-10 mt-0 pl-0',
                 )
             );
           ?>
