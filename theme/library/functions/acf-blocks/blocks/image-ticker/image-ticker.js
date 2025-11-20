@@ -1,5 +1,5 @@
 // Parallax configuration variables
-const MAX_MOVEMENT = 250; // Maximum horizontal movement in pixels (left to right)
+const MAX_MOVEMENT = 33; // Maximum horizontal movement as a percent of the width
 
 // Get all carousel items
 const carouselItems = document.querySelectorAll('.carousel-item');
@@ -25,14 +25,13 @@ function updateParallax(element) {
 	// Calculate horizontal translation based on horizontal position
 	// Multiply by speed and max movement to control effect intensity
 
-	// const translateX = (normalizedOffset * MAX_MOVEMENT) / 2 - MAX_MOVEMENT / 2;
 	const translateX =
 		(MAX_MOVEMENT +
 			((normalizedOffset * MAX_MOVEMENT) / 2 - MAX_MOVEMENT / 2)) *
 		-1;
 
 	// Apply transform to image
-	image.style.transform = `translateX(${translateX}px)`;
+	image.style.transform = `translateX(${translateX}%)`;
 }
 // Store interval ID for cleanup
 let tickerInterval = null;
@@ -41,7 +40,7 @@ function setImageSizes() {
 	carouselItems.forEach((item) => {
 		const inner = item.querySelector('.carousel-item-inner');
 		if (inner) {
-			inner.style.width = 'calc(100% + ' + MAX_MOVEMENT + 'px)';
+			inner.style.width = 'calc(100% + ' + MAX_MOVEMENT + '%)';
 		}
 	});
 }
