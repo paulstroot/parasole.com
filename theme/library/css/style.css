@@ -5744,6 +5744,7 @@ body.scrolling-down {
 }
 .wtf-banner {
   gap: calc(var(--spacing) * 0);
+  text-wrap: balance;
   .wp-block-button a {
     position: relative;
     top: calc(var(--spacing) * -2);

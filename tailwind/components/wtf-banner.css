@@ -1,6 +1,6 @@
 .wtf-banner{
 
-  @apply gap-0;
+  @apply gap-0 text-balance;
 
   .wp-block-button a{
     @apply my-0! relative -top-2;
